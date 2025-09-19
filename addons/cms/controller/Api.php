@@ -29,9 +29,9 @@ class Api extends Base
     {
         Config::set('default_return_type', 'json');
 
-        $apikey = $this->request->post('apikey');
+        $apikey = $this->request->request('apikey');
         $config = get_addon_config('cms');
-        if (!$config['apikey']) {
+        if (!empty($config['apikey'])) {
             $this->error('请先在后台配置API密钥');
         }
         if ($config['apikey'] != $apikey) {
