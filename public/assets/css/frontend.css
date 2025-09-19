@@ -271,15 +271,14 @@
   padding-top: 20px !important;
   padding-bottom: 20px !important;
 }
-html,
+
 body {
-  height: 100%;
-}
-body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
   padding-top: 60px;
   font-size: 14px;
   background: #f4f6f8;
-  height: 100%;
   line-height: 1.5715;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
@@ -291,6 +290,7 @@ body {
     Microsoft YaHei UI, Microsoft YaHei, Source Han Sans CN, sans-serif;
   font-weight: 400;
   color: #616161;
+  box-sizing: border-box;
 }
 a {
   color: #007bff;
@@ -760,7 +760,6 @@ footer.footer {
   line-height: 76px;
   color: #fff;
   background: #1f2730;
-  margin-top: 25px;
 }
 footer.footer .copyright {
   text-align: center;
@@ -877,7 +876,7 @@ main.content {
   overflow: auto;
   padding: 15px;
   padding-top: 20px;
-  min-height: calc(100vh - 135px);
+  flex: 1;
 }
 .sidenav {
   padding: 20px 0 10px 0;

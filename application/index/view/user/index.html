@@ -3,11 +3,11 @@
         margin: 15px 0;
     }
 
-    .basicinfo .row > .col-xs-4 {
+    .basicinfo .row>.col-xs-4 {
         padding-right: 0;
     }
 
-    .basicinfo .row > div {
+    .basicinfo .row>div {
         margin: 5px 0;
     }
 </style>
@@ -21,7 +21,6 @@
                 <div class="panel-body">
                     <h2 class="page-header">
                         {:__('Member center')}
-                        <a href="{:url('user/profile')}" class="btn btn-primary pull-right"><i class="fa fa-pencil"></i> {:__('Profile')}</a>
                     </h2>
                     <div class="row user-baseinfo">
                         <div class="col-md-3 col-sm-3 col-xs-3 text-center user-center">
@@ -41,16 +40,6 @@
                         <div class="col-md-9 col-sm-9 col-xs-12">
                             <div class="ui-content">
                                 <div class="basicinfo">
-                                    <div class="row">
-                                        <div class="col-xs-4 col-md-2">{:__('Money')}</div>
-                                        <div class="col-xs-8 col-md-4">
-                                            <a href="javascript:;" class="viewmoney">{$user.money}</a>
-                                        </div>
-                                        <div class="col-xs-4 col-md-2">{:__('Score')}</div>
-                                        <div class="col-xs-8 col-md-4">
-                                            <a href="javascript:;" class="viewscore">{$user.score}</a>
-                                        </div>
-                                    </div>
                                     <div class="row">
                                         <div class="col-xs-4 col-md-2">{:__('Logintime')}</div>
                                         <div class="col-xs-8 col-md-4">{$user.logintime|date="Y-m-d H:i:s",###}</div>
