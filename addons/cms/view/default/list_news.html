@@ -4,15 +4,6 @@
 
     <h1 class="category-title">
         {cms:channel name="name|htmlentities" /}
-        <div class="more pull-right">
-            <ol class="breadcrumb">
-                <!-- S 面包屑导航 -->
-                {cms:breadcrumb id="item"}
-                <li><a href="{$item.url|htmlentities}">{$item.name|htmlentities}</a></li>
-                {/cms:breadcrumb}
-                <!-- E 面包屑导航 -->
-            </ol>
-        </div>
     </h1>
     {if $__FILTERLIST__}
     <div class="panel panel-default">
@@ -22,8 +13,10 @@
                 <div class="more">
                     <form action="" id="multipleform">
                         <label for="multiple" class="checkbox-inline">
-                            <input type="checkbox" name="multiple" class="pull-left mt-0" id="multiple" onclick="document.getElementById('multipleform').submit();" value="{:$Think.get.multiple?0:1}" {:$Think.get.multiple?'checked':''}>
-                                                                                                                                                                                                                             多选模式
+                            <input type="checkbox" name="multiple" class="pull-left mt-0" id="multiple"
+                                onclick="document.getElementById('multipleform').submit();"
+                                value="{:$Think.get.multiple?0:1}" {:$Think.get.multiple?'checked':''}>
+                            多选模式
                         </label>
                     </form>
                 </div>
@@ -36,7 +29,8 @@
                     <div class="title">{$filter.title|htmlentities}:</div>
                     <ul class="content clearfix">
                         {volist name="$filter.content" id="item"}
-                        <li class="{$item.active?'active':''}"><a href="{$item.url|htmlentities}">{$item.title|htmlentities}</a></li>
+                        <li class="{$item.active?'active':''}"><a
+                                href="{$item.url|htmlentities}">{$item.title|htmlentities}</a></li>
                         {/volist}
                     </ul>
                 </div>
@@ -58,7 +52,8 @@
                             <ul class="list-unstyled list-inline category-order clearfix">
                                 <!-- S 排序 -->
                                 {cms:pageorder id="order"}
-                                <li><a href="{$order.url|htmlentities}" class="{$order.active?'active':''}">{$order.title|htmlentities}</a></li>
+                                <li><a href="{$order.url|htmlentities}"
+                                        class="{$order.active?'active':''}">{$order.title|htmlentities}</a></li>
                                 {/cms:pageorder}
                                 <!-- E 排序 -->
                             </ul>
@@ -69,7 +64,7 @@
                     <div class="article-list">
                         <!-- S 列表 -->
                         {cms:pagelist id="item"}
-                            {include file="common/item_news"}
+                        {include file="common/item_news"}
                         {/cms:pagelist}
                         <!-- E 列表 -->
                     </div>
