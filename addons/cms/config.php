@@ -18,7 +18,7 @@ return [
         'title' => '站点名称',
         'type' => 'string',
         'content' => [],
-        'value' => '智慧党建',
+        'value' => '党建服务中心',
         'rule' => 'required',
         'msg' => '',
         'tip' => '',

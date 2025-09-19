@@ -21,7 +21,8 @@
                         {cms:blocklist id="block" name="indexfocus" row="5"}
                         <div class="item {if $i==1}active{/if}">
                             <a href="{$block.url|htmlentities}">
-                                <div class="carousel-img" style="background-image:url('{$block.image|htmlentities}');"></div>
+                                <div class="carousel-img" style="background-image:url('{$block.image|htmlentities}');">
+                                </div>
                                 <div class="carousel-caption hidden-xs">
                                     <h3>{$block.title|htmlentities}</h3>
                                 </div>
@@ -59,7 +60,8 @@
                             <div class="col-sm-3 col-xs-6">
                                 <a href="{$item.url|htmlentities}" class="img-zoom">
                                     <div class="embed-responsive embed-responsive-4by3">
-                                        <img src="{$item.image|htmlentities}" alt="{$item.title|htmlentities}" class="embed-responsive-item">
+                                        <img src="{$item.image|htmlentities}" alt="{$item.title|htmlentities}"
+                                            class="embed-responsive-item">
                                     </div>
                                 </a>
                                 <h5><a href="{$item.url|htmlentities}">{$item.title|htmlentities}</a></h5>
@@ -113,8 +115,10 @@
                     <ul class="list-unstyled">
                         {cms:arclist id="new" row="8" orderby="id" orderway="desc"}
                         <li>
-                            <span>[<a href="{$new.channel.url|default='javascript:'}">{$new.channel.name|default='未知'|htmlentities}</a>]</span>
-                            <a class="link-dark" href="{$new.url|htmlentities}" title="{$new.title|htmlentities}">{$new.title|htmlentities}</a>
+                            <span>[<a
+                                    href="{$new.channel.url|default='javascript:'}">{$new.channel.name|default='未知'|htmlentities}</a>]</span>
+                            <a class="link-dark" href="{$new.url|htmlentities}"
+                                title="{$new.title|htmlentities}">{$new.title|htmlentities}</a>
                         </li>
                         {/cms:arclist}
                     </ul>
@@ -130,41 +134,4 @@
 
         </aside>
     </div>
-</div>
-
-<div class="container hidden-xs">
-    <div class="panel panel-default">
-        <!-- S 热门导航 -->
-        <div class="panel-heading">
-            <h3 class="panel-title">
-                热门导航
-                <small>为你推荐以下热门网站</small>
-                <a href="{:addon_url('cms/diyform/post',[':diyname'=>'navigation'])}" class="more">申请导航</a>
-            </h3>
-        </div>
-        <div class="panel-body">
-            <ul class="list-unstyled list-partner">
-                {cms:diydatalist diyform="3" id="item" row="20"}
-                    <li><a href="{$item.website|htmlentities}" target="_blank"><img src="{$item.image|cdnurl}"></a></li>
-                {/cms:diydatalist}
-            </ul>
-        </div>
-        <!-- E 热门导航 -->
-
-        <!-- S 友情链接 -->
-        <div class="panel-heading">
-            <h3 class="panel-title">友情链接
-                <small>申请友情链接请务必先做好本站链接</small>
-                <a href="{:addon_url('cms/diyform/post',[':diyname'=>'friendlink'])}" class="more">申请友链</a></h3>
-        </div>
-        <div class="panel-body">
-            <div class="list-unstyled list-links">
-                {cms:diydatalist diyform="2" id="item" row="20"}
-                <a href="{$item.website|htmlentities}" target="_blank" title="{$item.title|htmlentities}">{$item.title|htmlentities}</a>
-                {/cms:diydatalist}
-            </div>
-        </div>
-        <!-- E 友情链接 -->
-    </div>
-
 </div>
