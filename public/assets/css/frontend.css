@@ -610,7 +610,7 @@ form.form-horizontal .control-label {
 }
 @media (max-width: 767px) {
   .panel-default {
-    padding: 0 10px;
+    padding: 0 30px;
   }
   .panel-default > .panel-heading {
     padding: 10px 0;
@@ -953,19 +953,19 @@ main.content {
   vertical-align: top;
   background-color: #e8ecf3;
   font-weight: normal;
-  width: 48px;
-  height: 48px;
-  border-radius: 48px;
+  width: 60px;
+  height: 60px;
+  border-radius: 60px;
   font-size: 24px;
-  line-height: 48px;
+  line-height: 60px;
 }
 .avatar-img {
   font-size: 0;
 }
 .avatar-img img {
-  border-radius: 48px;
-  width: 48px;
-  height: 48px;
+  border-radius: 60px;
+  width: 60px;
+  height: 60px;
 }
 @media (max-width: 767px) {
   main.content {

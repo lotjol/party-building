@@ -11,19 +11,19 @@ h2.page-header {
 @media (min-width: 992px) {
   .user-center .avatar-text,
   .user-center .avatar-img {
-    height: 150px;
-    width: 150px;
-    border-radius: 150px;
-    line-height: 150px;
+    height: 120px;
+    width: 120px;
+    border-radius: 120px;
+    line-height: 120px;
     font-size: 70px;
   }
   .user-center .avatar-img {
     font-size: 0;
   }
   .user-center .avatar-img img {
-    height: 150px;
-    width: 150px;
-    border-radius: 150px;
+    height: 120px;
+    width: 120px;
+    border-radius: 120px;
   }
 }
 .sidebar-toggle {
@@ -68,6 +68,6 @@ body.sidebar-open .sidenav {
   box-shadow: 0 6px 27px rgba(0, 0, 0, 0.075);
 }
 body.sidebar-open .sidebar-toggle i:before {
-  content: "\f00d";
+  content: '\f00d';
 }
 /*# sourceMappingURL=user.css.map */
