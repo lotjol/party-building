@@ -1,93 +1,160 @@
-FastAdmin是一款基于ThinkPHP+Bootstrap的极速后台开发框架。
+# 党建服务中心
 
+## 1. 项目概述
 
-## 主要特性
+党建管理系统是基于 FastAdmin 框架开发的党建信息管理平台，提供党员管理、组织活动、学习资源等功能。
 
-* 基于`Auth`验证的权限管理系统
-    * 支持无限级父子级权限继承，父级的管理员可任意增删改子级管理员及权限设置
-    * 支持单管理员多角色
-    * 支持管理子级数据或个人数据
-* 强大的一键生成功能
-    * 一键生成CRUD,包括控制器、模型、视图、JS、语言包、菜单、回收站等
-    * 一键压缩打包JS和CSS文件，一键CDN静态资源部署
-    * 一键生成控制器菜单和规则
-    * 一键生成API接口文档
-* 完善的前端功能组件开发
-    * 基于`AdminLTE`二次开发
-    * 基于`Bootstrap`开发，自适应手机、平板、PC
-    * 基于`RequireJS`进行JS模块管理，按需加载
-    * 基于`Less`进行样式开发
-* 强大的插件扩展功能，在线安装卸载升级插件
-* 通用的会员模块和API模块
-* 共用同一账号体系的Web端会员中心权限验证和API接口会员权限验证
-* 二级域名部署支持，同时域名支持绑定到应用插件
-* 多语言支持，服务端及客户端支持
-* 支持大文件分片上传、剪切板粘贴上传、拖拽上传，进度条显示，图片上传前压缩
-* 支持表格固定列、固定表头、跨页选择、Excel导出、模板渲染等功能
-* 强大的第三方应用模块支持([CMS](https://www.fastadmin.net/store/cms.html)、[CRM](https://www.fastadmin.net/store/facrm.html)、[企业网站管理系统](https://www.fastadmin.net/store/ldcms.html)、[知识库文档系统](https://www.fastadmin.net/store/knowbase.html)、[在线投票系统](https://www.fastadmin.net/store/vote.html)、[B2C商城](https://www.fastadmin.net/store/shopro.html)、[B2B2C商城](https://www.fastadmin.net/store/wanlshop.html))
-* 整合第三方短信接口(阿里云、腾讯云短信)
-* 无缝整合第三方云存储(七牛云、阿里云OSS、腾讯云存储、又拍云)功能，支持云储存分片上传
-* 第三方富文本编辑器支持(Summernote、百度编辑器)
-* 第三方登录(QQ、微信、微博)整合
-* 第三方支付(微信、支付宝)无缝整合，微信支持PC端扫码支付
-* 丰富的插件应用市场
+- **技术栈**：FastAdmin + ThinkPHP + Bootstrap + MySQL
+- **版本信息**：FastAdmin 1.6.1
+- **开发框架**：基于 ThinkPHP 5.1，集成 Bootstrap 前端框架
 
-## 安装使用
+## 2. 系统要求
 
-https://doc.fastadmin.net
+### 2.1 服务器环境要求
 
-## 在线演示
+- 操作系统：Linux、Windows、Mac OS
+- Web 服务器：Apache、Nginx
+- PHP 版本：PHP 7.4+ （推荐 PHP 7.4）
+- MySQL 版本：>= 5.6 且 <= 8.0 (需支持 innodb 引擎)
 
-https://demo.fastadmin.net
+### 2.2 开发环境要求
 
-用户名：admin
+- Node.js >= 12.0.0
+- npm 或 yarn
+- Composer
 
-密　码：123456
+## 3. 安装步骤
 
-提　示：演示站数据无法进行修改，请下载源码安装体验全部功能
+### 3.1 获取项目代码
 
-## 界面截图
-![控制台](https://images.gitee.com/uploads/images/2020/0929/202947_8db2d281_10933.gif "控制台")
+```bash
+# 克隆代码仓库
+git clone [仓库地址]
+cd party-building
 
-## 问题反馈
+# 或下载源码包并解压
+```
 
-在使用中有任何问题，请使用以下联系方式联系我们
+### 3.2 安装依赖
 
-问答社区: https://ask.fastadmin.net
+```bash
+# 安装PHP依赖
+composer install
 
-Github: https://github.com/fastadminnet/fastadmin
+# 安装前端依赖
+npm install
+```
 
-Gitee: https://gitee.com/fastadminnet/fastadmin
+### 3.3 前端资源构建
 
-## 特别鸣谢
+```bash
+# 使用Grunt构建
+grunt build
 
-感谢以下的项目,排名不分先后
+# 或使用npm脚本
+npm run build
+```
 
-ThinkPHP：http://www.thinkphp.cn
+构建完成后，前端资源将被压缩和优化，生成到 public/assets 目录。
 
-AdminLTE：https://adminlte.io
+## 4. 配置说明
 
-Bootstrap：http://getbootstrap.com
+### 4.1 PHP 扩展
 
-jQuery：http://jquery.com
+确保以下 PHP 扩展已安装并启用：
 
-Bootstrap-table：https://github.com/wenzhixin/bootstrap-table
+- 内存限制：>= 256M
+- 执行时间限制：>= 60s
+- 文件上传大小：>= 50M
+- 必需开启的 PHP 扩展：json, curl, pdo, bcmath, gd, mbstring, openssl, fileinfo
 
-Nice-validator: https://validator.niceue.com
+**查看当前 PHP 扩展命令：**
 
-SelectPage: https://github.com/TerryZ/SelectPage
+```bash
+# 查看所有已安装的PHP扩展
+php -m
 
-Layer: https://layuion.com/layer/
+# 查看PHP配置信息
+php -i
 
-DropzoneJS: https://www.dropzonejs.com
+# 查看特定扩展是否已安装（以curl为例）
+# Linux/Mac系统：
+php -m | grep curl
 
+# Windows系统：
+php -m | findstr curl
 
-## 版权信息
+# 查看PHP版本
+php -v
+```
 
-FastAdmin遵循Apache2开源协议发布，并提供免费使用。
+### 4.2 MySQL 配置
 
-本项目包含的第三方源码和二进制文件之版权信息另行标注。
+- 创建数据库
 
-版权所有Copyright © 2017-2024 by FastAdmin (https://www.fastadmin.net)
+```sql
+-- 登录MySQL
+mysql -u root -p
 
-All rights reserved。
+-- 创建数据库
+CREATE DATABASE party_building DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+```
+
+也可使用 phpMyAdmin、Navicat、MySQL Workbench 等图形界面工具创建数据库。
+
+- 导入数据库结构
+
+```bash
+# 导入数据库结构文件
+mysql -u root -p party_building < party_building.sql
+```
+
+也可使用图形界面工具导入 `party_building.sql` 文件。
+
+### 4.3 应用配置
+
+1. 复制环境变量示例文件：
+
+将 `.env.sample` 复制一份，然后重命名为 `.env`。
+
+2. 编辑 `.env` 文件，配置数据库连接参数：
+
+```ini
+[app]
+debug = true
+trace = true
+
+[database]
+hostname = 127.0.0.1
+database = party_building
+username = party_user
+password = your_password
+hostport = 3306
+prefix = party_
+```
+
+### 4.4 Web 服务器配置
+
+- **根目录配置**：将 Web 服务器的根目录配置到 `party-building/public` 目录
+- **Apache**：确保 mod_rewrite 模块已启用，配置.htaccess 文件
+- **Nginx**：配置 URL 重写规则，支持 PATHINFO 模式
+- **URL 重写规则**：支持伪静态访问，默认后缀为.html
+
+**访问地址：**
+
+- 前台访问：`http://your-host.com`
+- 后台访问：`http://your-host.com/admin.php`
+
+**默认管理员账户：**
+
+- 用户名：`admin`
+- 密码：`@admin`
+
+## 快速开始
+
+1. 确保环境满足要求
+2. 克隆项目代码
+3. 安装依赖：`composer install && npm install`
+4. 构建前端资源：`grunt build` 或 `npm run build`
+5. 配置数据库连接
+6. 访问项目地址进行初始化
