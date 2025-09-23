@@ -24,6 +24,12 @@ return [
         'xunsearch_index_reset' => [
             'cms',
         ],
+        'wipecache_after' => [
+            'tinymce',
+        ],
+        'set_tinymce' => [
+            'tinymce',
+        ],
     ],
     'route' => [
         '/$' => 'cms/index/index',
