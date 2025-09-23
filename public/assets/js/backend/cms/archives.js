@@ -39,8 +39,8 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form', 'template', 'cms-base
             });
 
             var column = [
-                {checkbox: true},
-                {field: 'id', title: __('Id'), sortable: true},
+                { checkbox: true },
+                { field: 'id', title: __('Id'), sortable: true },
                 {
                     field: 'user_id',
                     title: __('User_id'),
@@ -89,12 +89,12 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form', 'template', 'cms-base
                 },
                 {
                     field: 'title', title: __('Title'), align: 'left', operate: 'like', customField: 'flag', formatter: function (value, row, index) {
-                        var flagObj = $.extend({}, this, {searchList: Config.flagList});
+                        var flagObj = $.extend({}, this, { searchList: Config.flagList });
                         return '<div class="archives-title"><a href="' + row.url + '" target="_blank"><span style="color:' + (row.style_color ? row.style_color : 'inherit') + ';font-weight:' + (row.style_bold ? 'bold' : 'normal') + '">' + value + '</span></a></div>' +
                             '<div class="archives-label">' + Table.api.formatter.flag.call(flagObj, row['flag'], row, index) + '</div>';
                     }
                 },
-                {field: 'flag', title: __('Flag'), operate: 'find_in_set', visible: false, searchList: Config.flagList, formatter: Table.api.formatter.flag},
+                { field: 'flag', title: __('Flag'), operate: 'find_in_set', visible: false, searchList: Config.flagList, formatter: Table.api.formatter.flag },
                 {
                     field: 'image', title: __('Image'), operate: false, events: Table.api.events.image, formatter: function (value, row, index) {
                         value = value == null || value.length === 0 ? '' : value.toString();
@@ -106,7 +106,7 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form', 'template', 'cms-base
                     field: 'images', title: __('Images'), operate: false, visible: false, events: Table.api.events.image, formatter: Table.api.formatter.images
                 },
                 {
-                    field: 'price', title: __('Price'), operate: 'BETWEEN', sortable: true, formatter: function (value, row, index) {
+                    field: 'price', title: __('Price'), operate: 'BETWEEN', sortable: true, visible: false, formatter: function (value, row, index) {
                         return parseFloat(value) > 0 ? "<span class='text-danger'>" + value + "</span>" : value;
                     }
                 },
@@ -130,14 +130,14 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form', 'template', 'cms-base
                         return html.join(" ");
                     }
                 },
-                {field: 'views', title: __('Views'), operate: 'BETWEEN', sortable: true},
+                { field: 'views', title: __('Views'), operate: 'BETWEEN', sortable: true },
                 {
                     field: 'comments', title: __('Comments'), operate: 'BETWEEN', sortable: true, formatter: function (value, row, index) {
                         return '<a href="javascript:" data-url="cms/comment/index?type=archives&aid=' + row['id'] + '" title="评论列表" class="dialogit">' + value + '</a>';
                     }
                 },
-                {field: 'createby', title: __('Createby'), operate: 'in', visible: false, searchList: Config.createbyList, formatter: Table.api.formatter.flag},
-                {field: 'weigh', title: __('Weigh'), operate: false, sortable: true},
+                { field: 'createby', title: __('Createby'), operate: 'in', visible: false, searchList: Config.createbyList, formatter: Table.api.formatter.flag },
+                { field: 'weigh', title: __('Weigh'), operate: false, sortable: true },
                 {
                     field: 'createtime',
                     title: __('Createtime'),
@@ -172,7 +172,7 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form', 'template', 'cms-base
             column = column.concat(Base.api.getCustomFields(Config.fields, table));
 
             var operate = [
-                {field: 'status', title: __('Status'), searchList: {"normal": __('Status normal'), "hidden": __('Status hidden'), "draft": __('Status draft'), "prepare": __('Status prepare'), "rejected": __('Status rejected'), "pulloff": __('Status pulloff')}, formatter: Table.api.formatter.status},
+                { field: 'status', title: __('Status'), searchList: { "normal": __('Status normal'), "hidden": __('Status hidden'), "draft": __('Status draft'), "prepare": __('Status prepare'), "rejected": __('Status rejected'), "pulloff": __('Status pulloff') }, formatter: Table.api.formatter.status },
                 {
                     field: 'operate',
                     title: __('Operate'),
@@ -236,7 +236,7 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form', 'template', 'cms-base
                         Fast.api.ajax({
                             url: "cms/archives/special/ids/" + ids.join(","),
                             type: "post",
-                            data: {special_id: special_id},
+                            data: { special_id: special_id },
                         }, function () {
                             table.bootstrapTable('refresh', {});
                             Layer.close(index);
@@ -267,7 +267,7 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form', 'template', 'cms-base
                         Fast.api.ajax({
                             url: "cms/archives/flag/ids/" + ids.join(","),
                             type: "post",
-                            data: {flag: flag, type: $("input[name=type]:checked", layero).val()},
+                            data: { flag: flag, type: $("input[name=type]:checked", layero).val() },
                         }, function () {
                             table.bootstrapTable('refresh', {});
                             Layer.close(index);
@@ -295,7 +295,7 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form', 'template', 'cms-base
                         Fast.api.ajax({
                             url: "cms/archives/tags/ids/" + ids.join(","),
                             type: "post",
-                            data: {tags: tags},
+                            data: { tags: tags },
                         }, function () {
                             table.bootstrapTable('refresh', {});
                             Layer.close(index);
@@ -330,7 +330,7 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form', 'template', 'cms-base
             //复制选中
             $(document).on('click', '.btn-copyselected', function () {
                 var ids = Table.api.selectedids(table);
-                Layer.confirm(__("Are you sure you want to copy %s records?", ids.length), {icon: 3}, function (index, layero) {
+                Layer.confirm(__("Are you sure you want to copy %s records?", ids.length), { icon: 3 }, function (index, layero) {
                     Fast.api.ajax({
                         url: "cms/archives/copy/ids/" + ids.join(","),
                         type: "post",
@@ -358,7 +358,7 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form', 'template', 'cms-base
                         Fast.api.ajax({
                             url: "cms/archives/move/ids/" + ids.join(","),
                             type: "post",
-                            data: {channel_id: channel_id},
+                            data: { channel_id: channel_id },
                         }, function () {
                             table.bootstrapTable('refresh', {});
                             Layer.close(index);
@@ -401,7 +401,7 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form', 'template', 'cms-base
                             url: "cms/archives/get_channel_model_info",
                             loading: false,
                             type: 'post',
-                            data: {ids: ids.join(",")}
+                            data: { ids: ids.join(",") }
                         }, function (data, ret) {
                             if (parseInt(model_id) !== parseInt(data.model_id)) {
                                 model_id = parseInt(data.model_id);
@@ -487,10 +487,10 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form', 'template', 'cms-base
                 sortName: 'weigh',
                 columns: [
                     [
-                        {checkbox: true},
-                        {field: 'id', title: __('Id')},
-                        {field: 'title', title: __('Title'), align: 'left', operate: 'like'},
-                        {field: 'image', title: __('Image'), operate: false, formatter: Table.api.formatter.image},
+                        { checkbox: true },
+                        { field: 'id', title: __('Id') },
+                        { field: 'title', title: __('Title'), align: 'left', operate: 'like' },
+                        { field: 'image', title: __('Image'), operate: false, formatter: Table.api.formatter.image },
                         {
                             field: 'deletetime',
                             title: __('Deletetime'),
@@ -618,7 +618,7 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form', 'template', 'cms-base
                                 xhr.abort();
                             } catch (e) {
                             }
-                            xhr = $.getJSON(search.data("suggestion-url"), {q: term}, function (data) {
+                            xhr = $.getJSON(search.data("suggestion-url"), { q: term }, function (data) {
                                 response($.isArray(data) ? data : []);
                             });
                         },
@@ -628,7 +628,7 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form', 'template', 'cms-base
                             Template.helper("replace", function (value) {
                                 return value.replace(regexp, "<b>$1</b>");
                             });
-                            return Template('itemtpl', {item: item, search: search, context: {operate: false, searchList: {"normal": __('Status normal'), "hidden": __('Status hidden'), "rejected": __('Status rejected'), "pulloff": __('Status pulloff')}}});
+                            return Template('itemtpl', { item: item, search: search, context: { operate: false, searchList: { "normal": __('Status normal'), "hidden": __('Status hidden'), "rejected": __('Status rejected'), "pulloff": __('Status pulloff') } } });
                         },
                         onSelect: function (e, term, item) {
                             e.preventDefault();
@@ -702,7 +702,7 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form', 'template', 'cms-base
                             Fast.api.ajax({
                                 loading: false,
                                 url: "cms/ajax/get_title_pinyin",
-                                data: {title: value, delimiter: "-"}
+                                data: { title: value, delimiter: "-" }
                             }, function (data, ret) {
                                 $("#c-diyname").val(data.pinyin.substr(0, 100));
                                 return false;
@@ -723,7 +723,7 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form', 'template', 'cms-base
 
                     Fast.api.ajax({
                         url: 'cms/archives/get_fields_html',
-                        data: {channel_id: value, archives_id: $("#archive-id").val()}
+                        data: { channel_id: value, archives_id: $("#archive-id").val() }
                     }, function (data) {
 
                         if ($("#extend").data("model") != model) {
@@ -747,7 +747,7 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form', 'template', 'cms-base
                                 });
                             }
                             //避免FastAdmin组件错误
-                            $("#extend").data("validator", {options: {ignore: ''}});
+                            $("#extend").data("validator", { options: { ignore: '' } });
                             Form.api.bindevent($("#extend"));
                         }
                         return false;
@@ -771,7 +771,7 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form', 'template', 'cms-base
                 $(document).on("click", ".btn-legal", function (a) {
                     Fast.api.ajax({
                         url: "cms/ajax/check_content_islegal",
-                        data: {content: $("#c-content").val()}
+                        data: { content: $("#c-content").val() }
                     }, function (data, ret) {
 
                     }, function (data, ret) {
@@ -789,7 +789,7 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form', 'template', 'cms-base
                 $(document).on("click", ".btn-keywords", function (a) {
                     Fast.api.ajax({
                         url: "cms/ajax/get_content_keywords",
-                        data: {title: $("#c-title").val(), tags: $("#c-tags").val(), content: $("#c-content").val()}
+                        data: { title: $("#c-title").val(), tags: $("#c-tags").val(), content: $("#c-content").val() }
                     }, function (data, ret) {
                         $("#c-keywords").val(data.keywords).trigger("change");
                         $("#c-description").val(data.description).trigger("change");
@@ -806,7 +806,7 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form', 'template', 'cms-base
                     if (image) {
                         var obj = $("#c-image");
                         if (obj.val() != '') {
-                            Layer.confirm("缩略图已存在，是否替换？", {icon: 3}, function (index) {
+                            Layer.confirm("缩略图已存在，是否替换？", { icon: 3 }, function (index) {
                                 obj.val(image).trigger("change");
                                 layer.close(index);
                                 Toastr.success("提取成功");
@@ -835,7 +835,7 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form', 'template', 'cms-base
                         image = imageArr.slice(0, 4).join(",");
                         var obj = $("#c-images");
                         if (obj.val() != '') {
-                            Layer.confirm("文章组图已存在，是否替换？", {icon: 3}, function (index) {
+                            Layer.confirm("文章组图已存在，是否替换？", { icon: 3 }, function (index) {
                                 obj.val(image).trigger("change");
                                 layer.close(index);
                                 Toastr.success("提取成功");
@@ -862,7 +862,7 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form', 'template', 'cms-base
                             return $.ajax({
                                 url: 'cms/archives/check_element_available',
                                 type: 'POST',
-                                data: {id: $("#archive-id").val(), name: element.name, value: element.value},
+                                data: { id: $("#archive-id").val(), name: element.name, value: element.value },
                                 dataType: 'json'
                             });
                         },
