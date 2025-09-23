@@ -7,7 +7,6 @@
 /public/assets/libs/
 /public/assets/addons/*
 !/public/assets/addons/cms
-/public/uploads/*
 .DS_Store
 .idea
 composer.lock
