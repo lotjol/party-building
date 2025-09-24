@@ -283,7 +283,7 @@ return [
             'pc' => 'PC',
             'uniapp' => 'Uniapp',
         ],
-        'value' => 'pc,uniapp',
+        'value' => '',
         'rule' => '',
         'msg' => '',
         'tip' => 'PC为PC端，Uniapp仅为Uniapp版本(包括微信小程序、H5)',
