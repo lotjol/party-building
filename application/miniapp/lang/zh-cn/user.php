@@ -1,0 +1,25 @@
+<?php
+
+return [
+    'login_success' => '登录成功',
+    'login_failed' => '登录失败',
+    'logout_success' => '退出成功',
+    'invalid_code' => '授权码无效',
+    'user_not_found' => '用户不存在',
+    'user_exists' => '用户已存在',
+    'update_success' => '更新成功',
+    'update_failed' => '更新失败',
+    'nickname_exists' => '昵称已存在',
+    'mobile_exists' => '手机号已存在',
+    'email_exists' => '邮箱已存在',
+    'invalid_mobile' => '手机号格式错误',
+    'invalid_email' => '邮箱格式错误',
+    'register_success' => '注册成功',
+    'register_failed' => '注册失败，请重试',
+    'password_too_short' => '密码长度不能少于6位',
+    'password_format_error' => '密码必须包含数字和字母',
+    'mobile_registered' => '该手机号已注册',
+    'account_disabled' => '账户已被禁用',
+    'password_reset_success' => '密码重置成功',
+    'password_reset_failed' => '密码重置失败，请重试',
+];

@@ -17,9 +17,26 @@ return [
     //变量规则
     '__pattern__' => [
     ],
+    
+    // 小程序API路由
+    'miniapp/user/login/sms' => ['miniapp/user/loginSms', 'POST'],
+    'miniapp/user/login/password' => ['miniapp/user/loginPassword', 'POST'],
+    'miniapp/user/logout' => ['miniapp/user/logout', 'POST'],
+    'miniapp/user/profile' => 'miniapp/user/profile',
+    'miniapp/user/update' => ['miniapp/user/update', 'POST'],
+    'miniapp/user/register' => ['miniapp/user/register', 'POST'],
+    'miniapp/user/password/reset' => ['miniapp/user/resetPassword', 'POST'],
+    'miniapp/sms/send' => ['miniapp/sms/send', 'POST'],
+    'miniapp/sms/verify' => ['miniapp/sms/verify', 'POST'],
+    'miniapp/index/info' => 'miniapp/index/info',
+    'miniapp/content/list' => 'miniapp/content/list',
+    'miniapp/content/detail' => 'miniapp/content/detail',
+    'miniapp/upload/image' => ['miniapp/upload/image', 'POST'],
+    
 //        域名绑定到模块
 //        '__domain__'  => [
 //            'admin' => 'admin',
 //            'api'   => 'api',
+//            'miniapp' => 'miniapp',
 //        ],
 ];
