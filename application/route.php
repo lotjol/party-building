@@ -51,6 +51,15 @@ return [
     // 区块API路由（Block - CMS区块管理）
     'miniapp/block/name' => 'miniapp/block/name',
     
+    // 点赞API路由（Like - 文章点赞功能）
+    'miniapp/archives/like' => ['miniapp/like/archives', 'POST'],
+    'miniapp/archives/like/status' => 'miniapp/like/status',
+    
+    // 收藏API路由（Collection - 文章收藏功能）
+    'miniapp/archives/collection' => ['miniapp/collection/archives', 'POST'],
+    'miniapp/user/collections' => 'miniapp/collection/list',
+    'miniapp/archives/collection/status' => 'miniapp/collection/status',
+    
 //        域名绑定到模块
 //        '__domain__'  => [
 //            'admin' => 'admin',

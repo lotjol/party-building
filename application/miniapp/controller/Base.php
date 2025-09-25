@@ -31,7 +31,7 @@ class Base extends Api
     protected function _initialize()
     {
         // 加载小程序配置
-        // $this->loadMiniAppConfig();
+        $this->loadMiniAppConfig();
         
         // 跨域请求检测
         // check_cors_request();
@@ -48,8 +48,10 @@ class Base extends Api
         $controllername = Loader::parseName($this->request->controller());
         $actionname = strtolower($this->request->action());
 
-        // token
-        $token = $this->request->server('HTTP_TOKEN', $this->request->request('token', \think\Cookie::get('token')));
+        // token - 支持X-Token头和请求参数
+        $token = $this->request->server('HTTP_X_TOKEN') ?: 
+                 $this->request->request('token') ?: 
+                 \think\Cookie::get('token');
 
         $path = str_replace('.', '/', $controllername) . '/' . $actionname;
         // 设置当前请求的URI
@@ -147,13 +149,13 @@ class Base extends Api
             }
             
             // 格式化时间字段
-            if (isset($data['createtime'])) {
+            if (isset($data['createtime']) && is_numeric($data['createtime'])) {
                 $data['createtime'] = date('Y-m-d H:i:s', $data['createtime']);
             }
-            if (isset($data['updatetime'])) {
+            if (isset($data['updatetime']) && is_numeric($data['updatetime'])) {
                 $data['updatetime'] = date('Y-m-d H:i:s', $data['updatetime']);
             }
-            if (isset($data['jointime'])) {
+            if (isset($data['jointime']) && is_numeric($data['jointime'])) {
                 $data['jointime'] = date('Y-m-d H:i:s', $data['jointime']);
             }
         }
@@ -171,9 +173,9 @@ class Base extends Api
      */
     protected function success($msg = '', $data = null, $code = 1, $type = null, array $header = [])
     {
-        // 处理小程序数据
-        if ($data !== null) {
-            $data = $this->processMiniAppData($data);
+        // 处理小程序数据 - 只处理userinfo字段，不处理整个data
+        if ($data !== null && is_array($data) && isset($data['userinfo'])) {
+            $data['userinfo'] = $this->processMiniAppData($data['userinfo']);
         }
         
         parent::success($msg, $data, $code, $type, $header);
@@ -240,7 +242,10 @@ class Base extends Api
     protected function generateMiniAppToken($user)
     {
         $token = \fast\Random::uuid();
-        \app\common\library\Token::set($token, $user->id, $this->miniappConfig['token_expire']);
+        $expire = $this->miniappConfig['token']['expire'] ?? 2592000; // 默认30天
+        \app\common\library\Token::set($token, $user->id, $expire);
+        
+        
         return $token;
     }
 }

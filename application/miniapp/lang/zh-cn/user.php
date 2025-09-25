@@ -22,4 +22,5 @@ return [
     'account_disabled' => '账户已被禁用',
     'password_reset_success' => '密码重置成功',
     'password_reset_failed' => '密码重置失败，请重试',
+    'Please login first' => '请先登录',
 ];

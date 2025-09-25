@@ -5,4 +5,5 @@ return [
     'load_failed' => '加载失败',
     'no_data' => '暂无数据',
     'system_error' => '系统错误',
+    'Please login first' => '请先登录',
 ];

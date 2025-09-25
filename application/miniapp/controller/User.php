@@ -70,10 +70,13 @@ class User extends Base
         // 清除验证码记录
         $this->clearSmsCode($mobile, 'login');
 
-        $this->success(__('登录成功'), [
+        $responseData = [
             'token' => $token,
             'userinfo' => $this->processMiniAppData($user->toArray())
-        ]);
+        ];
+        
+        
+        $this->success(__('登录成功'), $responseData);
     }
 
     /**
