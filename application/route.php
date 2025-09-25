@@ -38,6 +38,16 @@ return [
     'miniapp/page/detail' => 'miniapp/page/detail',
     'miniapp/page/types' => 'miniapp/page/types',
     
+    // 栏目API路由
+    'miniapp/channel/list' => 'miniapp/channel/list',
+    'miniapp/channel/detail' => 'miniapp/channel/detail',
+    
+    // 文章API路由（Archives - CMS标准术语）
+    'miniapp/archives/list' => 'miniapp/archives/list',
+    'miniapp/archives/detail' => 'miniapp/archives/detail',
+    'miniapp/archives/hot' => 'miniapp/archives/hot',
+    'miniapp/archives/search' => 'miniapp/archives/search',
+    
 //        域名绑定到模块
 //        '__domain__'  => [
 //            'admin' => 'admin',
