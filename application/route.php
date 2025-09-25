@@ -48,6 +48,9 @@ return [
     'miniapp/archives/hot' => 'miniapp/archives/hot',
     'miniapp/archives/search' => 'miniapp/archives/search',
     
+    // 区块API路由（Block - CMS区块管理）
+    'miniapp/block/name' => 'miniapp/block/name',
+    
 //        域名绑定到模块
 //        '__domain__'  => [
 //            'admin' => 'admin',
