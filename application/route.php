@@ -33,6 +33,11 @@ return [
     'miniapp/content/detail' => 'miniapp/content/detail',
     'miniapp/upload/image' => ['miniapp/upload/image', 'POST'],
     
+    // 单页API路由
+    'miniapp/page/list' => 'miniapp/page/list',
+    'miniapp/page/detail' => 'miniapp/page/detail',
+    'miniapp/page/types' => 'miniapp/page/types',
+    
 //        域名绑定到模块
 //        '__domain__'  => [
 //            'admin' => 'admin',
