@@ -20,7 +20,7 @@ class Sms extends Base
      *
      * @ApiMethod (POST)
      * @ApiParams (name="mobile", type="string", required=true, description="手机号")
-     * @ApiParams (name="event", type="string", required=false, description="事件名称，默认为register")
+     * @ApiParams (name="event", type="string", required=false, description="事件名称：register(注册), login(登录), resetpwd(重置密码), changemobile(更换手机), joinparty(入党申请)，默认为register")
      */
     public function send()
     {
@@ -77,7 +77,7 @@ class Sms extends Base
      * @ApiMethod (POST)
      * @ApiParams (name="mobile", type="string", required=true, description="手机号")
      * @ApiParams (name="code", type="string", required=true, description="验证码")
-     * @ApiParams (name="event", type="string", required=false, description="事件名称，默认为register")
+     * @ApiParams (name="event", type="string", required=false, description="事件名称：register(注册), login(登录), resetpwd(重置密码), changemobile(更换手机), joinparty(入党申请)，默认为register")
      */
     public function verify()
     {
@@ -144,6 +144,10 @@ class Sms extends Base
                 if ($user) {
                     $this->error(__('该手机号已被使用'));
                 }
+                break;
+            case 'joinparty':
+                // 入党申请验证码：不检查用户是否存在，允许任何手机号申请
+                // 这里可以添加其他业务逻辑，比如检查是否已经申请过等
                 break;
         }
     }
