@@ -115,7 +115,7 @@ class Block extends Base
         // 处理图片路径
         $image = '';
         if ($block->image) {
-            $image = cdnurl($block->image);
+            $image = cdnurl($block->image, true);
         }
         
         // 处理链接
