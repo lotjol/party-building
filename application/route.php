@@ -60,6 +60,13 @@ return [
     'miniapp/user/collections' => 'miniapp/collection/list',
     'miniapp/archives/collection/status' => 'miniapp/collection/status',
     
+    // 学习记录API路由（Study - 文章学习记录功能）
+    'miniapp/archives/study' => ['miniapp/archives/study', 'POST'],
+    'miniapp/archives/study/list' => 'miniapp/archives/study_list',
+    'miniapp/archives/study/status' => 'miniapp/archives/study_status',
+    'miniapp/archives/study/delete' => ['miniapp/archives/study_delete', 'POST'],
+    'miniapp/archives/study/clear' => ['miniapp/archives/study_clear', 'POST'],
+    
 //        域名绑定到模块
 //        '__domain__'  => [
 //            'admin' => 'admin',

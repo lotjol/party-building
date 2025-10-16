@@ -417,4 +417,367 @@ class Archives extends Base
                 return 'publishtime desc, createtime desc, id desc';
         }
     }
+
+    /**
+     * 记录学习
+     *
+     * @ApiMethod (POST)
+     * @ApiRoute (/miniapp/archives/study)
+     * @ApiParams (name="archives_id", type="int", required=true, description="文章ID")
+     */
+    public function study()
+    {
+        $archivesId = $this->request->post('archives_id');
+
+        // 验证必填参数
+        if (!$archivesId) {
+            $response = [
+                'code' => 0,
+                'msg' => __('参数不能为空'),
+                'time' => time(),
+                'data' => null,
+            ];
+            header('Content-Type: application/json; charset=utf-8');
+            echo json_encode($response);
+            exit;
+        }
+
+        try {
+            // 检查文章是否存在
+            $archives = CmsArchives::where('id', $archivesId)
+                ->where('status', 'normal')
+                ->find();
+
+            if (!$archives) {
+                throw new \Exception(__('文章不存在'));
+            }
+
+            // 检查是否已经学习过（包括已删除的记录）
+            $existingRecord = \think\Db::name('cms_study_record')
+                ->where('user_id', $this->auth->id)
+                ->where('archives_id', $archivesId)
+                ->find();
+
+            if ($existingRecord) {
+                // 已经学习过，更新最后访问时间
+                // 如果之前删除了(status='hidden')，现在恢复为normal
+                $updateData = [
+                    'updatetime' => time(),
+                    'status' => 'normal'  // 确保状态为正常
+                ];
+                
+                \think\Db::name('cms_study_record')
+                    ->where('id', $existingRecord['id'])
+                    ->update($updateData);
+
+                $response = [
+                    'code' => 1,
+                    'msg' => __('学习记录已更新'),
+                    'time' => time(),
+                    'data' => [
+                        'id' => $existingRecord['id'],
+                        'is_new' => false,
+                        'restored' => $existingRecord['status'] != 'normal'  // 是否恢复了已删除的记录
+                    ],
+                ];
+            } else {
+                // 首次学习，插入新记录
+                $data = [
+                    'user_id' => $this->auth->id,
+                    'archives_id' => $archivesId,
+                    'createtime' => time(),
+                    'updatetime' => time(),
+                    'status' => 'normal'
+                ];
+
+                $recordId = \think\Db::name('cms_study_record')->insertGetId($data);
+
+                $response = [
+                    'code' => 1,
+                    'msg' => __('学习记录成功'),
+                    'time' => time(),
+                    'data' => [
+                        'id' => $recordId,
+                        'is_new' => true
+                    ],
+                ];
+            }
+
+            header('Content-Type: application/json; charset=utf-8');
+            echo json_encode($response);
+            exit;
+
+        } catch (\Exception $e) {
+            $response = [
+                'code' => 0,
+                'msg' => __('记录失败') . '：' . $e->getMessage(),
+                'time' => time(),
+                'data' => null,
+            ];
+            header('Content-Type: application/json; charset=utf-8');
+            echo json_encode($response);
+            exit;
+        }
+    }
+
+    /**
+     * 获取学习记录列表
+     *
+     * @ApiMethod (GET)
+     * @ApiRoute (/miniapp/archives/study/list)
+     * @ApiParams (name="page", type="int", required=false, description="页码，默认1")
+     * @ApiParams (name="limit", type="int", required=false, description="每页数量，默认10")
+     */
+    public function study_list()
+    {
+        $page = $this->request->get('page', 1);
+        $limit = $this->request->get('limit', 10);
+
+        // 参数验证
+        $page = max(1, intval($page));
+        $limit = min(50, max(1, intval($limit))); // 限制最大50条
+
+        try {
+            // 查询学习记录，关联文章表获取标题和封面
+            $records = \think\Db::name('cms_study_record')
+                ->alias('sr')
+                ->join('cms_archives a', 'sr.archives_id = a.id')
+                ->where('sr.user_id', $this->auth->id)
+                ->where('sr.status', 'normal')
+                ->where('a.status', 'normal')
+                ->field('sr.id, sr.archives_id, sr.createtime, sr.updatetime, a.title, a.image, a.description, a.views, a.likes')
+                ->order('sr.updatetime desc, sr.createtime desc')
+                ->page($page, $limit)
+                ->select();
+
+            // 获取总数
+            $total = \think\Db::name('cms_study_record')
+                ->alias('sr')
+                ->join('cms_archives a', 'sr.archives_id = a.id')
+                ->where('sr.user_id', $this->auth->id)
+                ->where('sr.status', 'normal')
+                ->where('a.status', 'normal')
+                ->count();
+
+            $result = [];
+            foreach ($records as $record) {
+                // 处理图片完整路径
+                $image = '';
+                if ($record['image']) {
+                    $image = cdnurl($record['image'], true);
+                }
+
+                $result[] = [
+                    'id' => $record['id'],
+                    'archives_id' => $record['archives_id'],
+                    'title' => $record['title'],
+                    'image' => $image,
+                    'description' => $record['description'] ?: '',
+                    'views' => $record['views'],
+                    'likes' => $record['likes'],
+                    'study_time' => date('Y-m-d H:i:s', $record['createtime']),
+                    'last_view_time' => date('Y-m-d H:i:s', $record['updatetime'])
+                ];
+            }
+
+            $response = [
+                'code' => 1,
+                'msg' => __('获取成功'),
+                'time' => time(),
+                'data' => [
+                    'list' => $result,
+                    'total' => $total,
+                    'page' => $page,
+                    'limit' => $limit,
+                    'pages' => ceil($total / $limit)
+                ],
+            ];
+            header('Content-Type: application/json; charset=utf-8');
+            echo json_encode($response);
+            exit;
+
+        } catch (\Exception $e) {
+            $response = [
+                'code' => 0,
+                'msg' => __('获取失败') . '：' . $e->getMessage(),
+                'time' => time(),
+                'data' => null,
+            ];
+            header('Content-Type: application/json; charset=utf-8');
+            echo json_encode($response);
+            exit;
+        }
+    }
+
+    /**
+     * 检查是否已学习
+     *
+     * @ApiMethod (GET)
+     * @ApiRoute (/miniapp/archives/study/status)
+     * @ApiParams (name="archives_id", type="int", required=true, description="文章ID")
+     */
+    public function study_status()
+    {
+        $archivesId = $this->request->get('archives_id');
+
+        if (!$archivesId) {
+            $response = [
+                'code' => 0,
+                'msg' => __('参数不能为空'),
+                'time' => time(),
+                'data' => null,
+            ];
+            header('Content-Type: application/json; charset=utf-8');
+            echo json_encode($response);
+            exit;
+        }
+
+        try {
+            // 查询是否有学习记录
+            $record = \think\Db::name('cms_study_record')
+                ->where('user_id', $this->auth->id)
+                ->where('archives_id', $archivesId)
+                ->where('status', 'normal')
+                ->find();
+
+            $isStudied = $record ? true : false;
+
+            $response = [
+                'code' => 1,
+                'msg' => __('获取成功'),
+                'time' => time(),
+                'data' => [
+                    'archives_id' => intval($archivesId),
+                    'is_studied' => $isStudied,
+                    'study_time' => $record ? date('Y-m-d H:i:s', $record['createtime']) : null,
+                    'last_view_time' => $record ? date('Y-m-d H:i:s', $record['updatetime']) : null
+                ],
+            ];
+            header('Content-Type: application/json; charset=utf-8');
+            echo json_encode($response);
+            exit;
+
+        } catch (\Exception $e) {
+            $response = [
+                'code' => 0,
+                'msg' => __('获取失败') . '：' . $e->getMessage(),
+                'time' => time(),
+                'data' => null,
+            ];
+            header('Content-Type: application/json; charset=utf-8');
+            echo json_encode($response);
+            exit;
+        }
+    }
+
+    /**
+     * 删除学习记录
+     *
+     * @ApiMethod (POST)
+     * @ApiRoute (/miniapp/archives/study/delete)
+     * @ApiParams (name="id", type="int", required=false, description="学习记录ID")
+     * @ApiParams (name="archives_id", type="int", required=false, description="文章ID（二选一）")
+     */
+    public function study_delete()
+    {
+        $id = $this->request->post('id');
+        $archivesId = $this->request->post('archives_id');
+
+        if (!$id && !$archivesId) {
+            $response = [
+                'code' => 0,
+                'msg' => __('参数错误：id或archives_id至少提供一个'),
+                'time' => time(),
+                'data' => null,
+            ];
+            header('Content-Type: application/json; charset=utf-8');
+            echo json_encode($response);
+            exit;
+        }
+
+        try {
+            // 构建查询条件
+            $where = ['user_id' => $this->auth->id];
+            if ($id) {
+                $where['id'] = $id;
+            } else {
+                $where['archives_id'] = $archivesId;
+            }
+
+            // 检查记录是否存在
+            $record = \think\Db::name('cms_study_record')->where($where)->find();
+
+            if (!$record) {
+                throw new \Exception(__('学习记录不存在或无权删除'));
+            }
+
+            // 软删除（修改状态为hidden）
+            \think\Db::name('cms_study_record')
+                ->where('id', $record['id'])
+                ->update(['status' => 'hidden']);
+
+            $response = [
+                'code' => 1,
+                'msg' => __('删除成功'),
+                'time' => time(),
+                'data' => [
+                    'id' => $record['id']
+                ],
+            ];
+            header('Content-Type: application/json; charset=utf-8');
+            echo json_encode($response);
+            exit;
+
+        } catch (\Exception $e) {
+            $response = [
+                'code' => 0,
+                'msg' => __('删除失败') . '：' . $e->getMessage(),
+                'time' => time(),
+                'data' => null,
+            ];
+            header('Content-Type: application/json; charset=utf-8');
+            echo json_encode($response);
+            exit;
+        }
+    }
+
+    /**
+     * 清空学习记录
+     *
+     * @ApiMethod (POST)
+     * @ApiRoute (/miniapp/archives/study/clear)
+     */
+    public function study_clear()
+    {
+        try {
+            // 清空当前用户的所有学习记录（软删除为hidden）
+            $affected = \think\Db::name('cms_study_record')
+                ->where('user_id', $this->auth->id)
+                ->where('status', 'normal')
+                ->update(['status' => 'hidden']);
+
+            $response = [
+                'code' => 1,
+                'msg' => __('清空成功'),
+                'time' => time(),
+                'data' => [
+                    'affected' => $affected
+                ],
+            ];
+            header('Content-Type: application/json; charset=utf-8');
+            echo json_encode($response);
+            exit;
+
+        } catch (\Exception $e) {
+            $response = [
+                'code' => 0,
+                'msg' => __('清空失败') . '：' . $e->getMessage(),
+                'time' => time(),
+                'data' => null,
+            ];
+            header('Content-Type: application/json; charset=utf-8');
+            echo json_encode($response);
+            exit;
+        }
+    }
 }
