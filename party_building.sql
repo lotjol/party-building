@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- 主机： 127.0.0.1:3306
--- 生成日期： 2025-09-25 10:43:10
+-- 生成日期： 2025-10-16 03:22:11
 -- 服务器版本： 5.7.31
 -- PHP 版本： 7.4.33
 
@@ -53,7 +53,7 @@ CREATE TABLE IF NOT EXISTS `party_admin` (
 --
 
 INSERT INTO `party_admin` (`id`, `username`, `nickname`, `password`, `salt`, `avatar`, `email`, `mobile`, `loginfailure`, `logintime`, `loginip`, `createtime`, `updatetime`, `token`, `status`) VALUES
-(1, 'admin', 'Admin', '2b4a3b6ed5c54571f745ef375dd7e6ed', '55f607', '/assets/img/avatar.png', 'admin@admin.com', '', 0, 1758711877, '0.0.0.0', 1491635035, 1758711877, 'e770a1c4-138a-4bdf-a4a7-a7bd32db68f9', 'normal');
+(1, 'admin', 'Admin', '2b4a3b6ed5c54571f745ef375dd7e6ed', '55f607', '/assets/img/avatar.png', 'admin@admin.com', '', 0, 1760514300, '0.0.0.0', 1491635035, 1760514300, '7d4d4a80-b113-4df7-9660-94f5894daf5f', 'normal');
 
 -- --------------------------------------------------------
 
@@ -74,7 +74,7 @@ CREATE TABLE IF NOT EXISTS `party_admin_log` (
   `createtime` bigint(16) DEFAULT NULL COMMENT '操作时间',
   PRIMARY KEY (`id`),
   KEY `name` (`username`)
-) ENGINE=InnoDB AUTO_INCREMENT=807 DEFAULT CHARSET=utf8mb4 COMMENT='管理员日志表';
+) ENGINE=InnoDB AUTO_INCREMENT=894 DEFAULT CHARSET=utf8mb4 COMMENT='管理员日志表';
 
 --
 -- 转存表中的数据 `party_admin_log`
@@ -891,7 +891,95 @@ INSERT INTO `party_admin_log` (`id`, `admin_id`, `username`, `url`, `title`, `co
 (803, 1, 'admin', '/admin.php/cms/block/selectpage_type', 'CMS管理 / 区块管理', '{\"searchTable\":\"tbl\",\"searchKey\":\"type\",\"searchValue\":\"carousel\",\"orderBy\":[[\"type\",\"ASC\"]],\"showField\":\"type\",\"keyField\":\"type\",\"keyValue\":\"carousel\",\"searchField\":[\"type\"]}', '0.0.0.0', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36', 1758785145),
 (804, 1, 'admin', '/admin.php/cms/block/selectpage_type', 'CMS管理 / 区块管理', '{\"searchTable\":\"tbl\",\"searchKey\":\"type\",\"searchValue\":\"carousel\",\"orderBy\":[[\"type\",\"ASC\"]],\"showField\":\"type\",\"keyField\":\"type\",\"keyValue\":\"carousel\",\"searchField\":[\"type\"]}', '0.0.0.0', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36', 1758786381),
 (805, 1, 'admin', '/admin.php/cms/block/selectpage_type', 'CMS管理 / 区块管理', '{\"q_word\":[\"\"],\"pageNumber\":\"1\",\"pageSize\":\"10\",\"andOr\":\"OR \",\"orderBy\":[[\"type\",\"ASC\"]],\"searchTable\":\"tbl\",\"showField\":\"type\",\"keyField\":\"type\",\"searchField\":[\"type\"],\"type\":\"\"}', '0.0.0.0', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36', 1758786872),
-(806, 1, 'admin', '/admin.php/cms/block/add?dialog=1', 'CMS管理 / 区块管理 / 添加', '{\"dialog\":\"1\",\"__token__\":\"***\",\"row\":{\"type\":\"carousel\",\"name\":\"carousel-index\",\"title\":\"焦点图-首页\",\"image\":\"\",\"url\":\"\",\"content\":\"\",\"parsetpl\":\"0\",\"begintime\":\"\",\"endtime\":\"\",\"status\":\"normal\"}}', '0.0.0.0', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36', 1758786887);
+(806, 1, 'admin', '/admin.php/cms/block/add?dialog=1', 'CMS管理 / 区块管理 / 添加', '{\"dialog\":\"1\",\"__token__\":\"***\",\"row\":{\"type\":\"carousel\",\"name\":\"carousel-index\",\"title\":\"焦点图-首页\",\"image\":\"\",\"url\":\"\",\"content\":\"\",\"parsetpl\":\"0\",\"begintime\":\"\",\"endtime\":\"\",\"status\":\"normal\"}}', '0.0.0.0', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36', 1758786887),
+(807, 1, 'admin', '/admin.php/index/login', '登录', '{\"__token__\":\"***\",\"username\":\"admin\",\"password\":\"***\",\"captcha\":\"5uvv\",\"keeplogin\":\"1\"}', '0.0.0.0', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 1760514300),
+(808, 1, 'admin', '/admin.php/cms/ajax/get_template_list', 'CMS管理', '{\"searchTable\":\"tbl\",\"searchKey\":\"name\",\"searchValue\":\"show_news.html\",\"orderBy\":[[\"name\",\"ASC\"]],\"showField\":\"name\",\"keyField\":\"name\",\"keyValue\":\"show_news.html\",\"searchField\":[\"name\"],\"type\":\"show\"}', '0.0.0.0', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 1760537531),
+(809, 1, 'admin', '/admin.php/cms/ajax/get_template_list', 'CMS管理', '{\"searchTable\":\"tbl\",\"searchKey\":\"name\",\"searchValue\":\"list_news.html\",\"orderBy\":[[\"name\",\"ASC\"]],\"showField\":\"name\",\"keyField\":\"name\",\"keyValue\":\"list_news.html\",\"searchField\":[\"name\"],\"type\":\"list\"}', '0.0.0.0', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 1760537531),
+(810, 1, 'admin', '/admin.php/cms/ajax/get_template_list', 'CMS管理', '{\"searchTable\":\"tbl\",\"searchKey\":\"name\",\"searchValue\":\"channel_news.html\",\"orderBy\":[[\"name\",\"ASC\"]],\"showField\":\"name\",\"keyField\":\"name\",\"keyValue\":\"channel_news.html\",\"searchField\":[\"name\"],\"type\":\"channel\"}', '0.0.0.0', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 1760537531),
+(811, 1, 'admin', '/admin.php/cms/ajax/get_template_list', 'CMS管理', '{\"searchTable\":\"tbl\",\"searchKey\":\"name\",\"searchValue\":\"list_news.html\",\"orderBy\":[[\"name\",\"ASC\"]],\"showField\":\"name\",\"keyField\":\"name\",\"keyValue\":\"list_news.html\",\"searchField\":[\"name\"],\"type\":\"list\"}', '0.0.0.0', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 1760537564),
+(812, 1, 'admin', '/admin.php/cms/ajax/get_template_list', 'CMS管理', '{\"searchTable\":\"tbl\",\"searchKey\":\"name\",\"searchValue\":\"channel_news.html\",\"orderBy\":[[\"name\",\"ASC\"]],\"showField\":\"name\",\"keyField\":\"name\",\"keyValue\":\"channel_news.html\",\"searchField\":[\"name\"],\"type\":\"channel\"}', '0.0.0.0', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 1760537564),
+(813, 1, 'admin', '/admin.php/cms/ajax/get_template_list', 'CMS管理', '{\"searchTable\":\"tbl\",\"searchKey\":\"name\",\"searchValue\":\"show_news.html\",\"orderBy\":[[\"name\",\"ASC\"]],\"showField\":\"name\",\"keyField\":\"name\",\"keyValue\":\"show_news.html\",\"searchField\":[\"name\"],\"type\":\"show\"}', '0.0.0.0', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 1760537564),
+(814, 1, 'admin', '/admin.php/cms/ajax/get_title_pinyin', 'CMS管理', '{\"title\":\"党员\"}', '0.0.0.0', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 1760537571),
+(815, 1, 'admin', '/admin.php/cms/ajax/get_title_pinyin', 'CMS管理', '{\"title\":\"党\"}', '0.0.0.0', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 1760537571),
+(816, 1, 'admin', '/admin.php/cms/ajax/get_title_pinyin', 'CMS管理', '{\"title\":\"jf\"}', '0.0.0.0', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 1760537572),
+(817, 1, 'admin', '/admin.php/cms/ajax/get_title_pinyin', 'CMS管理', '{\"title\":\"j\"}', '0.0.0.0', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 1760537573),
+(818, 1, 'admin', '/admin.php/cms/ajax/get_title_pinyin', 'CMS管理', '{\"title\":\"时ght\"}', '0.0.0.0', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 1760537574),
+(819, 1, 'admin', '/admin.php/cms/ajax/get_title_pinyin', 'CMS管理', '{\"title\":\"时政\"}', '0.0.0.0', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 1760537575),
+(820, 1, 'admin', '/admin.php/cms/channel/check_element_available', 'CMS管理 / 栏目管理', '{\"id\":\"8\",\"name\":\"row[diyname]\",\"value\":\"political\"}', '0.0.0.0', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 1760537663),
+(821, 1, 'admin', '/admin.php/cms/channel/edit/ids/8?dialog=1', 'CMS管理 / 栏目管理 / 修改', '{\"dialog\":\"1\",\"row\":{\"type\":\"list\",\"model_id\":\"1\",\"parent_id\":\"7\",\"name\":\"时政\",\"image\":\"\",\"seotitle\":\"\",\"keywords\":\"\",\"description\":\"\",\"diyname\":\"political\",\"outlink\":\"\",\"linktype\":\"\",\"linkid\":\"0\",\"channeltpl\":\"channel_news.html\",\"listtpl\":\"list_news.html\",\"showtpl\":\"show_news.html\",\"listtype\":\"0\",\"pagesize\":\"10\",\"weigh\":\"8\",\"iscontribute\":\"0\",\"isnav\":\"1\",\"status\":\"normal\",\"flag\":[\"\"]},\"ids\":\"8\"}', '0.0.0.0', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 1760537663),
+(822, 1, 'admin', '/admin.php/cms/ajax/get_template_list', 'CMS管理', '{\"searchTable\":\"tbl\",\"searchKey\":\"name\",\"searchValue\":\"list_news.html\",\"orderBy\":[[\"name\",\"ASC\"]],\"showField\":\"name\",\"keyField\":\"name\",\"keyValue\":\"list_news.html\",\"searchField\":[\"name\"],\"type\":\"list\"}', '0.0.0.0', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 1760537675),
+(823, 1, 'admin', '/admin.php/cms/ajax/get_template_list', 'CMS管理', '{\"searchTable\":\"tbl\",\"searchKey\":\"name\",\"searchValue\":\"show_news.html\",\"orderBy\":[[\"name\",\"ASC\"]],\"showField\":\"name\",\"keyField\":\"name\",\"keyValue\":\"show_news.html\",\"searchField\":[\"name\"],\"type\":\"show\"}', '0.0.0.0', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 1760537675),
+(824, 1, 'admin', '/admin.php/cms/ajax/get_template_list', 'CMS管理', '{\"searchTable\":\"tbl\",\"searchKey\":\"name\",\"searchValue\":\"channel_news.html\",\"orderBy\":[[\"name\",\"ASC\"]],\"showField\":\"name\",\"keyField\":\"name\",\"keyValue\":\"channel_news.html\",\"searchField\":[\"name\"],\"type\":\"channel\"}', '0.0.0.0', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 1760537675),
+(825, 1, 'admin', '/admin.php/cms/channel/check_element_available', 'CMS管理 / 栏目管理', '{\"id\":\"8\",\"name\":\"row[diyname]\",\"value\":\"political\"}', '0.0.0.0', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 1760537679),
+(826, 1, 'admin', '/admin.php/cms/channel/edit/ids/8?dialog=1', 'CMS管理 / 栏目管理 / 修改', '{\"dialog\":\"1\",\"row\":{\"type\":\"list\",\"model_id\":\"1\",\"parent_id\":\"7\",\"name\":\"时政\",\"image\":\"\",\"seotitle\":\"\",\"keywords\":\"\",\"description\":\"\",\"diyname\":\"political\",\"outlink\":\"\",\"linktype\":\"\",\"linkid\":\"0\",\"channeltpl\":\"channel_news.html\",\"listtpl\":\"list_news.html\",\"showtpl\":\"show_news.html\",\"listtype\":\"0\",\"pagesize\":\"10\",\"weigh\":\"8\",\"iscontribute\":\"0\",\"isnav\":\"0\",\"status\":\"normal\",\"flag\":[\"\"]},\"ids\":\"8\"}', '0.0.0.0', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 1760537679),
+(827, 1, 'admin', '/admin.php/cms/ajax/get_template_list', 'CMS管理', '{\"searchTable\":\"tbl\",\"searchKey\":\"name\",\"searchValue\":\"list_news.html\",\"orderBy\":[[\"name\",\"ASC\"]],\"showField\":\"name\",\"keyField\":\"name\",\"keyValue\":\"list_news.html\",\"searchField\":[\"name\"],\"type\":\"list\"}', '0.0.0.0', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 1760537686),
+(828, 1, 'admin', '/admin.php/cms/ajax/get_template_list', 'CMS管理', '{\"searchTable\":\"tbl\",\"searchKey\":\"name\",\"searchValue\":\"channel_news.html\",\"orderBy\":[[\"name\",\"ASC\"]],\"showField\":\"name\",\"keyField\":\"name\",\"keyValue\":\"channel_news.html\",\"searchField\":[\"name\"],\"type\":\"channel\"}', '0.0.0.0', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 1760537686),
+(829, 1, 'admin', '/admin.php/cms/ajax/get_template_list', 'CMS管理', '{\"searchTable\":\"tbl\",\"searchKey\":\"name\",\"searchValue\":\"show_news.html\",\"orderBy\":[[\"name\",\"ASC\"]],\"showField\":\"name\",\"keyField\":\"name\",\"keyValue\":\"show_news.html\",\"searchField\":[\"name\"],\"type\":\"show\"}', '0.0.0.0', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 1760537686),
+(830, 1, 'admin', '/admin.php/cms/channel/check_element_available', 'CMS管理 / 栏目管理', '{\"id\":\"1\",\"name\":\"row[diyname]\",\"value\":\"economy\"}', '0.0.0.0', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 1760537722),
+(831, 1, 'admin', '/admin.php/cms/ajax/get_title_pinyin', 'CMS管理', '{\"title\":\"x\"}', '0.0.0.0', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 1760537724),
+(832, 1, 'admin', '/admin.php/cms/ajax/get_title_pinyin', 'CMS管理', '{\"title\":\"经iy\"}', '0.0.0.0', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 1760537724),
+(833, 1, 'admin', '/admin.php/cms/ajax/get_title_pinyin', 'CMS管理', '{\"title\":\"经iyj\"}', '0.0.0.0', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 1760537725),
+(834, 1, 'admin', '/admin.php/cms/ajax/get_title_pinyin', 'CMS管理', '{\"title\":\"经济\"}', '0.0.0.0', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 1760537725),
+(835, 1, 'admin', '/admin.php/cms/channel/edit/ids/1?dialog=1', 'CMS管理 / 栏目管理 / 修改', '{\"dialog\":\"1\",\"row\":{\"type\":\"list\",\"parent_id\":\"7\",\"name\":\"经济\",\"image\":\"\",\"seotitle\":\"\",\"keywords\":\"\",\"description\":\"\",\"diyname\":\"economy\",\"outlink\":\"\",\"linktype\":\"\",\"linkid\":\"0\",\"channeltpl\":\"channel_news.html\",\"listtpl\":\"list_news.html\",\"showtpl\":\"show_news.html\",\"listtype\":\"0\",\"pagesize\":\"10\",\"weigh\":\"12\",\"iscontribute\":\"0\",\"isnav\":\"0\",\"status\":\"normal\",\"flag\":[\"\"]},\"ids\":\"1\"}', '0.0.0.0', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 1760537738),
+(836, 1, 'admin', '/admin.php/cms/ajax/get_template_list', 'CMS管理', '{\"searchTable\":\"tbl\",\"searchKey\":\"name\",\"searchValue\":\"show_news.html\",\"orderBy\":[[\"name\",\"ASC\"]],\"showField\":\"name\",\"keyField\":\"name\",\"keyValue\":\"show_news.html\",\"searchField\":[\"name\"],\"type\":\"show\"}', '0.0.0.0', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 1760537804),
+(837, 1, 'admin', '/admin.php/cms/ajax/get_template_list', 'CMS管理', '{\"searchTable\":\"tbl\",\"searchKey\":\"name\",\"searchValue\":\"channel_news.html\",\"orderBy\":[[\"name\",\"ASC\"]],\"showField\":\"name\",\"keyField\":\"name\",\"keyValue\":\"channel_news.html\",\"searchField\":[\"name\"],\"type\":\"channel\"}', '0.0.0.0', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 1760537804),
+(838, 1, 'admin', '/admin.php/cms/ajax/get_template_list', 'CMS管理', '{\"searchTable\":\"tbl\",\"searchKey\":\"name\",\"searchValue\":\"list_news.html\",\"orderBy\":[[\"name\",\"ASC\"]],\"showField\":\"name\",\"keyField\":\"name\",\"keyValue\":\"list_news.html\",\"searchField\":[\"name\"],\"type\":\"list\"}', '0.0.0.0', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 1760537804),
+(839, 1, 'admin', '/admin.php/cms/channel/check_element_available', 'CMS管理 / 栏目管理', '{\"id\":\"12\",\"name\":\"row[diyname]\",\"value\":\"pioneer\"}', '0.0.0.0', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 1760537818),
+(840, 1, 'admin', '/admin.php/cms/channel/edit/ids/12?dialog=1', 'CMS管理 / 栏目管理 / 修改', '{\"dialog\":\"1\",\"row\":{\"type\":\"list\",\"model_id\":\"1\",\"parent_id\":\"3\",\"name\":\"党员先锋\",\"image\":\"\",\"seotitle\":\"\",\"keywords\":\"\",\"description\":\"\",\"diyname\":\"pioneer\",\"outlink\":\"\",\"linktype\":\"\",\"linkid\":\"0\",\"channeltpl\":\"channel_news.html\",\"listtpl\":\"list_news.html\",\"showtpl\":\"show_news.html\",\"listtype\":\"0\",\"pagesize\":\"10\",\"weigh\":\"9\",\"iscontribute\":\"0\",\"isnav\":\"0\",\"status\":\"normal\",\"flag\":[\"\"]},\"ids\":\"12\"}', '0.0.0.0', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 1760537819),
+(841, 1, 'admin', '/admin.php/cms/ajax/get_template_list', 'CMS管理', '{\"searchTable\":\"tbl\",\"searchKey\":\"name\",\"searchValue\":\"channel_news.html\",\"orderBy\":[[\"name\",\"ASC\"]],\"showField\":\"name\",\"keyField\":\"name\",\"keyValue\":\"channel_news.html\",\"searchField\":[\"name\"],\"type\":\"channel\"}', '0.0.0.0', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 1760537886),
+(842, 1, 'admin', '/admin.php/cms/ajax/get_template_list', 'CMS管理', '{\"searchTable\":\"tbl\",\"searchKey\":\"name\",\"searchValue\":\"show_news.html\",\"orderBy\":[[\"name\",\"ASC\"]],\"showField\":\"name\",\"keyField\":\"name\",\"keyValue\":\"show_news.html\",\"searchField\":[\"name\"],\"type\":\"show\"}', '0.0.0.0', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 1760537886),
+(843, 1, 'admin', '/admin.php/cms/ajax/get_template_list', 'CMS管理', '{\"searchTable\":\"tbl\",\"searchKey\":\"name\",\"searchValue\":\"list_news.html\",\"orderBy\":[[\"name\",\"ASC\"]],\"showField\":\"name\",\"keyField\":\"name\",\"keyValue\":\"list_news.html\",\"searchField\":[\"name\"],\"type\":\"list\"}', '0.0.0.0', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 1760537886),
+(844, 1, 'admin', '/admin.php/cms/ajax/get_title_pinyin', 'CMS管理', '{\"title\":\"党员\"}', '0.0.0.0', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 1760537898),
+(845, 1, 'admin', '/admin.php/cms/ajax/get_title_pinyin', 'CMS管理', '{\"title\":\"党员mq\"}', '0.0.0.0', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 1760537899),
+(846, 1, 'admin', '/admin.php/cms/ajax/get_title_pinyin', 'CMS管理', '{\"title\":\"党员风\"}', '0.0.0.0', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 1760537899),
+(847, 1, 'admin', '/admin.php/cms/ajax/get_title_pinyin', 'CMS管理', '{\"title\":\"党员风e\"}', '0.0.0.0', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 1760537900),
+(848, 1, 'admin', '/admin.php/cms/ajax/get_title_pinyin', 'CMS管理', '{\"title\":\"党员风es\"}', '0.0.0.0', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 1760537900),
+(849, 1, 'admin', '/admin.php/cms/ajax/get_title_pinyin', 'CMS管理', '{\"title\":\"党员风采\"}', '0.0.0.0', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 1760537900),
+(850, 1, 'admin', '/admin.php/cms/channel/check_element_available', 'CMS管理 / 栏目管理', '{\"id\":\"11\",\"name\":\"row[diyname]\",\"value\":\"record\"}', '0.0.0.0', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 1760538014),
+(851, 1, 'admin', '/admin.php/cms/channel/edit/ids/11?dialog=1', 'CMS管理 / 栏目管理 / 修改', '{\"dialog\":\"1\",\"row\":{\"type\":\"list\",\"model_id\":\"1\",\"parent_id\":\"3\",\"name\":\"党员风采\",\"image\":\"\",\"seotitle\":\"\",\"keywords\":\"\",\"description\":\"\",\"diyname\":\"record\",\"outlink\":\"\",\"linktype\":\"\",\"linkid\":\"0\",\"channeltpl\":\"channel_news.html\",\"listtpl\":\"list_news.html\",\"showtpl\":\"show_news.html\",\"listtype\":\"0\",\"pagesize\":\"10\",\"weigh\":\"10\",\"iscontribute\":\"0\",\"isnav\":\"0\",\"status\":\"normal\",\"flag\":[\"\"]},\"ids\":\"11\"}', '0.0.0.0', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 1760538014),
+(852, 1, 'admin', '/admin.php/cms/ajax/get_template_list', 'CMS管理', '{\"searchTable\":\"tbl\",\"searchKey\":\"name\",\"searchValue\":\"list_news.html\",\"orderBy\":[[\"name\",\"ASC\"]],\"showField\":\"name\",\"keyField\":\"name\",\"keyValue\":\"list_news.html\",\"searchField\":[\"name\"],\"type\":\"list\"}', '0.0.0.0', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 1760538044),
+(853, 1, 'admin', '/admin.php/cms/ajax/get_template_list', 'CMS管理', '{\"searchTable\":\"tbl\",\"searchKey\":\"name\",\"searchValue\":\"show_news.html\",\"orderBy\":[[\"name\",\"ASC\"]],\"showField\":\"name\",\"keyField\":\"name\",\"keyValue\":\"show_news.html\",\"searchField\":[\"name\"],\"type\":\"show\"}', '0.0.0.0', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 1760538044),
+(854, 1, 'admin', '/admin.php/cms/ajax/get_template_list', 'CMS管理', '{\"searchTable\":\"tbl\",\"searchKey\":\"name\",\"searchValue\":\"channel_news.html\",\"orderBy\":[[\"name\",\"ASC\"]],\"showField\":\"name\",\"keyField\":\"name\",\"keyValue\":\"channel_news.html\",\"searchField\":[\"name\"],\"type\":\"channel\"}', '0.0.0.0', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 1760538044),
+(855, 1, 'admin', '/admin.php/cms/channel/check_element_available', 'CMS管理 / 栏目管理', '{\"id\":\"13\",\"name\":\"row[diyname]\",\"value\":\"process\"}', '0.0.0.0', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 1760538053),
+(856, 1, 'admin', '/admin.php/cms/channel/edit/ids/13?dialog=1', 'CMS管理 / 栏目管理 / 修改', '{\"dialog\":\"1\",\"row\":{\"type\":\"list\",\"parent_id\":\"4\",\"name\":\"入党流程\",\"image\":\"\",\"seotitle\":\"\",\"keywords\":\"\",\"description\":\"\",\"diyname\":\"process\",\"outlink\":\"\",\"linktype\":\"\",\"linkid\":\"0\",\"channeltpl\":\"channel_news.html\",\"listtpl\":\"list_news.html\",\"showtpl\":\"show_news.html\",\"listtype\":\"0\",\"pagesize\":\"10\",\"weigh\":\"11\",\"iscontribute\":\"0\",\"isnav\":\"0\",\"status\":\"normal\",\"flag\":[\"\"]},\"ids\":\"13\"}', '0.0.0.0', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 1760538053),
+(857, 1, 'admin', '/admin.php/cms/ajax/get_template_list', 'CMS管理', '{\"searchTable\":\"tbl\",\"searchKey\":\"name\",\"searchValue\":\"channel_news.html\",\"orderBy\":[[\"name\",\"ASC\"]],\"showField\":\"name\",\"keyField\":\"name\",\"keyValue\":\"channel_news.html\",\"searchField\":[\"name\"],\"type\":\"channel\"}', '0.0.0.0', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 1760538251),
+(858, 1, 'admin', '/admin.php/cms/ajax/get_template_list', 'CMS管理', '{\"searchTable\":\"tbl\",\"searchKey\":\"name\",\"searchValue\":\"list_news.html\",\"orderBy\":[[\"name\",\"ASC\"]],\"showField\":\"name\",\"keyField\":\"name\",\"keyValue\":\"list_news.html\",\"searchField\":[\"name\"],\"type\":\"list\"}', '0.0.0.0', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 1760538251),
+(859, 1, 'admin', '/admin.php/cms/ajax/get_template_list', 'CMS管理', '{\"searchTable\":\"tbl\",\"searchKey\":\"name\",\"searchValue\":\"show_news.html\",\"orderBy\":[[\"name\",\"ASC\"]],\"showField\":\"name\",\"keyField\":\"name\",\"keyValue\":\"show_news.html\",\"searchField\":[\"name\"],\"type\":\"show\"}', '0.0.0.0', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 1760538251),
+(860, 1, 'admin', '/admin.php/cms/channel/check_element_available', 'CMS管理 / 栏目管理', '{\"id\":\"5\",\"name\":\"row[diyname]\",\"value\":\"relationship\"}', '0.0.0.0', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 1760538324),
+(861, 1, 'admin', '/admin.php/cms/ajax/get_title_pinyin', 'CMS管理', '{\"title\":\"首\"}', '0.0.0.0', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 1760538326),
+(862, 1, 'admin', '/admin.php/cms/ajax/get_title_pinyin', 'CMS管理', '{\"title\":\"x\"}', '0.0.0.0', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 1760538327),
+(863, 1, 'admin', '/admin.php/cms/ajax/get_title_pinyin', 'CMS管理', '{\"title\":\"组\"}', '0.0.0.0', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 1760538328),
+(864, 1, 'admin', '/admin.php/cms/ajax/get_title_pinyin', 'CMS管理', '{\"title\":\"组x\"}', '0.0.0.0', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 1760538328),
+(865, 1, 'admin', '/admin.php/cms/ajax/get_title_pinyin', 'CMS管理', '{\"title\":\"组xkw\"}', '0.0.0.0', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 1760538330),
+(866, 1, 'admin', '/admin.php/cms/ajax/get_title_pinyin', 'CMS管理', '{\"title\":\"组织\"}', '0.0.0.0', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 1760538330),
+(867, 1, 'admin', '/admin.php/cms/ajax/get_title_pinyin', 'CMS管理', '{\"title\":\"组织关\"}', '0.0.0.0', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 1760538331),
+(868, 1, 'admin', '/admin.php/cms/ajax/get_title_pinyin', 'CMS管理', '{\"title\":\"组织关t\"}', '0.0.0.0', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 1760538331),
+(869, 1, 'admin', '/admin.php/cms/ajax/get_title_pinyin', 'CMS管理', '{\"title\":\"组织关系转换\"}', '0.0.0.0', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 1760538333),
+(870, 1, 'admin', '/admin.php/cms/channel/edit/ids/5?dialog=1', 'CMS管理 / 栏目管理 / 修改', '{\"dialog\":\"1\",\"row\":{\"type\":\"list\",\"model_id\":\"1\",\"parent_id\":\"4\",\"name\":\"组织关系转换\",\"image\":\"\",\"seotitle\":\"\",\"keywords\":\"\",\"description\":\"\",\"diyname\":\"relationship\",\"outlink\":\"\\/\",\"linktype\":\"\",\"linkid\":\"0\",\"channeltpl\":\"channel_news.html\",\"listtpl\":\"list_news.html\",\"showtpl\":\"show_news.html\",\"listtype\":\"0\",\"pagesize\":\"10\",\"weigh\":\"13\",\"iscontribute\":\"0\",\"isnav\":\"0\",\"status\":\"normal\",\"flag\":[\"\"]},\"ids\":\"5\"}', '0.0.0.0', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 1760538348),
+(871, 1, 'admin', '/admin.php/cms/channel/multi', 'CMS管理 / 栏目管理 / 批量更新', '{\"action\":\"\",\"ids\":\"2\",\"params\":\"isnav=0\"}', '0.0.0.0', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 1760538446),
+(872, 1, 'admin', '/admin.php/cms/channel/multi', 'CMS管理 / 栏目管理 / 批量更新', '{\"action\":\"\",\"ids\":\"3\",\"params\":\"isnav=0\"}', '0.0.0.0', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 1760538448),
+(873, 1, 'admin', '/admin.php/cms/channel/multi', 'CMS管理 / 栏目管理 / 批量更新', '{\"action\":\"\",\"ids\":\"4\",\"params\":\"isnav=0\"}', '0.0.0.0', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 1760538450),
+(874, 1, 'admin', '/admin.php/auth/rule/multi', '权限管理 / 菜单规则', '{\"action\":\"\",\"ids\":\"156\",\"params\":\"ismenu=1\"}', '0.0.0.0', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 1760539283),
+(875, 1, 'admin', '/admin.php/cms/ajax/get_title_pinyin', 'CMS管理', '{\"title\":\"bd\"}', '0.0.0.0', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 1760539296),
+(876, 1, 'admin', '/admin.php/cms/ajax/get_title_pinyin', 'CMS管理', '{\"title\":\"bde\"}', '0.0.0.0', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 1760539296),
+(877, 1, 'admin', '/admin.php/cms/ajax/get_title_pinyin', 'CMS管理', '{\"title\":\"随\"}', '0.0.0.0', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 1760539297),
+(878, 1, 'admin', '/admin.php/cms/ajax/get_title_pinyin', 'CMS管理', '{\"title\":\"随r\"}', '0.0.0.0', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 1760539297),
+(879, 1, 'admin', '/admin.php/cms/ajax/get_title_pinyin', 'CMS管理', '{\"title\":\"随手\"}', '0.0.0.0', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 1760539297),
+(880, 1, 'admin', '/admin.php/cms/ajax/get_title_pinyin', 'CMS管理', '{\"title\":\"随手rr\"}', '0.0.0.0', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 1760539298),
+(881, 1, 'admin', '/admin.php/cms/ajax/get_title_pinyin', 'CMS管理', '{\"title\":\"随手rrg\"}', '0.0.0.0', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 1760539298),
+(882, 1, 'admin', '/admin.php/cms/ajax/get_title_pinyin', 'CMS管理', '{\"title\":\"随手拍\"}', '0.0.0.0', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 1760539298),
+(883, 1, 'admin', '/admin.php/cms/diyform/check_element_available', 'CMS管理 / 自定义表单管理', '{\"name\":\"row[diyname]\",\"value\":\"snapshot\"}', '0.0.0.0', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 1760539443),
+(884, 1, 'admin', '/admin.php/cms/ajax/get_title_pinyin', 'CMS管理', '{\"title\":\"随手拍\"}', '0.0.0.0', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 1760539445),
+(885, 1, 'admin', '/admin.php/cms/diyform/check_element_available', 'CMS管理 / 自定义表单管理', '{\"name\":\"row[diyname]\",\"value\":\"suishoupai\"}', '0.0.0.0', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 1760539482),
+(886, 1, 'admin', '/admin.php/cms/diyform/add?dialog=1', 'CMS管理 / 自定义表单管理 / 添加', '{\"dialog\":\"1\",\"row\":{\"name\":\"随手拍\",\"table\":\"cms_diyform_suishoupai\",\"diyname\":\"suishoupai\",\"title\":\"随手拍\",\"seotitle\":\"\",\"keywords\":\"\",\"description\":\"\",\"successtips\":\"\",\"redirecturl\":\"\",\"posttpl\":\"\",\"listtpl\":\"\",\"showtpl\":\"\",\"isedit\":\"0\",\"iscaptcha\":\"0\",\"isguest\":\"0\",\"needlogin\":\"0\",\"usermode\":\"user\",\"statusmode\":\"all\",\"status\":\"normal\"}}', '0.0.0.0', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 1760539482),
+(887, 1, 'admin', '/admin.php/cms/fields/multi/source/diyform/source_id/1', 'CMS管理 / 字段管理 / 批量更新', '{\"action\":\"\",\"ids\":\"1\",\"params\":\"iscontribute=0\",\"source\":\"diyform\",\"source_id\":\"1\"}', '0.0.0.0', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 1760539595),
+(888, 1, 'admin', '/admin.php/cms/fields/add/source/diyform/source_id/1?dialog=1', 'CMS管理 / 字段管理 / 添加', '{\"dialog\":\"1\",\"row\":{\"source\":\"diyform\",\"source_id\":\"1\",\"name\":\"user_id\",\"title\":\"用户ID\",\"type\":\"number\",\"decimals\":\"0\",\"minimum\":\"\",\"maximum\":\"\",\"setting\":{\"table\":\"\",\"conditions\":\"\",\"key\":\"\",\"value\":\"\"},\"content\":\"{&quot;value1&quot;:&quot;title1&quot;,&quot;value2&quot;:&quot;title2&quot;}\",\"isfilter\":\"0\",\"filterlist\":\"{&quot;value1&quot;:&quot;title1&quot;,&quot;value2&quot;:&quot;title2&quot;}\",\"defaultvalue\":\"\",\"rule\":\"\",\"msg\":\"\",\"ok\":\"\",\"tip\":\"\",\"length\":\"255\",\"isorder\":\"0\",\"iscontribute\":\"0\",\"status\":\"normal\"},\"source\":\"diyform\",\"source_id\":\"1\"}', '0.0.0.0', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 1760539797),
+(889, 1, 'admin', '/admin.php/cms/diyform/check_element_available', 'CMS管理 / 自定义表单管理', '{\"id\":\"1\",\"name\":\"row[diyname]\",\"value\":\"snapshot\"}', '0.0.0.0', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 1760540252),
+(890, 1, 'admin', '/admin.php/cms/diyform/edit/ids/1?dialog=1', 'CMS管理 / 自定义表单管理 / 修改', '{\"dialog\":\"1\",\"row\":{\"name\":\"随手拍\",\"table\":\"cms_diyform_casual_snapshot\",\"diyname\":\"snapshot\",\"title\":\"随手拍\",\"seotitle\":\"\",\"keywords\":\"\",\"description\":\"\",\"successtips\":\"\",\"redirecturl\":\"\",\"posttpl\":\"\",\"listtpl\":\"\",\"showtpl\":\"\",\"isedit\":\"0\",\"iscaptcha\":\"0\",\"isguest\":\"0\",\"needlogin\":\"0\",\"usermode\":\"user\",\"statusmode\":\"all\",\"status\":\"normal\"},\"ids\":\"1\"}', '0.0.0.0', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 1760540273);
+INSERT INTO `party_admin_log` (`id`, `admin_id`, `username`, `url`, `title`, `content`, `ip`, `useragent`, `createtime`) VALUES
+(891, 1, 'admin', '/admin.php/cms/fields/add/source/diyform/source_id/1?dialog=1', 'CMS管理 / 字段管理 / 添加', '{\"dialog\":\"1\",\"row\":{\"source\":\"diyform\",\"source_id\":\"1\",\"name\":\"locate\",\"title\":\"位置\",\"type\":\"string\",\"decimals\":\"0\",\"minimum\":\"\",\"maximum\":\"\",\"setting\":{\"table\":\"\",\"conditions\":\"\",\"key\":\"\",\"value\":\"\"},\"content\":\"{&quot;value1&quot;:&quot;title1&quot;,&quot;value2&quot;:&quot;title2&quot;}\",\"isfilter\":\"0\",\"filterlist\":\"{&quot;value1&quot;:&quot;title1&quot;,&quot;value2&quot;:&quot;title2&quot;}\",\"defaultvalue\":\"\",\"rule\":\"\",\"msg\":\"\",\"ok\":\"\",\"tip\":\"\",\"length\":\"255\",\"isorder\":\"0\",\"iscontribute\":\"0\",\"status\":\"normal\"},\"source\":\"diyform\",\"source_id\":\"1\"}', '0.0.0.0', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 1760540344),
+(892, 1, 'admin', '/admin.php/cms/fields/del/source/diyform/source_id/1', 'CMS管理 / 字段管理 / 删除', '{\"action\":\"del\",\"ids\":\"1\",\"params\":\"\",\"source\":\"diyform\",\"source_id\":\"1\"}', '0.0.0.0', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 1760583920),
+(893, 1, 'admin', '/admin.php/ajax/weigh', '', '{\"ids\":\"2,3,4,id,memo,createtime,updatetime,status\",\"changeid\":\"4\",\"pid\":\"\",\"field\":\"weigh\",\"orderway\":\"desc\",\"table\":\"cms_fields\",\"pk\":\"id\"}', '0.0.0.0', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 1760583928);
 
 -- --------------------------------------------------------
 
@@ -1204,7 +1292,7 @@ INSERT INTO `party_auth_rule` (`id`, `type`, `pid`, `name`, `title`, `icon`, `ur
 (153, 'file', 147, 'cms/comment/recyclebin', '回收站', 'fa fa-circle-o', '', '', '', 0, NULL, '', 'hsz', 'huishouzhan', 1758155809, 1758155809, 0, 'normal'),
 (154, 'file', 147, 'cms/comment/restore', '还原', 'fa fa-circle-o', '', '', '', 0, NULL, '', 'hy', 'huanyuan', 1758155809, 1758155809, 0, 'normal'),
 (155, 'file', 147, 'cms/comment/destroy', '真实删除', 'fa fa-circle-o', '', '', '', 0, NULL, '', 'zssc', 'zhenshishanchu', 1758155809, 1758155809, 0, 'normal'),
-(156, 'file', 85, 'cms/diyform', '自定义表单管理', 'fa fa-list', '', '', '可在线创建自定义表单，管理表单字段和数据列表', 0, NULL, '', 'zdybdgl', 'zidingyibiaodanguanli', 1758155809, 1758182644, 13, 'normal'),
+(156, 'file', 85, 'cms/diyform', '自定义表单管理', 'fa fa-list', '', '', '可在线创建自定义表单，管理表单字段和数据列表', 1, NULL, '', 'zdybdgl', 'zidingyibiaodanguanli', 1758155809, 1760539283, 13, 'normal'),
 (157, 'file', 156, 'cms/diyform/index', '查看', 'fa fa-circle-o', '', '', '', 0, NULL, '', 'zk', 'zhakan', 1758155809, 1758155809, 0, 'normal'),
 (158, 'file', 156, 'cms/diyform/add', '添加', 'fa fa-circle-o', '', '', '', 0, NULL, '', 'tj', 'tianjia', 1758155809, 1758155809, 0, 'normal'),
 (159, 'file', 156, 'cms/diyform/edit', '修改', 'fa fa-circle-o', '', '', '', 0, NULL, '', 'xg', 'xiugai', 1758155809, 1758155809, 0, 'normal'),
@@ -1540,19 +1628,19 @@ CREATE TABLE IF NOT EXISTS `party_cms_channel` (
 --
 
 INSERT INTO `party_cms_channel` (`id`, `type`, `model_id`, `parent_id`, `name`, `image`, `flag`, `seotitle`, `keywords`, `description`, `diyname`, `outlink`, `linktype`, `linkid`, `items`, `weigh`, `channeltpl`, `listtpl`, `showtpl`, `pagesize`, `vip`, `listtype`, `iscontribute`, `isnav`, `createtime`, `updatetime`, `status`) VALUES
-(1, 'list', 1, 5, '头条新闻', '', '', '', '', '', 'news', '', '', 0, 1, 12, 'channel_news.html', 'list_news.html', 'show_news.html', 10, 0, 0, 0, 0, 1758184411, 1758774468, 'normal'),
-(2, 'channel', 1, 0, '党员学习', '', '', '', '', '', 'study', '', '', 0, 0, 4, 'channel_news.html', 'list_news.html', 'show_news.html', 10, 0, 0, 0, 1, 1758184553, 1758604322, 'normal'),
-(3, 'channel', 1, 0, '党建动态', '', '', '', '', '', 'activities', '', '', 0, 0, 2, 'channel_news.html', 'list_news.html', 'show_news.html', 10, 0, 0, 0, 1, 1758184990, 1758599136, 'normal'),
-(4, 'channel', 1, 0, '党建服务', '', '', '', '', '', 'services', '', '', 0, 0, 1, 'channel_news.html', 'list_news.html', 'show_news.html', 10, 0, 0, 0, 1, 1758185067, 1758599166, 'normal'),
-(5, 'link', 0, 0, '首页', '', '', '', '', '', 'index', '/', '', 0, 0, 13, 'channel_news.html', 'list_news.html', 'show_news.html', 10, 0, 0, 0, 1, 1758185628, 1758604072, 'normal'),
-(6, 'list', 1, 2, '三会一课', '', '', '', '', '', 'meeting', '', '', 0, 0, 6, 'channel_news.html', 'list_news.html', 'show_news.html', 10, 0, 0, 0, 1, 1758599363, 1758599363, 'normal'),
-(7, 'list', 1, 2, '精选书籍', '', '', '', '', '', 'books', '', '', 0, 0, 7, 'channel_news.html', 'list_news.html', 'show_news.html', 10, 0, 0, 0, 1, 1758599399, 1758599399, 'normal'),
-(8, 'list', 1, 2, '党员课程', '', '', '', '', '', 'lessons', '', '', 0, 0, 8, 'channel_news.html', 'list_news.html', 'show_news.html', 10, 0, 0, 0, 1, 1758599458, 1758599458, 'normal'),
-(9, 'list', 1, 3, '基层动态', '', '', '', '', '', 'primary', '', '', 0, 0, 9, 'channel_news.html', 'list_news.html', 'show_news.html', 10, 0, 0, 0, 1, 1758599636, 1758599636, 'normal'),
-(10, 'list', 1, 3, '组织活动', '', '', '', '', '', 'party', '', '', 0, 0, 10, 'channel_news.html', 'list_news.html', 'show_news.html', 10, 0, 0, 0, 1, 1758599831, 1758599831, 'normal'),
-(11, 'list', 1, 5, '党员纪实', '', '', '', '', '', 'record', '', '', 0, 0, 10, 'channel_news.html', 'list_news.html', 'show_news.html', 10, 0, 0, 0, 0, 1758600910, 1758774500, 'normal'),
-(12, 'list', 1, 5, '党员先锋', '', '', '', '', '', 'pioneer', '', '', 0, 0, 9, 'channel_news.html', 'list_news.html', 'show_news.html', 10, 0, 0, 0, 0, 1758603844, 1758774518, 'normal'),
-(13, 'list', 1, 5, '入党流程', '', '', '', '', '', 'process', '', '', 0, 9, 11, 'channel_news.html', 'list_news.html', 'show_news.html', 10, 0, 0, 0, 0, 1758604047, 1758774490, 'normal');
+(1, 'list', 1, 7, '经济', '', '', '', '', '', 'economy', '', '', 0, 1, 12, 'channel_news.html', 'list_news.html', 'show_news.html', 10, 0, 0, 0, 0, 1758184411, 1760537738, 'normal'),
+(2, 'channel', 1, 0, '党员学习', '', '', '', '', '', 'study', '', '', 0, 0, 4, 'channel_news.html', 'list_news.html', 'show_news.html', 10, 0, 0, 0, 0, 1758184553, 1760538446, 'normal'),
+(3, 'channel', 1, 0, '党建动态', '', '', '', '', '', 'activities', '', '', 0, 0, 2, 'channel_news.html', 'list_news.html', 'show_news.html', 10, 0, 0, 0, 0, 1758184990, 1760538448, 'normal'),
+(4, 'channel', 1, 0, '党建服务', '', '', '', '', '', 'services', '', '', 0, 0, 1, 'channel_news.html', 'list_news.html', 'show_news.html', 10, 0, 0, 0, 0, 1758185067, 1760538449, 'normal'),
+(5, 'list', 1, 4, '组织关系转换', '', '', '', '', '', 'relationship', '/', '', 0, 0, 13, 'channel_news.html', 'list_news.html', 'show_news.html', 10, 0, 0, 0, 0, 1758185628, 1760538348, 'normal'),
+(6, 'list', 1, 2, '三会一课', '', '', '', '', '', 'meeting', '', '', 0, 0, 6, 'channel_news.html', 'list_news.html', 'show_news.html', 10, 0, 0, 0, 0, 1758599363, 1758599363, 'normal'),
+(7, 'list', 1, 2, '精选书籍', '', '', '', '', '', 'books', '', '', 0, 0, 7, 'channel_news.html', 'list_news.html', 'show_news.html', 10, 0, 0, 0, 0, 1758599399, 1758599399, 'normal'),
+(8, 'list', 1, 7, '时政', '', '', '', '', '', 'political', '', '', 0, 0, 8, 'channel_news.html', 'list_news.html', 'show_news.html', 10, 0, 0, 0, 0, 1758599458, 1760537679, 'normal'),
+(9, 'list', 1, 3, '基层动态', '', '', '', '', '', 'primary', '', '', 0, 0, 9, 'channel_news.html', 'list_news.html', 'show_news.html', 10, 0, 0, 0, 0, 1758599636, 1758599636, 'normal'),
+(10, 'list', 1, 3, '组织活动', '', '', '', '', '', 'party', '', '', 0, 0, 10, 'channel_news.html', 'list_news.html', 'show_news.html', 10, 0, 0, 0, 0, 1758599831, 1758599831, 'normal'),
+(11, 'list', 1, 3, '党员风采', '', '', '', '', '', 'record', '', '', 0, 0, 10, 'channel_news.html', 'list_news.html', 'show_news.html', 10, 0, 0, 0, 0, 1758600910, 1760538014, 'normal'),
+(12, 'list', 1, 3, '党员先锋', '', '', '', '', '', 'pioneer', '', '', 0, 0, 9, 'channel_news.html', 'list_news.html', 'show_news.html', 10, 0, 0, 0, 0, 1758603844, 1760537819, 'normal'),
+(13, 'list', 1, 4, '入党流程', '', '', '', '', '', 'process', '', '', 0, 9, 11, 'channel_news.html', 'list_news.html', 'show_news.html', 10, 0, 0, 0, 0, 1758604047, 1760538053, 'normal');
 
 -- --------------------------------------------------------
 
@@ -1660,7 +1748,43 @@ CREATE TABLE IF NOT EXISTS `party_cms_diyform` (
   `status` enum('normal','hidden') DEFAULT 'hidden' COMMENT '状态',
   PRIMARY KEY (`id`),
   KEY `diyname` (`diyname`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='自定义表单表';
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COMMENT='自定义表单表';
+
+--
+-- 转存表中的数据 `party_cms_diyform`
+--
+
+INSERT INTO `party_cms_diyform` (`id`, `admin_id`, `name`, `title`, `seotitle`, `posttitle`, `keywords`, `description`, `table`, `fields`, `isguest`, `needlogin`, `isedit`, `iscaptcha`, `successtips`, `redirecturl`, `posttpl`, `listtpl`, `showtpl`, `diyname`, `usermode`, `statusmode`, `createtime`, `updatetime`, `setting`, `status`) VALUES
+(1, 1, '随手拍', '随手拍', '', '', '', '', 'cms_diyform_casual_snapshot', 'images,content,locate', 0, 0, 0, 0, '', '', '', '', '', 'snapshot', 'user', 'all', 1760539482, 1760540273, NULL, 'normal');
+
+-- --------------------------------------------------------
+
+--
+-- 表的结构 `party_cms_diyform_casual_snapshot`
+--
+
+DROP TABLE IF EXISTS `party_cms_diyform_casual_snapshot`;
+CREATE TABLE IF NOT EXISTS `party_cms_diyform_casual_snapshot` (
+  `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `user_id` int(10) DEFAULT NULL COMMENT '会员ID',
+  `images` varchar(1500) DEFAULT '' COMMENT '图片',
+  `content` text COMMENT '内容',
+  `locate` varchar(255) DEFAULT NULL COMMENT '位置',
+  `createtime` bigint(16) DEFAULT NULL COMMENT '添加时间',
+  `updatetime` bigint(16) DEFAULT NULL COMMENT '更新时间',
+  `memo` varchar(1500) DEFAULT '' COMMENT '备注',
+  `status` enum('normal','hidden','rejected') DEFAULT 'hidden' COMMENT '状态',
+  PRIMARY KEY (`id`),
+  KEY `user_id` (`user_id`),
+  KEY `createtime` (`createtime`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COMMENT='随手拍';
+
+--
+-- 转存表中的数据 `party_cms_diyform_casual_snapshot`
+--
+
+INSERT INTO `party_cms_diyform_casual_snapshot` (`id`, `user_id`, `images`, `content`, `locate`, `createtime`, `updatetime`, `memo`, `status`) VALUES
+(1, 4, '1.png,2,png', '测试文字', '北京市顺义区', 1760584695, 1760584695, '', 'hidden');
 
 -- --------------------------------------------------------
 
@@ -1700,7 +1824,16 @@ CREATE TABLE IF NOT EXISTS `party_cms_fields` (
   PRIMARY KEY (`id`),
   KEY `source` (`source`) USING BTREE,
   KEY `source_id` (`source_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='模型字段表';
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COMMENT='模型字段表';
+
+--
+-- 转存表中的数据 `party_cms_fields`
+--
+
+INSERT INTO `party_cms_fields` (`id`, `source`, `source_id`, `name`, `type`, `title`, `content`, `filterlist`, `defaultvalue`, `rule`, `msg`, `ok`, `tip`, `decimals`, `length`, `minimum`, `maximum`, `extend`, `setting`, `favisible`, `weigh`, `createtime`, `updatetime`, `isorder`, `iscontribute`, `isfilter`, `status`) VALUES
+(2, 'diyform', 1, 'images', 'images', '图片', 'value1|title1\r\nvalue2|title2', NULL, '', '', '', '', '', NULL, 1500, NULL, 0, '', '', '', 4, 1760539482, 1760539482, 0, 1, 0, 'normal'),
+(3, 'diyform', 1, 'content', 'editor', '内容', 'value1|title1\r\nvalue2|title2', NULL, '', '', '', '', '', NULL, 0, NULL, 0, '', '', '', 2, 1760539482, 1760539482, 0, 1, 0, 'normal'),
+(4, 'diyform', 1, 'locate', 'string', '位置', 'value1|title1\r\nvalue2|title2', 'value1|title1\r\nvalue2|title2', '', '', '', '', '', 0, 255, 0, 0, '', '{\"table\":\"\",\"conditions\":\"\",\"key\":\"\",\"value\":\"\"}', '', 1, 1760540344, 1760540344, 0, 0, 0, 'normal');
 
 -- --------------------------------------------------------
 
@@ -1878,7 +2011,7 @@ CREATE TABLE IF NOT EXISTS `party_cms_page` (
 --
 
 INSERT INTO `party_cms_page` (`id`, `category_id`, `admin_id`, `type`, `title`, `seotitle`, `keywords`, `description`, `flag`, `image`, `content`, `icon`, `views`, `likes`, `dislikes`, `comments`, `diyname`, `showtpl`, `iscomment`, `parsetpl`, `createtime`, `updatetime`, `deletetime`, `weigh`, `status`) VALUES
-(1, 0, 1, '党的基本符号', '中国共产党党旗', '', '', '', '', '', '', '', 3, 0, 0, 0, 'flag', 'page.html', 0, 0, 1758600638, 1758600638, NULL, 1, 'normal'),
+(1, 0, 1, '党的基本符号', '中国共产党党旗', '', '', '', '', '', '', '', 4, 0, 0, 0, 'flag', 'page.html', 0, 0, 1758600638, 1758600638, NULL, 1, 'normal'),
 (2, 0, 1, '党的基本符号', '中国共产党党章', '', '', '', '', '', '', '', 0, 0, 0, 0, 'charter', '', 0, 0, 1758600729, 1758600729, NULL, 2, 'normal'),
 (3, 0, 1, '党的基本符号', '中国共产党党徽', '', '', '', '', '', '', '', 2, 0, 0, 0, 'symbols', '', 0, 0, 1758600771, 1758600771, NULL, 3, 'normal');
 
@@ -2104,7 +2237,7 @@ CREATE TABLE IF NOT EXISTS `party_sms` (
   `ip` varchar(30) DEFAULT '' COMMENT 'IP',
   `createtime` bigint(16) UNSIGNED DEFAULT '0' COMMENT '创建时间',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8mb4 COMMENT='短信验证码表';
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4 COMMENT='短信验证码表';
 
 --
 -- 转存表中的数据 `party_sms`
@@ -2216,7 +2349,7 @@ CREATE TABLE IF NOT EXISTS `party_user` (
   KEY `username` (`username`),
   KEY `email` (`email`),
   KEY `mobile` (`mobile`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COMMENT='会员表';
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COMMENT='会员表';
 
 --
 -- 转存表中的数据 `party_user`
@@ -2226,10 +2359,11 @@ INSERT INTO `party_user` (`id`, `group_id`, `username`, `nickname`, `password`, 
 (1, 1, 'admin', 'admin', '2b5791008fe4243a543befc33ced1b3b', 'b44dc1', 'admin@163.com', '13000000000', '/assets/img/avatar.png', 1, 0, '2017-04-08', '', 0.00, 2, 1, 1, 1491635035, 1491635035, '127.0.0.1', 0, 1491635035, '127.0.0.1', 1491635035, 0, 1758262113, '', 'normal', ''),
 (2, 0, 'pcuser', 'pcuser', '8254c8bf6e20f7b96c14017255141b35', 'I1xbyc', 'user@test.com', '13212345678', '', 1, 0, NULL, '', 0.00, 0, 1, 1, 1758254295, 1758260254, '0.0.0.0', 0, NULL, '0.0.0.0', 1758244923, 1758244923, 1758260254, '', 'normal', ''),
 (3, 1, 'user_13073567604_fRBt', '烨华_驹69', 'ad6fa6396d1ca86a8c8309588827e606', '0jy6lZ', '', '13073567604', '', 0, 0, NULL, '', 0.00, 0, 1, 1, NULL, NULL, '', 0, NULL, '127.0.0.1', 1758704211, 1758704211, 1758704211, '', 'normal', ''),
-(4, 1, 'user_13973836987_Hp2n', '烨华_驹69', '946fad2e1d4fd1c2fd600e54f38f2b84', '3noETM', '', '13973836987', '', 0, 0, NULL, '', 0.00, 0, 1, 1, 1758792977, 1758792977, '127.0.0.1', 0, NULL, '127.0.0.1', 1758704663, 1758704663, 1758792977, '', 'normal', ''),
+(4, 1, 'user_13973836987_Hp2n', '烨华_驹69', '946fad2e1d4fd1c2fd600e54f38f2b84', '3noETM', '', '13973836987', '', 0, 0, NULL, '', 0.00, 0, 1, 1, 1760583715, 1760583715, '127.0.0.1', 0, NULL, '127.0.0.1', 1758704663, 1758704663, 1760583715, '', 'normal', ''),
 (5, 1, 'user_13973836977_FO2T', '烨华_驹69', 'f6a3ba6650273dfee714fd1318080b71', 'sXlDqo', '', '13973836977', '', 0, 0, NULL, '', 0.00, 0, 1, 1, NULL, NULL, '', 0, NULL, '127.0.0.1', 1758706625, 1758706625, 1758706625, '', 'normal', ''),
 (6, 1, 'user_13973836988_zcgH', '用户6988', '618250970747c7595a68cc15fea1f308', 'USZ8xu', '', '13973836988', '', 0, 0, NULL, '', 0.00, 0, 1, 1, NULL, NULL, '', 0, NULL, '0.0.0.0', 1758789576, 1758789576, 1758789576, '', 'normal', ''),
-(7, 1, 'user_13973836989_AVMB', '用户6989', '87e5a32e86a19086b5a128b2a4d8c190', 'aZ2uqd', '', '13973836989', '', 0, 0, NULL, '', 0.00, 0, 1, 1, 1758793151, 1758793151, '0.0.0.0', 0, NULL, '0.0.0.0', 1758790417, 1758790417, 1758793151, '', 'normal', '');
+(7, 1, 'user_13973836989_AVMB', '用户6989', '87e5a32e86a19086b5a128b2a4d8c190', 'aZ2uqd', '', '13973836989', '', 0, 0, NULL, '', 0.00, 0, 1, 1, 1758793151, 1758793151, '0.0.0.0', 0, NULL, '0.0.0.0', 1758790417, 1758790417, 1758793151, '', 'normal', ''),
+(8, 1, 'user_13973836937_xAT1', '烨华_驹69', 'cb678e7547bbbbea0eebecd209cf5ee6', 'VksJ3H', '', '13973836937', '', 0, 0, NULL, '', 0.00, 0, 1, 1, NULL, NULL, '', 0, NULL, '127.0.0.1', 1760342080, 1760342080, 1760342080, '', 'normal', '');
 
 -- --------------------------------------------------------
 
@@ -2359,6 +2493,7 @@ CREATE TABLE IF NOT EXISTS `party_user_token` (
 INSERT INTO `party_user_token` (`token`, `user_id`, `createtime`, `expiretime`) VALUES
 ('00d8ef6d731d8f1bf5ecae55ff2f3ca0cb8d7fb9', 4, 1758792100, 1761384100),
 ('1a5181ab5e10d6f9f5d28ed18fafb85c8aa0c47f', 7, 1758792799, 1761384799),
+('4305dfbb50de499adb2ede083160f5ed42cc1a4e', 4, 1760583715, 1763175715),
 ('5cc6afe066bf571a5b28f64bbbea4d1d2b866f5e', 7, 1758792894, 1761384894),
 ('638ed603635dd3ac981aaa70b7d6c81182799cfe', 2, 1758260254, 1760852254),
 ('6d58f345fc1fd887a35eac9564e3ce0e96f7900d', 4, 1758711489, 1761303489),
@@ -2373,6 +2508,7 @@ INSERT INTO `party_user_token` (`token`, `user_id`, `createtime`, `expiretime`) 
 ('ceba5c8ee8ff5c6a0df317afd45591d69fe8f223', 7, 1758792923, 1761384923),
 ('d42149159c71951681aa5d1f3d712a8386c3b556', 7, 1758792818, 1761384818),
 ('e63f02c8db1ca3a02051f8eb921fc7cc457db568', 4, 1758704663, 1761296663),
+('e78cfba44308795636482e696ba11e2855be4d0c', 8, 1760342080, 1762934080),
 ('e95aa02a0902c86f1cc06b4ed046ab231b8b39d3', 7, 1758792779, 1761384779),
 ('efb2c1ae5f310d714ce7494d4c4ecf5b8baccd29', 7, 1758792875, 1761384875),
 ('f21cdb81ac1d07564ab8fd4a54530efdea3a2f2c', 7, 1758790443, 1761382443),
