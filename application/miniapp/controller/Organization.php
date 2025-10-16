@@ -6,6 +6,7 @@ use app\miniapp\controller\Base;
 use think\Db;
 use think\Exception;
 use think\Validate;
+use fast\Random;
 
 /**
  * 组织关系转移控制器
@@ -26,7 +27,7 @@ class Organization extends Base
      * @ApiParams (name=reason, type=string, required=true, description="调转原因")
      * @ApiParams (name=images, type=string, required=false, description="资料证明图片URL，多张用逗号分隔")
      * @ApiParams (name=memo, type=string, required=false, description="备注")
-     * @ApiReturn ({"code":1,"msg":"申请提交成功","time":1760614000,"data":{"id":1,"status":"hidden"}})
+     * @ApiReturn ({"code":1,"msg":"申请提交成功","time":1760614000,"data":{"id":1,"member_id":"123456","role":"普通党员","status":"normal"}})
      */
     public function add()
     {
@@ -70,8 +71,26 @@ class Organization extends Base
         try {
             Db::startTrans();
             
+            // 生成6位随机党员编号
+            $memberId = str_pad(mt_rand(0, 999999), 6, '0', STR_PAD_LEFT);
+            
+            // 检查党员编号是否已存在
+            $existingMember = Db::name('cms_diyform_organization')
+                ->where('member_id', $memberId)
+                ->find();
+            
+            // 如果党员编号已存在，重新生成
+            while ($existingMember) {
+                $memberId = str_pad(mt_rand(0, 999999), 6, '0', STR_PAD_LEFT);
+                $existingMember = Db::name('cms_diyform_organization')
+                    ->where('member_id', $memberId)
+                    ->find();
+            }
+            
             $data = [
                 'user_id' => $this->auth->id,
+                'member_id' => $memberId,
+                'role' => '普通党员',
                 'title' => $title,
                 'reason' => $reason,
                 'images' => $images,
@@ -87,6 +106,8 @@ class Organization extends Base
 
             $this->success(__('申请提交成功'), [
                 'id' => $applicationId,
+                'member_id' => $memberId,
+                'role' => '普通党员',
                 'status' => 'normal'
             ]);
 
