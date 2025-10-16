@@ -267,6 +267,12 @@ class User extends Base
         $salt = Random::alnum(6);
         $encryptedPassword = md5($password . $salt);
 
+        // 生成身份证号和相关信息
+        $idcardInfo = $this->generateIdCardInfo();
+        $idcard = $idcardInfo['idcard'];
+        $birthday = $idcardInfo['birthday'];
+        $gender = $idcardInfo['gender'];
+
         // 创建用户
         $user = new \app\common\model\User();
         $user->username = $username;
@@ -274,6 +280,9 @@ class User extends Base
         $user->mobile = $mobile;
         $user->password = $encryptedPassword;
         $user->salt = $salt;
+        $user->idcard = $idcard;
+        $user->birthday = $birthday;
+        $user->gender = $gender;
         $user->status = 'normal';
         $user->group_id = 1; // 默认用户组
         $user->createtime = time();
@@ -390,6 +399,114 @@ class User extends Base
         // 验证次数限制已取消
     }
 
+    /**
+     * 生成身份证号和相关信息
+     * @return array
+     */
+    protected function generateIdCardInfo()
+    {
+        // 省份代码（前两位）
+        $provinces = [
+            '11', '12', '13', '14', '15', '21', '22', '23', '31', '32',
+            '33', '34', '35', '36', '37', '41', '42', '43', '44', '45',
+            '46', '50', '51', '52', '53', '54', '61', '62', '63', '64', '65'
+        ];
+        
+        // 随机选择省份
+        $province = $provinces[array_rand($provinces)];
+        
+        // 随机生成地区代码（第3-4位）
+        $area = str_pad(mt_rand(1, 99), 2, '0', STR_PAD_LEFT);
+        
+        // 随机生成出生年份（1950-2005年）
+        $year = mt_rand(1950, 2005);
+        
+        // 随机生成出生月份（1-12月）
+        $month = mt_rand(1, 12);
+        
+        // 根据月份生成日期（考虑月份天数）
+        $daysInMonth = [
+            1 => 31, 2 => 28, 3 => 31, 4 => 30, 5 => 31, 6 => 30,
+            7 => 31, 8 => 31, 9 => 30, 10 => 31, 11 => 30, 12 => 31
+        ];
+        
+        // 处理闰年2月
+        if ($month == 2 && $this->isLeapYear($year)) {
+            $daysInMonth[2] = 29;
+        }
+        
+        $day = mt_rand(1, $daysInMonth[$month]);
+        
+        // 随机生成性别（0=女，1=男）
+        $gender = mt_rand(0, 1);
+        
+        // 随机生成顺序码（第13-16位）
+        $sequence = str_pad(mt_rand(1, 9999), 4, '0', STR_PAD_LEFT);
+        
+        // 构建身份证号前17位
+        $idcard17 = $province . $area . $year . str_pad($month, 2, '0', STR_PAD_LEFT) . str_pad($day, 2, '0', STR_PAD_LEFT) . $sequence . $gender;
+        
+        // 调试信息
+        $debug = "省份:{$province}(2) + 地区:{$area}(2) + 年份:{$year}(4) + 月份:" . str_pad($month, 2, '0', STR_PAD_LEFT) . "(2) + 日期:" . str_pad($day, 2, '0', STR_PAD_LEFT) . "(2) + 顺序:{$sequence}(4) + 性别:{$gender}(1) = " . strlen($idcard17);
+        
+        // 确保身份证号前17位长度正确
+        if (strlen($idcard17) !== 17) {
+            throw new \Exception('身份证号前17位长度错误: ' . strlen($idcard17) . ' - ' . $debug);
+        }
+        
+        // 计算校验码（第18位）
+        $checkCode = $this->calculateIdCardCheckCode($idcard17);
+        
+        // 完整身份证号
+        $idcard = $idcard17 . $checkCode;
+        
+        // 生成生日（Y-m-d格式）
+        $birthday = $year . '-' . str_pad($month, 2, '0', STR_PAD_LEFT) . '-' . str_pad($day, 2, '0', STR_PAD_LEFT);
+        
+        return [
+            'idcard' => $idcard,
+            'birthday' => $birthday,
+            'gender' => $gender
+        ];
+    }
+    
+    /**
+     * 判断是否为闰年
+     * @param int $year
+     * @return bool
+     */
+    protected function isLeapYear($year)
+    {
+        return ($year % 4 == 0 && $year % 100 != 0) || ($year % 400 == 0);
+    }
+    
+    /**
+     * 计算身份证校验码
+     * @param string $idcard17 身份证前17位
+     * @return string
+     */
+    protected function calculateIdCardCheckCode($idcard17)
+    {
+        // 确保输入长度为17位
+        if (strlen($idcard17) !== 17) {
+            throw new \Exception('身份证号前17位长度必须为17位');
+        }
+        
+        // 权重因子
+        $weights = [7, 9, 10, 5, 8, 4, 2, 1, 6, 3, 7, 9, 10, 5, 8, 4, 2];
+        
+        // 校验码对应表
+        $checkCodes = ['1', '0', 'X', '9', '8', '7', '6', '5', '4', '3', '2'];
+        
+        $sum = 0;
+        for ($i = 0; $i < 17; $i++) {
+            $sum += intval($idcard17[$i]) * $weights[$i];
+        }
+        
+        $remainder = $sum % 11;
+        return $checkCodes[$remainder];
+    }
+    
     /**
      * 清除短信验证码记录
      * @param string $mobile 手机号

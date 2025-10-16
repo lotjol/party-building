@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- 主机： 127.0.0.1:3306
--- 生成日期： 2025-10-16 03:22:11
+-- 生成日期： 2025-10-16 13:38:36
 -- 服务器版本： 5.7.31
 -- PHP 版本： 7.4.33
 
@@ -53,7 +53,7 @@ CREATE TABLE IF NOT EXISTS `party_admin` (
 --
 
 INSERT INTO `party_admin` (`id`, `username`, `nickname`, `password`, `salt`, `avatar`, `email`, `mobile`, `loginfailure`, `logintime`, `loginip`, `createtime`, `updatetime`, `token`, `status`) VALUES
-(1, 'admin', 'Admin', '2b4a3b6ed5c54571f745ef375dd7e6ed', '55f607', '/assets/img/avatar.png', 'admin@admin.com', '', 0, 1760514300, '0.0.0.0', 1491635035, 1760514300, '7d4d4a80-b113-4df7-9660-94f5894daf5f', 'normal');
+(1, 'admin', 'Admin', '2b4a3b6ed5c54571f745ef375dd7e6ed', '55f607', '/assets/img/avatar.png', 'admin@admin.com', '', 0, 1760613508, '0.0.0.0', 1491635035, 1760613508, 'a22e612f-3cae-4f4b-9936-6aa7c1e07b46', 'normal');
 
 -- --------------------------------------------------------
 
@@ -74,7 +74,7 @@ CREATE TABLE IF NOT EXISTS `party_admin_log` (
   `createtime` bigint(16) DEFAULT NULL COMMENT '操作时间',
   PRIMARY KEY (`id`),
   KEY `name` (`username`)
-) ENGINE=InnoDB AUTO_INCREMENT=894 DEFAULT CHARSET=utf8mb4 COMMENT='管理员日志表';
+) ENGINE=InnoDB AUTO_INCREMENT=983 DEFAULT CHARSET=utf8mb4 COMMENT='管理员日志表';
 
 --
 -- 转存表中的数据 `party_admin_log`
@@ -979,7 +979,96 @@ INSERT INTO `party_admin_log` (`id`, `admin_id`, `username`, `url`, `title`, `co
 INSERT INTO `party_admin_log` (`id`, `admin_id`, `username`, `url`, `title`, `content`, `ip`, `useragent`, `createtime`) VALUES
 (891, 1, 'admin', '/admin.php/cms/fields/add/source/diyform/source_id/1?dialog=1', 'CMS管理 / 字段管理 / 添加', '{\"dialog\":\"1\",\"row\":{\"source\":\"diyform\",\"source_id\":\"1\",\"name\":\"locate\",\"title\":\"位置\",\"type\":\"string\",\"decimals\":\"0\",\"minimum\":\"\",\"maximum\":\"\",\"setting\":{\"table\":\"\",\"conditions\":\"\",\"key\":\"\",\"value\":\"\"},\"content\":\"{&quot;value1&quot;:&quot;title1&quot;,&quot;value2&quot;:&quot;title2&quot;}\",\"isfilter\":\"0\",\"filterlist\":\"{&quot;value1&quot;:&quot;title1&quot;,&quot;value2&quot;:&quot;title2&quot;}\",\"defaultvalue\":\"\",\"rule\":\"\",\"msg\":\"\",\"ok\":\"\",\"tip\":\"\",\"length\":\"255\",\"isorder\":\"0\",\"iscontribute\":\"0\",\"status\":\"normal\"},\"source\":\"diyform\",\"source_id\":\"1\"}', '0.0.0.0', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 1760540344),
 (892, 1, 'admin', '/admin.php/cms/fields/del/source/diyform/source_id/1', 'CMS管理 / 字段管理 / 删除', '{\"action\":\"del\",\"ids\":\"1\",\"params\":\"\",\"source\":\"diyform\",\"source_id\":\"1\"}', '0.0.0.0', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 1760583920),
-(893, 1, 'admin', '/admin.php/ajax/weigh', '', '{\"ids\":\"2,3,4,id,memo,createtime,updatetime,status\",\"changeid\":\"4\",\"pid\":\"\",\"field\":\"weigh\",\"orderway\":\"desc\",\"table\":\"cms_fields\",\"pk\":\"id\"}', '0.0.0.0', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 1760583928);
+(893, 1, 'admin', '/admin.php/ajax/weigh', '', '{\"ids\":\"2,3,4,id,memo,createtime,updatetime,status\",\"changeid\":\"4\",\"pid\":\"\",\"field\":\"weigh\",\"orderway\":\"desc\",\"table\":\"cms_fields\",\"pk\":\"id\"}', '0.0.0.0', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 1760583928),
+(894, 1, 'admin', '/admin.php/cms/diydata/edit/diyform_id/1/ids/1?dialog=1', 'CMS管理 / 自定义表单数据管理 / 修改', '{\"dialog\":\"1\",\"row\":{\"user_id\":\"4\",\"images\":\"1.png,2.png\",\"content\":\"测试文字测试文字测试文字\",\"locate\":\"北京市顺义区\",\"memo\":\"\",\"status\":\"normal\"},\"diyform_id\":\"1\",\"ids\":\"1\"}', '0.0.0.0', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 1760587219),
+(895, 1, 'admin', '/admin.php/cms/ajax/get_title_pinyin', 'CMS管理', '{\"title\":\"ip\"}', '0.0.0.0', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 1760591896),
+(896, 1, 'admin', '/admin.php/cms/ajax/get_title_pinyin', 'CMS管理', '{\"title\":\"i\"}', '0.0.0.0', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 1760591896),
+(897, 1, 'admin', '/admin.php/cms/ajax/get_title_pinyin', 'CMS管理', '{\"title\":\"学n\"}', '0.0.0.0', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 1760591897),
+(898, 1, 'admin', '/admin.php/cms/ajax/get_title_pinyin', 'CMS管理', '{\"title\":\"学习y\"}', '0.0.0.0', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 1760591898),
+(899, 1, 'admin', '/admin.php/cms/ajax/get_title_pinyin', 'CMS管理', '{\"title\":\"学习记录\"}', '0.0.0.0', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 1760591899),
+(900, 1, 'admin', '/admin.php/cms/diyform/check_element_available', 'CMS管理 / 自定义表单管理', '{\"name\":\"row[diyname]\",\"value\":\"record\"}', '0.0.0.0', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 1760591919),
+(901, 1, 'admin', '/admin.php/cms/diyform/add?dialog=1', 'CMS管理 / 自定义表单管理 / 添加', '{\"dialog\":\"1\",\"row\":{\"name\":\"学习记录\",\"table\":\"cms_diyform_record\",\"diyname\":\"record\",\"title\":\"学习记录\",\"seotitle\":\"\",\"keywords\":\"\",\"description\":\"\",\"successtips\":\"\",\"redirecturl\":\"\",\"posttpl\":\"\",\"listtpl\":\"\",\"showtpl\":\"\",\"isedit\":\"0\",\"iscaptcha\":\"0\",\"isguest\":\"0\",\"needlogin\":\"0\",\"usermode\":\"user\",\"statusmode\":\"normal\",\"status\":\"normal\"}}', '0.0.0.0', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 1760591979),
+(902, 1, 'admin', '/admin.php/cms/fields/del/source/diyform/source_id/2', 'CMS管理 / 字段管理 / 删除', '{\"action\":\"del\",\"ids\":\"5\",\"params\":\"\",\"source\":\"diyform\",\"source_id\":\"2\"}', '0.0.0.0', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 1760592689),
+(903, 1, 'admin', '/admin.php/cms/fields/del/source/diyform/source_id/2', 'CMS管理 / 字段管理 / 删除', '{\"action\":\"del\",\"ids\":\"6\",\"params\":\"\",\"source\":\"diyform\",\"source_id\":\"2\"}', '0.0.0.0', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 1760592694),
+(904, 1, 'admin', '/admin.php/cms/fields/del/source/diyform/source_id/2', 'CMS管理 / 字段管理 / 删除', '{\"action\":\"del\",\"ids\":\"7\",\"params\":\"\",\"source\":\"diyform\",\"source_id\":\"2\"}', '0.0.0.0', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 1760592697),
+(905, 1, 'admin', '/admin.php/cms/fields/add/source/diyform/source_id/2?dialog=1', 'CMS管理 / 字段管理 / 添加', '{\"dialog\":\"1\",\"row\":{\"source\":\"diyform\",\"source_id\":\"2\",\"name\":\"archives_id\",\"title\":\"文章ID\",\"type\":\"string\",\"decimals\":\"0\",\"minimum\":\"\",\"maximum\":\"\",\"setting\":{\"table\":\"\",\"conditions\":\"\",\"key\":\"\",\"value\":\"\"},\"content\":\"{&quot;value1&quot;:&quot;title1&quot;,&quot;value2&quot;:&quot;title2&quot;}\",\"isfilter\":\"0\",\"filterlist\":\"{&quot;value1&quot;:&quot;title1&quot;,&quot;value2&quot;:&quot;title2&quot;}\",\"defaultvalue\":\"\",\"rule\":\"\",\"msg\":\"\",\"ok\":\"\",\"tip\":\"\",\"length\":\"255\",\"isorder\":\"0\",\"iscontribute\":\"0\",\"status\":\"normal\"},\"source\":\"diyform\",\"source_id\":\"2\"}', '0.0.0.0', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 1760592734),
+(906, 1, 'admin', '/admin.php/cms/fields/edit/source/diyform/source_id/2/ids/8?dialog=1', 'CMS管理 / 字段管理 / 修改', '{\"dialog\":\"1\",\"row\":{\"source\":\"diyform\",\"source_id\":\"2\",\"oldname\":\"archives_id\",\"name\":\"archives_id\",\"title\":\"文章ID\",\"type\":\"number\",\"decimals\":\"0\",\"minimum\":\"0\",\"maximum\":\"0\",\"setting\":{\"table\":\"\",\"conditions\":\"\",\"key\":\"\",\"value\":\"\"},\"content\":\"{&quot;value1&quot;:&quot;title1&quot;,&quot;value2&quot;:&quot;title2&quot;}\",\"isfilter\":\"0\",\"filterlist\":\"{&quot;value1&quot;:&quot;title1&quot;,&quot;value2&quot;:&quot;title2&quot;}\",\"defaultvalue\":\"\",\"favisible\":\"\",\"rule\":\"\",\"msg\":\"\",\"ok\":\"\",\"tip\":\"\",\"length\":\"255\",\"isorder\":\"0\",\"iscontribute\":\"0\",\"weigh\":\"8\",\"status\":\"normal\"},\"source\":\"diyform\",\"source_id\":\"2\",\"ids\":\"8\"}', '0.0.0.0', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 1760592754),
+(907, 1, 'admin', '/admin.php/cms/ajax/get_title_pinyin', 'CMS管理', '{\"title\":\"y\"}', '0.0.0.0', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 1760612617),
+(908, 1, 'admin', '/admin.php/cms/ajax/get_title_pinyin', 'CMS管理', '{\"title\":\"jian\"}', '0.0.0.0', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 1760612618),
+(909, 1, 'admin', '/admin.php/cms/ajax/get_title_pinyin', 'CMS管理', '{\"title\":\"jian\'y\"}', '0.0.0.0', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 1760612619),
+(910, 1, 'admin', '/admin.php/cms/ajax/get_title_pinyin', 'CMS管理', '{\"title\":\"jian\'yan\"}', '0.0.0.0', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 1760612619),
+(911, 1, 'admin', '/admin.php/cms/ajax/get_title_pinyin', 'CMS管理', '{\"title\":\"jian\'yan\'xia\"}', '0.0.0.0', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 1760612620),
+(912, 1, 'admin', '/admin.php/cms/ajax/get_title_pinyin', 'CMS管理', '{\"title\":\"jian\'yan\'xian\'c\"}', '0.0.0.0', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 1760612621),
+(913, 1, 'admin', '/admin.php/cms/ajax/get_title_pinyin', 'CMS管理', '{\"title\":\"jian\'yan\'xian\'ce\"}', '0.0.0.0', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 1760612621),
+(914, 1, 'admin', '/admin.php/cms/ajax/get_title_pinyin', 'CMS管理', '{\"title\":\"建言献策\"}', '0.0.0.0', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 1760612622),
+(915, 1, 'admin', '/admin.php/cms/diyform/check_element_available', 'CMS管理 / 自定义表单管理', '{\"name\":\"row[diyname]\",\"value\":\"suggestion\"}', '0.0.0.0', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 1760612646),
+(916, 1, 'admin', '/admin.php/cms/ajax/get_title_pinyin', 'CMS管理', '{\"title\":\"建言献策\"}', '0.0.0.0', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 1760612648),
+(917, 1, 'admin', '/admin.php/cms/diyform/check_element_available', 'CMS管理 / 自定义表单管理', '{\"name\":\"row[diyname]\",\"value\":\"jianyanxiance\"}', '0.0.0.0', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 1760612654),
+(918, 1, 'admin', '/admin.php/cms/diyform/add?dialog=1', 'CMS管理 / 自定义表单管理 / 添加', '{\"dialog\":\"1\",\"row\":{\"name\":\"建言献策\",\"table\":\"cms_diyform_jianyanxiance\",\"diyname\":\"jianyanxiance\",\"title\":\"建言献策\",\"seotitle\":\"\",\"keywords\":\"\",\"description\":\"\",\"successtips\":\"\",\"redirecturl\":\"\",\"posttpl\":\"\",\"listtpl\":\"\",\"showtpl\":\"\",\"isedit\":\"0\",\"iscaptcha\":\"0\",\"isguest\":\"0\",\"needlogin\":\"0\",\"usermode\":\"user\",\"statusmode\":\"normal\",\"status\":\"normal\"}}', '0.0.0.0', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 1760612654),
+(919, 1, 'admin', '/admin.php/cms/diyform/check_element_available', 'CMS管理 / 自定义表单管理', '{\"id\":\"2\",\"name\":\"row[diyname]\",\"value\":\"jianyanxiance\"}', '0.0.0.0', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 1760612680),
+(920, 1, 'admin', '/admin.php/cms/diyform/check_element_available', 'CMS管理 / 自定义表单管理', '{\"id\":\"2\",\"name\":\"row[diyname]\",\"value\":\"suggestion\"}', '0.0.0.0', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 1760612688),
+(921, 1, 'admin', '/admin.php/cms/diyform/edit/ids/2?dialog=1', 'CMS管理 / 自定义表单管理 / 修改', '{\"dialog\":\"1\",\"row\":{\"name\":\"建言献策\",\"table\":\"cms_diyform_jianyanxiance\",\"diyname\":\"suggestion\",\"title\":\"建言献策\",\"seotitle\":\"\",\"keywords\":\"\",\"description\":\"\",\"successtips\":\"\",\"redirecturl\":\"\",\"posttpl\":\"\",\"listtpl\":\"\",\"showtpl\":\"\",\"isedit\":\"0\",\"iscaptcha\":\"0\",\"isguest\":\"0\",\"needlogin\":\"0\",\"usermode\":\"user\",\"statusmode\":\"normal\",\"status\":\"normal\"},\"ids\":\"2\"}', '0.0.0.0', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 1760612694),
+(922, 1, 'admin', '/admin.php/cms/fields/del/source/diyform/source_id/2', 'CMS管理 / 字段管理 / 删除', '{\"action\":\"del\",\"ids\":\"10\",\"params\":\"\",\"source\":\"diyform\",\"source_id\":\"2\"}', '0.0.0.0', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 1760612794),
+(923, 1, 'admin', '/admin.php/cms/fields/del/source/diyform/source_id/2', 'CMS管理 / 字段管理 / 删除', '{\"action\":\"del\",\"ids\":\"8\",\"params\":\"\",\"source\":\"diyform\",\"source_id\":\"2\"}', '0.0.0.0', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 1760612846),
+(924, 1, 'admin', '/admin.php/cms/fields/del/source/diyform/source_id/2', 'CMS管理 / 字段管理 / 删除', '{\"action\":\"del\",\"ids\":\"8\",\"params\":\"\",\"source\":\"diyform\",\"source_id\":\"2\"}', '0.0.0.0', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 1760612863),
+(925, 1, 'admin', '/admin.php/cms/diyform/check_element_available', 'CMS管理 / 自定义表单管理', '{\"id\":\"2\",\"name\":\"row[diyname]\",\"value\":\"suggestion\"}', '0.0.0.0', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 1760612980),
+(926, 1, 'admin', '/admin.php/cms/diyform/edit/ids/2?dialog=1', 'CMS管理 / 自定义表单管理 / 修改', '{\"dialog\":\"1\",\"row\":{\"name\":\"建言献策\",\"table\":\"cms_diyform_suggestion\",\"diyname\":\"suggestion\",\"title\":\"建言献策\",\"seotitle\":\"\",\"keywords\":\"\",\"description\":\"\",\"successtips\":\"\",\"redirecturl\":\"\",\"posttpl\":\"\",\"listtpl\":\"\",\"showtpl\":\"\",\"isedit\":\"0\",\"iscaptcha\":\"0\",\"isguest\":\"0\",\"needlogin\":\"0\",\"usermode\":\"user\",\"statusmode\":\"normal\",\"status\":\"normal\"},\"ids\":\"2\"}', '0.0.0.0', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 1760612980),
+(927, 1, 'admin', '/admin.php/cms/diyform/check_element_available', 'CMS管理 / 自定义表单管理', '{\"id\":\"2\",\"name\":\"row[diyname]\",\"value\":\"suggestion\"}', '0.0.0.0', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 1760612990),
+(928, 1, 'admin', '/admin.php/cms/diyform/edit/ids/2?dialog=1', 'CMS管理 / 自定义表单管理 / 修改', '{\"dialog\":\"1\",\"row\":{\"name\":\"建言献策\",\"table\":\"cms_diyform_suggestion\",\"diyname\":\"suggestion\",\"title\":\"建言献策\",\"seotitle\":\"\",\"keywords\":\"\",\"description\":\"\",\"successtips\":\"\",\"redirecturl\":\"\",\"posttpl\":\"\",\"listtpl\":\"\",\"showtpl\":\"\",\"isedit\":\"0\",\"iscaptcha\":\"0\",\"isguest\":\"0\",\"needlogin\":\"0\",\"usermode\":\"user\",\"statusmode\":\"all\",\"status\":\"normal\"},\"ids\":\"2\"}', '0.0.0.0', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 1760612990),
+(929, 1, 'admin', '/admin.php/auth/rule/multi', '权限管理 / 菜单规则', '{\"action\":\"\",\"ids\":\"147\",\"params\":\"ismenu=0\"}', '0.0.0.0', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 1760613079),
+(930, 1, 'admin', '/admin.php/cms/fields/edit/source/diyform/source_id/2/ids/8?dialog=1', 'CMS管理 / 字段管理 / 修改', '{\"dialog\":\"1\",\"row\":{\"source\":\"diyform\",\"source_id\":\"2\",\"oldname\":\"archives_id\",\"name\":\"type\",\"title\":\"建议分类：民生服务,社区管理,环境卫生等\",\"type\":\"number\",\"decimals\":\"0\",\"minimum\":\"0\",\"maximum\":\"0\",\"setting\":{\"table\":\"\",\"conditions\":\"\",\"key\":\"\",\"value\":\"\"},\"content\":\"{&quot;value1&quot;:&quot;title1&quot;,&quot;value2&quot;:&quot;title2&quot;}\",\"isfilter\":\"0\",\"filterlist\":\"{&quot;value1&quot;:&quot;title1&quot;,&quot;value2&quot;:&quot;title2&quot;}\",\"defaultvalue\":\"\",\"favisible\":\"\",\"rule\":\"\",\"msg\":\"\",\"ok\":\"\",\"tip\":\"\",\"length\":\"255\",\"isorder\":\"0\",\"iscontribute\":\"0\",\"weigh\":\"8\",\"status\":\"normal\"},\"source\":\"diyform\",\"source_id\":\"2\",\"ids\":\"8\"}', '0.0.0.0', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 1760613193),
+(931, 1, 'admin', '/admin.php/cms/fields/add/source/diyform/source_id/2?dialog=1', 'CMS管理 / 字段管理 / 添加', '{\"dialog\":\"1\",\"row\":{\"source\":\"diyform\",\"source_id\":\"2\",\"name\":\"type\",\"title\":\"建议分类：民生服务,社区管理,环境卫生等\",\"type\":\"string\",\"decimals\":\"0\",\"minimum\":\"\",\"maximum\":\"\",\"setting\":{\"table\":\"\",\"conditions\":\"\",\"key\":\"\",\"value\":\"\"},\"content\":\"{&quot;value1&quot;:&quot;title1&quot;,&quot;value2&quot;:&quot;title2&quot;}\",\"isfilter\":\"0\",\"filterlist\":\"{&quot;value1&quot;:&quot;title1&quot;,&quot;value2&quot;:&quot;title2&quot;}\",\"defaultvalue\":\"\",\"rule\":\"\",\"msg\":\"\",\"ok\":\"\",\"tip\":\"\",\"length\":\"255\",\"isorder\":\"0\",\"iscontribute\":\"0\",\"status\":\"normal\"},\"source\":\"diyform\",\"source_id\":\"2\"}', '0.0.0.0', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 1760613266),
+(932, 0, 'Unknown', '/admin.php/index/logout', '', '{\"__token__\":\"***\"}', '0.0.0.0', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 1760613463),
+(933, 0, 'Unknown', '/admin.php/index/logout', '', '{\"__token__\":\"***\"}', '0.0.0.0', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 1760613466),
+(934, 1, 'admin', '/admin.php/index/login?url=/admin.php/index/logout', '登录', '{\"url\":\"\\/admin.php\\/index\\/logout\",\"__token__\":\"***\",\"username\":\"admin\",\"password\":\"***\",\"captcha\":\"vbjp\",\"keeplogin\":\"1\"}', '0.0.0.0', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 1760613485),
+(935, 0, 'Unknown', '/admin.php/index/logout', '', '{\"__token__\":\"***\"}', '0.0.0.0', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 1760613485),
+(936, 1, 'admin', '/admin.php/index/login', '登录', '{\"__token__\":\"***\",\"username\":\"admin\",\"password\":\"***\",\"captcha\":\"cpkb\",\"keeplogin\":\"1\"}', '0.0.0.0', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 1760613508),
+(937, 1, 'admin', '/admin.php/cms/fields/add/source/diyform/source_id/2?dialog=1', 'CMS管理 / 字段管理 / 添加', '{\"dialog\":\"1\",\"row\":{\"source\":\"diyform\",\"source_id\":\"2\",\"name\":\"type\",\"title\":\"建议分类：民生服务,社区管理,环境卫生等\",\"type\":\"string\",\"decimals\":\"0\",\"minimum\":\"\",\"maximum\":\"\",\"setting\":{\"table\":\"\",\"conditions\":\"\",\"key\":\"\",\"value\":\"\"},\"content\":\"{&quot;value1&quot;:&quot;title1&quot;,&quot;value2&quot;:&quot;title2&quot;}\",\"isfilter\":\"0\",\"filterlist\":\"{&quot;value1&quot;:&quot;title1&quot;,&quot;value2&quot;:&quot;title2&quot;}\",\"defaultvalue\":\"\",\"rule\":\"\",\"msg\":\"\",\"ok\":\"\",\"tip\":\"\",\"length\":\"255\",\"isorder\":\"0\",\"iscontribute\":\"0\",\"status\":\"normal\"},\"source\":\"diyform\",\"source_id\":\"2\"}', '0.0.0.0', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 1760613685),
+(938, 1, 'admin', '/admin.php/cms/fields/add/source/diyform/source_id/2?dialog=1', 'CMS管理 / 字段管理 / 添加', '{\"dialog\":\"1\",\"row\":{\"source\":\"diyform\",\"source_id\":\"2\",\"name\":\"label\",\"title\":\"建议标签：民生服务,社区管理,环境卫生等\",\"type\":\"string\",\"decimals\":\"0\",\"minimum\":\"\",\"maximum\":\"\",\"setting\":{\"table\":\"\",\"conditions\":\"\",\"key\":\"\",\"value\":\"\"},\"content\":\"{&quot;value1&quot;:&quot;title1&quot;,&quot;value2&quot;:&quot;title2&quot;}\",\"isfilter\":\"0\",\"filterlist\":\"{&quot;value1&quot;:&quot;title1&quot;,&quot;value2&quot;:&quot;title2&quot;}\",\"defaultvalue\":\"\",\"rule\":\"\",\"msg\":\"\",\"ok\":\"\",\"tip\":\"\",\"length\":\"255\",\"isorder\":\"0\",\"iscontribute\":\"0\",\"status\":\"normal\"},\"source\":\"diyform\",\"source_id\":\"2\"}', '0.0.0.0', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 1760613726),
+(939, 1, 'admin', '/admin.php/cms/fields/del/source/diyform/source_id/2', 'CMS管理 / 字段管理 / 删除', '{\"action\":\"del\",\"ids\":\"8\",\"params\":\"\",\"source\":\"diyform\",\"source_id\":\"2\"}', '0.0.0.0', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 1760613742),
+(940, 1, 'admin', '/admin.php/cms/diyform/check_element_available', 'CMS管理 / 自定义表单管理', '{\"id\":\"2\",\"name\":\"row[diyname]\",\"value\":\"suggestion\"}', '0.0.0.0', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 1760613784),
+(941, 1, 'admin', '/admin.php/cms/diyform/edit/ids/2?dialog=1', 'CMS管理 / 自定义表单管理 / 修改', '{\"dialog\":\"1\",\"row\":{\"name\":\"建言献策\",\"table\":\"cms_diyform_suggestion\",\"diyname\":\"suggestion\",\"title\":\"建言献策\",\"seotitle\":\"\",\"keywords\":\"\",\"description\":\"\",\"successtips\":\"\",\"redirecturl\":\"\",\"posttpl\":\"\",\"listtpl\":\"\",\"showtpl\":\"\",\"isedit\":\"0\",\"iscaptcha\":\"0\",\"isguest\":\"0\",\"needlogin\":\"0\",\"usermode\":\"user\",\"statusmode\":\"all\",\"status\":\"normal\"},\"ids\":\"2\"}', '0.0.0.0', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 1760613795),
+(942, 1, 'admin', '/admin.php/cms/fields/edit/source/diyform/source_id/2/ids/12?dialog=1', 'CMS管理 / 字段管理 / 修改', '{\"dialog\":\"1\",\"row\":{\"source\":\"diyform\",\"source_id\":\"2\",\"oldname\":\"label\",\"name\":\"label\",\"title\":\"标签\",\"type\":\"string\",\"decimals\":\"0\",\"minimum\":\"0\",\"maximum\":\"0\",\"setting\":{\"table\":\"\",\"conditions\":\"\",\"key\":\"\",\"value\":\"\"},\"content\":\"{&quot;value1&quot;:&quot;title1&quot;,&quot;value2&quot;:&quot;title2&quot;}\",\"isfilter\":\"0\",\"filterlist\":\"{&quot;value1&quot;:&quot;title1&quot;,&quot;value2&quot;:&quot;title2&quot;}\",\"defaultvalue\":\"\",\"favisible\":\"\",\"rule\":\"\",\"msg\":\"\",\"ok\":\"\",\"tip\":\"\",\"length\":\"255\",\"isorder\":\"0\",\"iscontribute\":\"0\",\"weigh\":\"12\",\"status\":\"normal\"},\"source\":\"diyform\",\"source_id\":\"2\",\"ids\":\"12\"}', '0.0.0.0', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 1760613894),
+(943, 1, 'admin', '/admin.php/cms/ajax/get_title_pinyin', 'CMS管理', '{\"title\":\"入\"}', '0.0.0.0', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 1760616638),
+(944, 1, 'admin', '/admin.php/cms/ajax/get_title_pinyin', 'CMS管理', '{\"title\":\"入ip\"}', '0.0.0.0', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 1760616639),
+(945, 1, 'admin', '/admin.php/cms/ajax/get_title_pinyin', 'CMS管理', '{\"title\":\"入ipk\"}', '0.0.0.0', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 1760616639),
+(946, 1, 'admin', '/admin.php/cms/ajax/get_title_pinyin', 'CMS管理', '{\"title\":\"入党\"}', '0.0.0.0', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 1760616640),
+(947, 1, 'admin', '/admin.php/cms/ajax/get_title_pinyin', 'CMS管理', '{\"title\":\"入党jh\"}', '0.0.0.0', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 1760616640),
+(948, 1, 'admin', '/admin.php/cms/ajax/get_title_pinyin', 'CMS管理', '{\"title\":\"入党申\"}', '0.0.0.0', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 1760616641),
+(949, 1, 'admin', '/admin.php/cms/ajax/get_title_pinyin', 'CMS管理', '{\"title\":\"入党申y\"}', '0.0.0.0', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 1760616641),
+(950, 1, 'admin', '/admin.php/cms/ajax/get_title_pinyin', 'CMS管理', '{\"title\":\"入党申请\"}', '0.0.0.0', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 1760616641),
+(951, 1, 'admin', '/admin.php/cms/diyform/check_element_available', 'CMS管理 / 自定义表单管理', '{\"name\":\"row[diyname]\",\"value\":\"join\"}', '0.0.0.0', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 1760616722),
+(952, 1, 'admin', '/admin.php/cms/diyform/add?dialog=1', 'CMS管理 / 自定义表单管理 / 添加', '{\"dialog\":\"1\",\"row\":{\"name\":\"入党申请\",\"table\":\"cms_diyform_join_party\",\"diyname\":\"join\",\"title\":\"入常申请\",\"seotitle\":\"\",\"keywords\":\"\",\"description\":\"\",\"successtips\":\"\",\"redirecturl\":\"\",\"posttpl\":\"\",\"listtpl\":\"\",\"showtpl\":\"\",\"isedit\":\"0\",\"iscaptcha\":\"0\",\"isguest\":\"0\",\"needlogin\":\"0\",\"usermode\":\"user\",\"statusmode\":\"all\",\"status\":\"normal\"}}', '0.0.0.0', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 1760616743),
+(953, 1, 'admin', '/admin.php/cms/fields/edit/source/diyform/source_id/3/ids/13?dialog=1', 'CMS管理 / 字段管理 / 修改', '{\"dialog\":\"1\",\"row\":{\"source\":\"diyform\",\"source_id\":\"3\",\"oldname\":\"title\",\"name\":\"name\",\"title\":\"姓名\",\"type\":\"string\",\"decimals\":\"\",\"minimum\":\"\",\"maximum\":\"0\",\"setting\":{\"table\":\"\",\"conditions\":\"\",\"key\":\"\",\"value\":\"\"},\"content\":\"{&quot;value1&quot;:&quot;title1&quot;,&quot;value2&quot;:&quot;title2&quot;}\",\"isfilter\":\"0\",\"filterlist\":\"{&quot;value1&quot;:&quot;title1&quot;,&quot;value2&quot;:&quot;title2&quot;}\",\"defaultvalue\":\"\",\"favisible\":\"\",\"rule\":\"\",\"msg\":\"\",\"ok\":\"\",\"tip\":\"\",\"length\":\"255\",\"isorder\":\"0\",\"iscontribute\":\"1\",\"weigh\":\"3\",\"status\":\"normal\"},\"source\":\"diyform\",\"source_id\":\"3\",\"ids\":\"13\"}', '0.0.0.0', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 1760616802),
+(954, 1, 'admin', '/admin.php/cms/fields/del/source/diyform/source_id/3', 'CMS管理 / 字段管理 / 删除', '{\"action\":\"del\",\"ids\":\"13\",\"params\":\"\",\"source\":\"diyform\",\"source_id\":\"3\"}', '0.0.0.0', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 1760617010),
+(955, 1, 'admin', '/admin.php/cms/fields/add/source/diyform/source_id/3?dialog=1', 'CMS管理 / 字段管理 / 添加', '{\"dialog\":\"1\",\"row\":{\"source\":\"diyform\",\"source_id\":\"3\",\"name\":\"name\",\"title\":\"姓名\",\"type\":\"string\",\"decimals\":\"0\",\"minimum\":\"\",\"maximum\":\"\",\"setting\":{\"table\":\"\",\"conditions\":\"\",\"key\":\"\",\"value\":\"\"},\"content\":\"{&quot;value1&quot;:&quot;title1&quot;,&quot;value2&quot;:&quot;title2&quot;}\",\"isfilter\":\"0\",\"filterlist\":\"{&quot;value1&quot;:&quot;title1&quot;,&quot;value2&quot;:&quot;title2&quot;}\",\"defaultvalue\":\"\",\"rule\":\"\",\"msg\":\"\",\"ok\":\"\",\"tip\":\"\",\"length\":\"255\",\"isorder\":\"0\",\"iscontribute\":\"0\",\"status\":\"normal\"},\"source\":\"diyform\",\"source_id\":\"3\"}', '0.0.0.0', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 1760617031),
+(956, 1, 'admin', '/admin.php/cms/fields/add/source/diyform/source_id/3?dialog=1', 'CMS管理 / 字段管理 / 添加', '{\"dialog\":\"1\",\"row\":{\"source\":\"diyform\",\"source_id\":\"3\",\"name\":\"username\",\"title\":\"姓名\",\"type\":\"string\",\"decimals\":\"0\",\"minimum\":\"\",\"maximum\":\"\",\"setting\":{\"table\":\"\",\"conditions\":\"\",\"key\":\"\",\"value\":\"\"},\"content\":\"{&quot;value1&quot;:&quot;title1&quot;,&quot;value2&quot;:&quot;title2&quot;}\",\"isfilter\":\"0\",\"filterlist\":\"{&quot;value1&quot;:&quot;title1&quot;,&quot;value2&quot;:&quot;title2&quot;}\",\"defaultvalue\":\"\",\"rule\":\"\",\"msg\":\"\",\"ok\":\"\",\"tip\":\"\",\"length\":\"255\",\"isorder\":\"0\",\"iscontribute\":\"0\",\"status\":\"normal\"},\"source\":\"diyform\",\"source_id\":\"3\"}', '0.0.0.0', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 1760617053),
+(957, 1, 'admin', '/admin.php/cms/fields/add/source/diyform/source_id/3?dialog=1', 'CMS管理 / 字段管理 / 添加', '{\"dialog\":\"1\",\"row\":{\"source\":\"diyform\",\"source_id\":\"3\",\"name\":\"mobile\",\"title\":\"手机号\",\"type\":\"string\",\"decimals\":\"0\",\"minimum\":\"\",\"maximum\":\"\",\"setting\":{\"table\":\"\",\"conditions\":\"\",\"key\":\"\",\"value\":\"\"},\"content\":\"{&quot;value1&quot;:&quot;title1&quot;,&quot;value2&quot;:&quot;title2&quot;}\",\"isfilter\":\"0\",\"filterlist\":\"{&quot;value1&quot;:&quot;title1&quot;,&quot;value2&quot;:&quot;title2&quot;}\",\"defaultvalue\":\"\",\"rule\":\"\",\"msg\":\"\",\"ok\":\"\",\"tip\":\"\",\"length\":\"255\",\"isorder\":\"0\",\"iscontribute\":\"0\",\"status\":\"normal\"},\"source\":\"diyform\",\"source_id\":\"3\"}', '0.0.0.0', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 1760617076),
+(958, 1, 'admin', '/admin.php/cms/fields/edit/source/diyform/source_id/3/ids/14?dialog=1', 'CMS管理 / 字段管理 / 修改', '{\"dialog\":\"1\",\"row\":{\"source\":\"diyform\",\"source_id\":\"3\",\"oldname\":\"images\",\"name\":\"images\",\"title\":\"申请书\",\"type\":\"image\",\"decimals\":\"\",\"minimum\":\"\",\"maximum\":\"0\",\"setting\":{\"table\":\"\",\"conditions\":\"\",\"key\":\"\",\"value\":\"\"},\"content\":\"{&quot;value1&quot;:&quot;title1&quot;,&quot;value2&quot;:&quot;title2&quot;}\",\"isfilter\":\"0\",\"filterlist\":\"{&quot;value1&quot;:&quot;title1&quot;,&quot;value2&quot;:&quot;title2&quot;}\",\"defaultvalue\":\"\",\"favisible\":\"\",\"rule\":\"\",\"msg\":\"\",\"ok\":\"\",\"tip\":\"\",\"length\":\"1500\",\"isorder\":\"0\",\"iscontribute\":\"1\",\"weigh\":\"2\",\"status\":\"normal\"},\"source\":\"diyform\",\"source_id\":\"3\",\"ids\":\"14\"}', '0.0.0.0', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 1760617136),
+(959, 1, 'admin', '/admin.php/ajax/weigh', '', '{\"ids\":\"16,17,14,15,id,memo,createtime,updatetime,status\",\"changeid\":\"16\",\"pid\":\"\",\"field\":\"weigh\",\"orderway\":\"desc\",\"table\":\"cms_fields\",\"pk\":\"id\"}', '0.0.0.0', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 1760617154),
+(960, 1, 'admin', '/admin.php/cms/fields/del/source/diyform/source_id/3', 'CMS管理 / 字段管理 / 删除', '{\"action\":\"del\",\"ids\":\"15\",\"params\":\"\",\"source\":\"diyform\",\"source_id\":\"3\"}', '0.0.0.0', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 1760617170),
+(961, 1, 'admin', '/admin.php/cms/ajax/get_title_pinyin', 'CMS管理', '{\"title\":\"组\"}', '0.0.0.0', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 1760618785),
+(962, 1, 'admin', '/admin.php/cms/ajax/get_title_pinyin', 'CMS管理', '{\"title\":\"组织\"}', '0.0.0.0', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 1760618792),
+(963, 1, 'admin', '/admin.php/cms/ajax/get_title_pinyin', 'CMS管理', '{\"title\":\"组织关\"}', '0.0.0.0', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 1760618793),
+(964, 1, 'admin', '/admin.php/cms/ajax/get_title_pinyin', 'CMS管理', '{\"title\":\"组织关t\"}', '0.0.0.0', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 1760618793),
+(965, 1, 'admin', '/admin.php/cms/ajax/get_title_pinyin', 'CMS管理', '{\"title\":\"组织关系\"}', '0.0.0.0', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 1760618794),
+(966, 1, 'admin', '/admin.php/cms/ajax/get_title_pinyin', 'CMS管理', '{\"title\":\"组织关系转rqq\"}', '0.0.0.0', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 1760618795),
+(967, 1, 'admin', '/admin.php/cms/ajax/get_title_pinyin', 'CMS管理', '{\"title\":\"组织关系转揿\"}', '0.0.0.0', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 1760618796),
+(968, 1, 'admin', '/admin.php/cms/ajax/get_title_pinyin', 'CMS管理', '{\"title\":\"组织关系转移\"}', '0.0.0.0', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 1760618797),
+(969, 1, 'admin', '/admin.php/cms/diyform/check_element_available', 'CMS管理 / 自定义表单管理', '{\"name\":\"row[diyname]\",\"value\":\"organization\"}', '0.0.0.0', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 1760618881),
+(970, 1, 'admin', '/admin.php/cms/ajax/get_title_pinyin', 'CMS管理', '{\"title\":\"组织关系转移\"}', '0.0.0.0', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 1760618885),
+(971, 1, 'admin', '/admin.php/cms/diyform/add?dialog=1', 'CMS管理 / 自定义表单管理 / 添加', '{\"dialog\":\"1\",\"row\":{\"name\":\"组织关系转移\",\"table\":\"cms_diyform_organization\",\"diyname\":\"organization\",\"title\":\"组织关系转移\",\"seotitle\":\"\",\"keywords\":\"\",\"description\":\"\",\"successtips\":\"\",\"redirecturl\":\"\",\"posttpl\":\"\",\"listtpl\":\"\",\"showtpl\":\"\",\"isedit\":\"0\",\"iscaptcha\":\"0\",\"isguest\":\"0\",\"needlogin\":\"0\",\"usermode\":\"user\",\"statusmode\":\"normal\",\"status\":\"normal\"}}', '0.0.0.0', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 1760618929),
+(972, 1, 'admin', '/admin.php/cms/fields/edit/source/diyform/source_id/4/ids/18?dialog=1', 'CMS管理 / 字段管理 / 修改', '{\"dialog\":\"1\",\"row\":{\"source\":\"diyform\",\"source_id\":\"4\",\"oldname\":\"title\",\"name\":\"title\",\"title\":\"织组名称\",\"type\":\"string\",\"decimals\":\"\",\"minimum\":\"\",\"maximum\":\"0\",\"setting\":{\"table\":\"\",\"conditions\":\"\",\"key\":\"\",\"value\":\"\"},\"content\":\"{&quot;value1&quot;:&quot;title1&quot;,&quot;value2&quot;:&quot;title2&quot;}\",\"isfilter\":\"0\",\"filterlist\":\"{&quot;value1&quot;:&quot;title1&quot;,&quot;value2&quot;:&quot;title2&quot;}\",\"defaultvalue\":\"\",\"favisible\":\"\",\"rule\":\"\",\"msg\":\"\",\"ok\":\"\",\"tip\":\"\",\"length\":\"255\",\"isorder\":\"0\",\"iscontribute\":\"1\",\"weigh\":\"3\",\"status\":\"normal\"},\"source\":\"diyform\",\"source_id\":\"4\",\"ids\":\"18\"}', '0.0.0.0', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 1760619014),
+(973, 1, 'admin', '/admin.php/cms/fields/edit/source/diyform/source_id/4/ids/19?dialog=1', 'CMS管理 / 字段管理 / 修改', '{\"dialog\":\"1\",\"row\":{\"source\":\"diyform\",\"source_id\":\"4\",\"oldname\":\"images\",\"name\":\"profile\",\"title\":\"资料证明\",\"type\":\"images\",\"decimals\":\"\",\"minimum\":\"\",\"maximum\":\"0\",\"setting\":{\"table\":\"\",\"conditions\":\"\",\"key\":\"\",\"value\":\"\"},\"content\":\"{&quot;value1&quot;:&quot;title1&quot;,&quot;value2&quot;:&quot;title2&quot;}\",\"isfilter\":\"0\",\"filterlist\":\"{&quot;value1&quot;:&quot;title1&quot;,&quot;value2&quot;:&quot;title2&quot;}\",\"defaultvalue\":\"\",\"favisible\":\"\",\"rule\":\"\",\"msg\":\"\",\"ok\":\"\",\"tip\":\"\",\"length\":\"1500\",\"isorder\":\"0\",\"iscontribute\":\"1\",\"weigh\":\"2\",\"status\":\"normal\"},\"source\":\"diyform\",\"source_id\":\"4\",\"ids\":\"19\"}', '0.0.0.0', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 1760619049),
+(974, 1, 'admin', '/admin.php/cms/fields/edit/source/diyform/source_id/4/ids/19?dialog=1', 'CMS管理 / 字段管理 / 修改', '{\"dialog\":\"1\",\"row\":{\"source\":\"diyform\",\"source_id\":\"4\",\"oldname\":\"profile\",\"name\":\"images\",\"title\":\"资料证明\",\"type\":\"images\",\"decimals\":\"0\",\"minimum\":\"0\",\"maximum\":\"0\",\"setting\":{\"table\":\"\",\"conditions\":\"\",\"key\":\"\",\"value\":\"\"},\"content\":\"{&quot;value1&quot;:&quot;title1&quot;,&quot;value2&quot;:&quot;title2&quot;}\",\"isfilter\":\"0\",\"filterlist\":\"{&quot;value1&quot;:&quot;title1&quot;,&quot;value2&quot;:&quot;title2&quot;}\",\"defaultvalue\":\"\",\"favisible\":\"\",\"rule\":\"\",\"msg\":\"\",\"ok\":\"\",\"tip\":\"\",\"length\":\"1500\",\"isorder\":\"0\",\"iscontribute\":\"1\",\"weigh\":\"2\",\"status\":\"normal\"},\"source\":\"diyform\",\"source_id\":\"4\",\"ids\":\"19\"}', '0.0.0.0', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 1760619068),
+(975, 1, 'admin', '/admin.php/cms/fields/del/source/diyform/source_id/4', 'CMS管理 / 字段管理 / 删除', '{\"action\":\"del\",\"ids\":\"20\",\"params\":\"\",\"source\":\"diyform\",\"source_id\":\"4\"}', '0.0.0.0', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 1760619081),
+(976, 1, 'admin', '/admin.php/cms/fields/add/source/diyform/source_id/4?dialog=1', 'CMS管理 / 字段管理 / 添加', '{\"dialog\":\"1\",\"row\":{\"source\":\"diyform\",\"source_id\":\"4\",\"name\":\"reason\",\"title\":\"调转原因\",\"type\":\"string\",\"decimals\":\"0\",\"minimum\":\"\",\"maximum\":\"\",\"setting\":{\"table\":\"\",\"conditions\":\"\",\"key\":\"\",\"value\":\"\"},\"content\":\"{&quot;value1&quot;:&quot;title1&quot;,&quot;value2&quot;:&quot;title2&quot;}\",\"isfilter\":\"0\",\"filterlist\":\"{&quot;value1&quot;:&quot;title1&quot;,&quot;value2&quot;:&quot;title2&quot;}\",\"defaultvalue\":\"\",\"rule\":\"\",\"msg\":\"\",\"ok\":\"\",\"tip\":\"\",\"length\":\"255\",\"isorder\":\"0\",\"iscontribute\":\"0\",\"status\":\"normal\"},\"source\":\"diyform\",\"source_id\":\"4\"}', '0.0.0.0', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 1760619144),
+(977, 1, 'admin', '/admin.php/ajax/weigh', '', '{\"ids\":\"18,19,21,id,memo,createtime,updatetime,status\",\"changeid\":\"21\",\"pid\":\"\",\"field\":\"weigh\",\"orderway\":\"desc\",\"table\":\"cms_fields\",\"pk\":\"id\"}', '0.0.0.0', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 1760619149),
+(978, 1, 'admin', '/admin.php/cms/diydata/edit/diyform_id/4/ids/1?dialog=1', 'CMS管理 / 自定义表单数据管理 / 修改', '{\"dialog\":\"1\",\"row\":{\"user_id\":\"4\",\"title\":\"某某党支部\",\"images\":\"1.png,2.png\",\"reason\":\"工作调动\",\"memo\":\"\",\"status\":\"rejected\"},\"diyform_id\":\"4\",\"ids\":\"1\"}', '0.0.0.0', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 1760620043),
+(979, 1, 'admin', '/admin.php/cms/fields/add/source/diyform/source_id/4?dialog=1', 'CMS管理 / 字段管理 / 添加', '{\"dialog\":\"1\",\"row\":{\"source\":\"diyform\",\"source_id\":\"4\",\"name\":\"member_id\",\"title\":\"党员编号\",\"type\":\"string\",\"decimals\":\"0\",\"minimum\":\"\",\"maximum\":\"\",\"setting\":{\"table\":\"\",\"conditions\":\"\",\"key\":\"\",\"value\":\"\"},\"content\":\"{&quot;value1&quot;:&quot;title1&quot;,&quot;value2&quot;:&quot;title2&quot;}\",\"isfilter\":\"0\",\"filterlist\":\"{&quot;value1&quot;:&quot;title1&quot;,&quot;value2&quot;:&quot;title2&quot;}\",\"defaultvalue\":\"\",\"rule\":\"\",\"msg\":\"\",\"ok\":\"\",\"tip\":\"\",\"length\":\"255\",\"isorder\":\"0\",\"iscontribute\":\"0\",\"status\":\"normal\"},\"source\":\"diyform\",\"source_id\":\"4\"}', '0.0.0.0', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 1760621195),
+(980, 1, 'admin', '/admin.php/cms/fields/add/source/diyform/source_id/4?dialog=1', 'CMS管理 / 字段管理 / 添加', '{\"dialog\":\"1\",\"row\":{\"source\":\"diyform\",\"source_id\":\"4\",\"name\":\"role\",\"title\":\"职务\",\"type\":\"string\",\"decimals\":\"0\",\"minimum\":\"\",\"maximum\":\"\",\"setting\":{\"table\":\"\",\"conditions\":\"\",\"key\":\"\",\"value\":\"\"},\"content\":\"{&quot;value1&quot;:&quot;title1&quot;,&quot;value2&quot;:&quot;title2&quot;}\",\"isfilter\":\"0\",\"filterlist\":\"{&quot;value1&quot;:&quot;title1&quot;,&quot;value2&quot;:&quot;title2&quot;}\",\"defaultvalue\":\"\",\"rule\":\"\",\"msg\":\"\",\"ok\":\"\",\"tip\":\"\",\"length\":\"255\",\"isorder\":\"0\",\"iscontribute\":\"0\",\"status\":\"normal\"},\"source\":\"diyform\",\"source_id\":\"4\"}', '0.0.0.0', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 1760621265),
+(981, 1, 'admin', '/admin.php/ajax/weigh', '', '{\"ids\":\"22,18,19,21,23,id,memo,createtime,updatetime,status\",\"changeid\":\"23\",\"pid\":\"\",\"field\":\"weigh\",\"orderway\":\"desc\",\"table\":\"cms_fields\",\"pk\":\"id\"}', '0.0.0.0', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 1760621274),
+(982, 1, 'admin', '/admin.php/cms/diydata/edit/diyform_id/4/ids/2?dialog=1', 'CMS管理 / 自定义表单数据管理 / 修改', '{\"dialog\":\"1\",\"row\":{\"user_id\":\"4\",\"member_id\":\"\",\"title\":\"某某党支部\",\"images\":\"1.png,2.png\",\"reason\":\"工作调动\",\"role\":\"\",\"memo\":\"\",\"status\":\"rejected\"},\"diyform_id\":\"4\",\"ids\":\"2\"}', '0.0.0.0', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 1760621702);
 
 -- --------------------------------------------------------
 
@@ -1032,7 +1121,7 @@ CREATE TABLE IF NOT EXISTS `party_attachment` (
   `storage` varchar(100) NOT NULL DEFAULT 'local' COMMENT '存储位置',
   `sha1` varchar(40) DEFAULT '' COMMENT '文件 sha1编码',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COMMENT='附件表';
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COMMENT='附件表';
 
 --
 -- 转存表中的数据 `party_attachment`
@@ -1049,7 +1138,8 @@ INSERT INTO `party_attachment` (`id`, `category`, `admin_id`, `user_id`, `url`, 
 (8, '', 1, 0, '/uploads/20250923/42ff1e405465dc433d49119dbb7b7919.jpg', 1199, 674, 'jpg', 0, 's3fce62899c6347fe805bcdcb56c39f1d.jpg', 811026, 'image/jpeg', '', 1758606981, 1758606981, 1758606981, 'local', '93e1eb7d50eb011314e4fad5af7e1826243b53c1'),
 (9, '', 1, 0, '/uploads/20250923/25d2551637be95bbc9953317b291ac38.png', 1268, 952, 'png', 0, '51637BE95BBC9953317B291AC38_235A6E0B_1A8704.png', 1738500, 'image/png', '', 1758607021, 1758607021, 1758607021, 'local', '1be1fedd839730c30c0946eb2726747df9fdc2bb'),
 (10, '', 1, 0, '/uploads/20250923/c6c80e045b0cfb04e9f872b9a0b6c74e.png', 864, 576, 'png', 0, 'E045B0CFB04E9F872B9A0B6C74E_E3C6335F_F6BCF.png', 1010639, 'image/png', '', 1758607060, 1758607060, 1758607060, 'local', '31d91a60fdd07ad169d29426bfbc42738b2a8f4d'),
-(11, '', 1, 0, '/uploads/20250923/24e31ff84a5ef79842d75331eeee3253.webp', 684, 385, 'webp', 0, 'ffe9fa0e1d304e9fb588ac06b2e158b4.webp', 8120, 'image/webp', '', 1758607120, 1758607120, 1758607120, 'local', 'ad284d52a33454dcf56c28d074808c3d7139457b');
+(11, '', 1, 0, '/uploads/20250923/24e31ff84a5ef79842d75331eeee3253.webp', 684, 385, 'webp', 0, 'ffe9fa0e1d304e9fb588ac06b2e158b4.webp', 8120, 'image/webp', '', 1758607120, 1758607120, 1758607120, 'local', 'ad284d52a33454dcf56c28d074808c3d7139457b'),
+(12, '', 0, 4, '/uploads/20251016/31930510e9bb44f3252d7d7b30cd4bda.png', 200, 200, 'png', 0, 'app-icon.png', 18252, 'image/png', '', 1760590606, 1760590606, 1760590606, 'local', '9fb9c4c387b1c422d405aae5700d8fc844977f14');
 
 -- --------------------------------------------------------
 
@@ -1283,7 +1373,7 @@ INSERT INTO `party_auth_rule` (`id`, `type`, `pid`, `name`, `title`, `icon`, `ur
 (144, 'file', 141, 'cms/search_log/edit', '修改', 'fa fa-circle-o', '', '', '', 0, NULL, '', 'xg', 'xiugai', 1758155809, 1758155809, 0, 'normal'),
 (145, 'file', 141, 'cms/search_log/del', '删除', 'fa fa-circle-o', '', '', '', 0, NULL, '', 'sc', 'shanchu', 1758155809, 1758155809, 0, 'normal'),
 (146, 'file', 141, 'cms/search_log/multi', '批量更新', 'fa fa-circle-o', '', '', '', 0, NULL, '', 'plgx', 'pilianggengxin', 1758155809, 1758155809, 0, 'normal'),
-(147, 'file', 85, 'cms/comment', '评论管理', 'fa fa-comment', '', '', '用于管理用户在网站上发表的评论', 1, NULL, '', 'plgl', 'pinglunguanli', 1758155809, 1758155809, 14, 'normal'),
+(147, 'file', 85, 'cms/comment', '评论管理', 'fa fa-comment', '', '', '用于管理用户在网站上发表的评论', 0, NULL, '', 'plgl', 'pinglunguanli', 1758155809, 1760613079, 14, 'normal'),
 (148, 'file', 147, 'cms/comment/index', '查看', 'fa fa-circle-o', '', '', '', 0, NULL, '', 'zk', 'zhakan', 1758155809, 1758155809, 0, 'normal'),
 (149, 'file', 147, 'cms/comment/add', '添加', 'fa fa-circle-o', '', '', '', 0, NULL, '', 'tj', 'tianjia', 1758155809, 1758155809, 0, 'normal'),
 (150, 'file', 147, 'cms/comment/edit', '修改', 'fa fa-circle-o', '', '', '', 0, NULL, '', 'xg', 'xiugai', 1758155809, 1758155809, 0, 'normal'),
@@ -1515,7 +1605,7 @@ CREATE TABLE IF NOT EXISTS `party_cms_archives` (
 --
 
 INSERT INTO `party_cms_archives` (`id`, `user_id`, `channel_id`, `channel_ids`, `model_id`, `special_ids`, `admin_id`, `title`, `flag`, `style`, `image`, `images`, `seotitle`, `keywords`, `description`, `tags`, `price`, `outlink`, `weigh`, `views`, `comments`, `likes`, `dislikes`, `diyname`, `isguest`, `iscomment`, `createtime`, `updatetime`, `publishtime`, `deletetime`, `createby`, `memo`, `status`) VALUES
-(1, 1, 1, '', 1, '', 1, '辽宁省清原县湾甸子镇:“四季村晚”热闹开演 村民乐享文化盛宴', 'new', '', '/uploads/20250923/980a0e9d6746fb880de3396ea195436e.png', '', '', '', '', '', 0.00, '', 0, 13, 0, 1, 0, 'liao-ning-sheng-qing-yuan-xian-wan-dian-zi-zhen-si-ji-cun-wan-re-nao-kai-yan-cun-min-yue-xiang-wen-h', 1, 0, 1758262113, 1758606113, 1758261999, NULL, 'admin', '', 'normal'),
+(1, 1, 1, '', 1, '', 1, '辽宁省清原县湾甸子镇:“四季村晚”热闹开演 村民乐享文化盛宴', 'new', '', '/uploads/20250923/980a0e9d6746fb880de3396ea195436e.png', '', '', '', '', '', 0.00, '', 0, 14, 0, 1, 0, 'liao-ning-sheng-qing-yuan-xian-wan-dian-zi-zhen-si-ji-cun-wan-re-nao-kai-yan-cun-min-yue-xiang-wen-h', 1, 0, 1758262113, 1758606113, 1758261999, NULL, 'admin', '', 'normal'),
 (2, 0, 13, '', 1, '', 1, '提交入党申请', '', '', '/uploads/20250923/c2e9beac513e1c47dd4dabab1f925c5d.webp', '', '', '', '', '', 0.00, '', 0, 0, 0, 0, 0, 'ti-jiao-ru-dang-shen-qing', 10, 10, 1758605293, 1758606475, 1758605272, NULL, 'admin', '', 'normal'),
 (3, 0, 13, '', 1, '', 1, '党组织谈话', '', '', '/uploads/20250923/fff1d91f04cdfacb092de4aaac7dd04a.jpg', '', '', '', '', '', 0.00, '', 0, 0, 0, 0, 0, 'dang-zu-zhi-tan-hua', 10, 10, 1758605320, 1758606593, 1758605300, NULL, 'admin', '', 'normal'),
 (4, 0, 13, '', 1, '', 1, '推荐和公示积极分子', '', '', '/uploads/20250923/99a8530e450c600bbeab18ddf7d86962.webp', '', '', '', '', '', 0.00, '', 0, 0, 0, 0, 0, 'tui-jian-he-gong-shi-ji-ji-fen-zi', 10, 10, 1758605378, 1758606689, 1758605362, NULL, 'admin', '', 'normal'),
@@ -1748,14 +1838,17 @@ CREATE TABLE IF NOT EXISTS `party_cms_diyform` (
   `status` enum('normal','hidden') DEFAULT 'hidden' COMMENT '状态',
   PRIMARY KEY (`id`),
   KEY `diyname` (`diyname`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COMMENT='自定义表单表';
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COMMENT='自定义表单表';
 
 --
 -- 转存表中的数据 `party_cms_diyform`
 --
 
 INSERT INTO `party_cms_diyform` (`id`, `admin_id`, `name`, `title`, `seotitle`, `posttitle`, `keywords`, `description`, `table`, `fields`, `isguest`, `needlogin`, `isedit`, `iscaptcha`, `successtips`, `redirecturl`, `posttpl`, `listtpl`, `showtpl`, `diyname`, `usermode`, `statusmode`, `createtime`, `updatetime`, `setting`, `status`) VALUES
-(1, 1, '随手拍', '随手拍', '', '', '', '', 'cms_diyform_casual_snapshot', 'images,content,locate', 0, 0, 0, 0, '', '', '', '', '', 'snapshot', 'user', 'all', 1760539482, 1760540273, NULL, 'normal');
+(1, 1, '随手拍', '随手拍', '', '', '', '', 'cms_diyform_casual_snapshot', 'images,content,locate', 0, 0, 0, 0, '', '', '', '', '', 'snapshot', 'user', 'all', 1760539482, 1760540273, NULL, 'normal'),
+(2, 1, '建言献策', '建言献策', '', '', '', '', 'cms_diyform_suggestion', 'archives_id,title,content,label', 0, 0, 0, 0, '', '', '', '', '', 'suggestion', 'user', 'all', 1760612654, 1760613795, NULL, 'normal'),
+(3, 1, '入党申请', '入常申请', '', '', '', '', 'cms_diyform_join_party', 'images,username,mobile', 0, 0, 0, 0, '', '', '', '', '', 'join', 'user', 'all', 1760616742, 1760616742, NULL, 'normal'),
+(4, 1, '组织关系转移', '组织关系转移', '', '', '', '', 'cms_diyform_organization', 'title,images,reason,member_id,role', 0, 0, 0, 0, '', '', '', '', '', 'organization', 'user', 'normal', 1760618929, 1760618929, NULL, 'normal');
 
 -- --------------------------------------------------------
 
@@ -1777,14 +1870,109 @@ CREATE TABLE IF NOT EXISTS `party_cms_diyform_casual_snapshot` (
   PRIMARY KEY (`id`),
   KEY `user_id` (`user_id`),
   KEY `createtime` (`createtime`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COMMENT='随手拍';
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COMMENT='随手拍';
 
 --
 -- 转存表中的数据 `party_cms_diyform_casual_snapshot`
 --
 
 INSERT INTO `party_cms_diyform_casual_snapshot` (`id`, `user_id`, `images`, `content`, `locate`, `createtime`, `updatetime`, `memo`, `status`) VALUES
-(1, 4, '1.png,2,png', '测试文字', '北京市顺义区', 1760584695, 1760584695, '', 'hidden');
+(3, 4, '/1.png,/2.png', '测试文字测试文字测试文字', '北京市顺义区', 1760587788, 1760587788, '', 'normal'),
+(4, 4, '/1.png,/2.png', '测试文字啊', '北京市顺义区', 1760587889, 1760587889, '', 'normal'),
+(5, 4, '/1.png,/2.png', '测试文字啊', '北京市顺义区', 1760587898, 1760587898, '', 'normal');
+
+-- --------------------------------------------------------
+
+--
+-- 表的结构 `party_cms_diyform_join_party`
+--
+
+DROP TABLE IF EXISTS `party_cms_diyform_join_party`;
+CREATE TABLE IF NOT EXISTS `party_cms_diyform_join_party` (
+  `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `user_id` int(10) DEFAULT NULL COMMENT '会员ID',
+  `username` varchar(255) DEFAULT NULL COMMENT '姓名',
+  `mobile` varchar(255) DEFAULT NULL COMMENT '手机号',
+  `images` varchar(1500) DEFAULT '' COMMENT '申请书',
+  `createtime` bigint(16) DEFAULT NULL COMMENT '添加时间',
+  `updatetime` bigint(16) DEFAULT NULL COMMENT '更新时间',
+  `memo` varchar(1500) DEFAULT '' COMMENT '备注',
+  `status` enum('normal','hidden','rejected') DEFAULT 'hidden' COMMENT '状态',
+  PRIMARY KEY (`id`),
+  KEY `user_id` (`user_id`),
+  KEY `createtime` (`createtime`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COMMENT='入党申请';
+
+--
+-- 转存表中的数据 `party_cms_diyform_join_party`
+--
+
+INSERT INTO `party_cms_diyform_join_party` (`id`, `user_id`, `username`, `mobile`, `images`, `createtime`, `updatetime`, `memo`, `status`) VALUES
+(1, 4, '张三', '13973836987', '1.png,2.png', 1760618454, 1760618454, '', 'hidden');
+
+-- --------------------------------------------------------
+
+--
+-- 表的结构 `party_cms_diyform_organization`
+--
+
+DROP TABLE IF EXISTS `party_cms_diyform_organization`;
+CREATE TABLE IF NOT EXISTS `party_cms_diyform_organization` (
+  `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `user_id` int(10) DEFAULT NULL COMMENT '会员ID',
+  `member_id` varchar(255) DEFAULT NULL COMMENT '党员编号',
+  `title` varchar(255) DEFAULT '' COMMENT '织组名称',
+  `images` varchar(1500) DEFAULT '' COMMENT '资料证明',
+  `reason` varchar(255) DEFAULT NULL COMMENT '调转原因',
+  `role` varchar(255) DEFAULT NULL COMMENT ' 职务',
+  `createtime` bigint(16) DEFAULT NULL COMMENT '添加时间',
+  `updatetime` bigint(16) DEFAULT NULL COMMENT '更新时间',
+  `memo` varchar(1500) DEFAULT '' COMMENT '备注',
+  `status` enum('normal','hidden','rejected') DEFAULT 'hidden' COMMENT '状态',
+  PRIMARY KEY (`id`),
+  KEY `user_id` (`user_id`),
+  KEY `createtime` (`createtime`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COMMENT='组织关系转移';
+
+--
+-- 转存表中的数据 `party_cms_diyform_organization`
+--
+
+INSERT INTO `party_cms_diyform_organization` (`id`, `user_id`, `member_id`, `title`, `images`, `reason`, `role`, `createtime`, `updatetime`, `memo`, `status`) VALUES
+(1, 4, '', '某某党支部', '1.png,2.png', '工作调动', '', 1760619841, 1760620043, '', 'rejected'),
+(2, 4, '', '某某党支部', '1.png,2.png', '工作调动', '', 1760620050, 1760621702, '', 'rejected'),
+(3, 4, '868564', '某某党支部', '1.png,2.png', '工作调动', '普通党员', 1760621712, 1760621712, '', 'normal');
+
+-- --------------------------------------------------------
+
+--
+-- 表的结构 `party_cms_diyform_suggestion`
+--
+
+DROP TABLE IF EXISTS `party_cms_diyform_suggestion`;
+CREATE TABLE IF NOT EXISTS `party_cms_diyform_suggestion` (
+  `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `user_id` int(10) DEFAULT NULL COMMENT '会员ID',
+  `title` varchar(255) DEFAULT NULL COMMENT '标题',
+  `content` text COMMENT '内容',
+  `label` varchar(255) DEFAULT '' COMMENT '标签',
+  `createtime` bigint(16) DEFAULT NULL COMMENT '添加时间',
+  `updatetime` bigint(16) DEFAULT NULL COMMENT '更新时间',
+  `memo` varchar(1500) DEFAULT '' COMMENT '备注',
+  `status` enum('normal','hidden','rejected') DEFAULT 'hidden' COMMENT '状态',
+  PRIMARY KEY (`id`),
+  KEY `user_id` (`user_id`),
+  KEY `createtime` (`createtime`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COMMENT='建言献策';
+
+--
+-- 转存表中的数据 `party_cms_diyform_suggestion`
+--
+
+INSERT INTO `party_cms_diyform_suggestion` (`id`, `user_id`, `title`, `content`, `label`, `createtime`, `updatetime`, `memo`, `status`) VALUES
+(1, 4, '测试标题', '越来越好', '民生服务', 1760614986, 1760616435, '', 'hidden'),
+(2, 4, '测试标题', '越来越好', '民生服务', 1760615117, 1760615117, '', 'hidden'),
+(3, 4, '测试标题', '越来越好', '民生服务', 1760615250, 1760615250, '', 'normal');
 
 -- --------------------------------------------------------
 
@@ -1824,7 +2012,7 @@ CREATE TABLE IF NOT EXISTS `party_cms_fields` (
   PRIMARY KEY (`id`),
   KEY `source` (`source`) USING BTREE,
   KEY `source_id` (`source_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COMMENT='模型字段表';
+) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=utf8mb4 COMMENT='模型字段表';
 
 --
 -- 转存表中的数据 `party_cms_fields`
@@ -1833,7 +2021,19 @@ CREATE TABLE IF NOT EXISTS `party_cms_fields` (
 INSERT INTO `party_cms_fields` (`id`, `source`, `source_id`, `name`, `type`, `title`, `content`, `filterlist`, `defaultvalue`, `rule`, `msg`, `ok`, `tip`, `decimals`, `length`, `minimum`, `maximum`, `extend`, `setting`, `favisible`, `weigh`, `createtime`, `updatetime`, `isorder`, `iscontribute`, `isfilter`, `status`) VALUES
 (2, 'diyform', 1, 'images', 'images', '图片', 'value1|title1\r\nvalue2|title2', NULL, '', '', '', '', '', NULL, 1500, NULL, 0, '', '', '', 4, 1760539482, 1760539482, 0, 1, 0, 'normal'),
 (3, 'diyform', 1, 'content', 'editor', '内容', 'value1|title1\r\nvalue2|title2', NULL, '', '', '', '', '', NULL, 0, NULL, 0, '', '', '', 2, 1760539482, 1760539482, 0, 1, 0, 'normal'),
-(4, 'diyform', 1, 'locate', 'string', '位置', 'value1|title1\r\nvalue2|title2', 'value1|title1\r\nvalue2|title2', '', '', '', '', '', 0, 255, 0, 0, '', '{\"table\":\"\",\"conditions\":\"\",\"key\":\"\",\"value\":\"\"}', '', 1, 1760540344, 1760540344, 0, 0, 0, 'normal');
+(4, 'diyform', 1, 'locate', 'string', '位置', 'value1|title1\r\nvalue2|title2', 'value1|title1\r\nvalue2|title2', '', '', '', '', '', 0, 255, 0, 0, '', '{\"table\":\"\",\"conditions\":\"\",\"key\":\"\",\"value\":\"\"}', '', 1, 1760540344, 1760540344, 0, 0, 0, 'normal'),
+(8, 'diyform', 2, 'archives_id', 'number', '文章ID', 'value1|title1\r\nvalue2|title2', 'value1|title1\r\nvalue2|title2', '', '', '', '', '', 0, 255, 0, 0, '', '{\"table\":\"\",\"conditions\":\"\",\"key\":\"\",\"value\":\"\"}', '', 8, 1760592734, 1760592754, 0, 0, 0, 'normal'),
+(9, 'diyform', 2, 'title', 'string', '标题', 'value1|title1\r\nvalue2|title2', NULL, '', '', '', '', '', NULL, 255, NULL, 0, '', '', '', 3, 1760612654, 1760612654, 0, 1, 0, 'normal'),
+(11, 'diyform', 2, 'content', 'editor', '内容', 'value1|title1\r\nvalue2|title2', NULL, '', '', '', '', '', NULL, 0, NULL, 0, '', '', '', 1, 1760612654, 1760612654, 0, 1, 0, 'normal'),
+(12, 'diyform', 2, 'label', 'string', '标签', 'value1|title1\r\nvalue2|title2', 'value1|title1\r\nvalue2|title2', '', '', '', '', '', 0, 255, 0, 0, '', '{\"table\":\"\",\"conditions\":\"\",\"key\":\"\",\"value\":\"\"}', '', 12, 1760613726, 1760613894, 0, 0, 0, 'normal'),
+(14, 'diyform', 3, 'images', 'image', '申请书', 'value1|title1\r\nvalue2|title2', 'value1|title1\r\nvalue2|title2', '', '', '', '', '', 0, 1500, 0, 0, '', '{\"table\":\"\",\"conditions\":\"\",\"key\":\"\",\"value\":\"\"}', '', 2, 1760616743, 1760617136, 0, 1, 0, 'normal'),
+(16, 'diyform', 3, 'username', 'string', '姓名', 'value1|title1\r\nvalue2|title2', 'value1|title1\r\nvalue2|title2', '', '', '', '', '', 0, 255, 0, 0, '', '{\"table\":\"\",\"conditions\":\"\",\"key\":\"\",\"value\":\"\"}', '', 17, 1760617053, 1760617053, 0, 0, 0, 'normal'),
+(17, 'diyform', 3, 'mobile', 'string', '手机号', 'value1|title1\r\nvalue2|title2', 'value1|title1\r\nvalue2|title2', '', '', '', '', '', 0, 255, 0, 0, '', '{\"table\":\"\",\"conditions\":\"\",\"key\":\"\",\"value\":\"\"}', '', 17, 1760617076, 1760617076, 0, 0, 0, 'normal'),
+(18, 'diyform', 4, 'title', 'string', '织组名称', 'value1|title1\r\nvalue2|title2', 'value1|title1\r\nvalue2|title2', '', '', '', '', '', 0, 255, 0, 0, '', '{\"table\":\"\",\"conditions\":\"\",\"key\":\"\",\"value\":\"\"}', '', 22, 1760618929, 1760619014, 0, 1, 0, 'normal'),
+(19, 'diyform', 4, 'images', 'images', '资料证明', 'value1|title1\r\nvalue2|title2', 'value1|title1\r\nvalue2|title2', '', '', '', '', '', 0, 1500, 0, 0, '', '{\"table\":\"\",\"conditions\":\"\",\"key\":\"\",\"value\":\"\"}', '', 21, 1760618929, 1760619068, 0, 1, 0, 'normal'),
+(21, 'diyform', 4, 'reason', 'string', '调转原因', 'value1|title1\r\nvalue2|title2', 'value1|title1\r\nvalue2|title2', '', '', '', '', '', 0, 255, 0, 0, '', '{\"table\":\"\",\"conditions\":\"\",\"key\":\"\",\"value\":\"\"}', '', 3, 1760619144, 1760619144, 0, 0, 0, 'normal'),
+(22, 'diyform', 4, 'member_id', 'string', '党员编号', 'value1|title1\r\nvalue2|title2', 'value1|title1\r\nvalue2|title2', '', '', '', '', '', 0, 255, 0, 0, '', '{\"table\":\"\",\"conditions\":\"\",\"key\":\"\",\"value\":\"\"}', '', 23, 1760621195, 1760621195, 0, 0, 0, 'normal'),
+(23, 'diyform', 4, 'role', 'string', ' 职务', 'value1|title1\r\nvalue2|title2', 'value1|title1\r\nvalue2|title2', '', '', '', '', '', 0, 255, 0, 0, '', '{\"table\":\"\",\"conditions\":\"\",\"key\":\"\",\"value\":\"\"}', '', 2, 1760621265, 1760621265, 0, 0, 0, 'normal');
 
 -- --------------------------------------------------------
 
@@ -2090,6 +2290,37 @@ CREATE TABLE IF NOT EXISTS `party_cms_spider_log` (
 -- --------------------------------------------------------
 
 --
+-- 表的结构 `party_cms_study_record`
+--
+
+DROP TABLE IF EXISTS `party_cms_study_record`;
+CREATE TABLE IF NOT EXISTS `party_cms_study_record` (
+  `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `user_id` int(10) DEFAULT NULL COMMENT '会员ID',
+  `archives_id` int(10) UNSIGNED DEFAULT NULL COMMENT '文章ID',
+  `createtime` bigint(16) DEFAULT NULL COMMENT '添加时间',
+  `updatetime` bigint(16) DEFAULT NULL COMMENT '更新时间',
+  `memo` varchar(1500) DEFAULT '' COMMENT '备注',
+  `status` enum('normal','hidden','rejected') DEFAULT 'hidden' COMMENT '状态',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `user_archives` (`user_id`,`archives_id`) USING BTREE,
+  KEY `user_id` (`user_id`),
+  KEY `createtime` (`createtime`),
+  KEY `archives_id` (`archives_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COMMENT='学习记录';
+
+--
+-- 转存表中的数据 `party_cms_study_record`
+--
+
+INSERT INTO `party_cms_study_record` (`id`, `user_id`, `archives_id`, `createtime`, `updatetime`, `memo`, `status`) VALUES
+(1, 4, 1, 1760596579, 1760596653, '', 'hidden'),
+(2, 4, 2, 1760597280, 1760597280, '', 'normal'),
+(3, 4, 3, 1760597287, 1760597287, '', 'normal');
+
+-- --------------------------------------------------------
+
+--
 -- 表的结构 `party_cms_tag`
 --
 
@@ -2237,7 +2468,7 @@ CREATE TABLE IF NOT EXISTS `party_sms` (
   `ip` varchar(30) DEFAULT '' COMMENT 'IP',
   `createtime` bigint(16) UNSIGNED DEFAULT '0' COMMENT '创建时间',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4 COMMENT='短信验证码表';
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8mb4 COMMENT='短信验证码表';
 
 --
 -- 转存表中的数据 `party_sms`
@@ -2252,7 +2483,8 @@ INSERT INTO `party_sms` (`id`, `event`, `mobile`, `code`, `times`, `ip`, `create
 (6, 'register', '13073567604', '563964', 0, '127.0.0.1', 1758704188),
 (9, 'register', '13973836967', '920415', 0, '127.0.0.1', 1758706873),
 (13, 'register', '13973836988', '801226', 0, '0.0.0.0', 1758789567),
-(14, 'register', '13973836989', '778050', 0, '0.0.0.0', 1758790412);
+(14, 'register', '13973836989', '778050', 0, '0.0.0.0', 1758790412),
+(18, 'joinparty', '13973836987', '086329', 0, '127.0.0.1', 1760618435);
 
 -- --------------------------------------------------------
 
@@ -2324,6 +2556,7 @@ CREATE TABLE IF NOT EXISTS `party_user` (
   `salt` varchar(30) DEFAULT '' COMMENT '密码盐',
   `email` varchar(100) DEFAULT '' COMMENT '电子邮箱',
   `mobile` varchar(11) DEFAULT '' COMMENT '手机号',
+  `idcard` varchar(18) DEFAULT '' COMMENT '身份证号',
   `avatar` varchar(255) DEFAULT '' COMMENT '头像',
   `level` tinyint(1) UNSIGNED NOT NULL DEFAULT '0' COMMENT '等级',
   `gender` tinyint(1) UNSIGNED NOT NULL DEFAULT '0' COMMENT '性别',
@@ -2348,22 +2581,23 @@ CREATE TABLE IF NOT EXISTS `party_user` (
   PRIMARY KEY (`id`),
   KEY `username` (`username`),
   KEY `email` (`email`),
-  KEY `mobile` (`mobile`)
+  KEY `mobile` (`mobile`),
+  KEY `idcard` (`idcard`)
 ) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COMMENT='会员表';
 
 --
 -- 转存表中的数据 `party_user`
 --
 
-INSERT INTO `party_user` (`id`, `group_id`, `username`, `nickname`, `password`, `salt`, `email`, `mobile`, `avatar`, `level`, `gender`, `birthday`, `bio`, `money`, `score`, `successions`, `maxsuccessions`, `prevtime`, `logintime`, `loginip`, `loginfailure`, `loginfailuretime`, `joinip`, `jointime`, `createtime`, `updatetime`, `token`, `status`, `verification`) VALUES
-(1, 1, 'admin', 'admin', '2b5791008fe4243a543befc33ced1b3b', 'b44dc1', 'admin@163.com', '13000000000', '/assets/img/avatar.png', 1, 0, '2017-04-08', '', 0.00, 2, 1, 1, 1491635035, 1491635035, '127.0.0.1', 0, 1491635035, '127.0.0.1', 1491635035, 0, 1758262113, '', 'normal', ''),
-(2, 0, 'pcuser', 'pcuser', '8254c8bf6e20f7b96c14017255141b35', 'I1xbyc', 'user@test.com', '13212345678', '', 1, 0, NULL, '', 0.00, 0, 1, 1, 1758254295, 1758260254, '0.0.0.0', 0, NULL, '0.0.0.0', 1758244923, 1758244923, 1758260254, '', 'normal', ''),
-(3, 1, 'user_13073567604_fRBt', '烨华_驹69', 'ad6fa6396d1ca86a8c8309588827e606', '0jy6lZ', '', '13073567604', '', 0, 0, NULL, '', 0.00, 0, 1, 1, NULL, NULL, '', 0, NULL, '127.0.0.1', 1758704211, 1758704211, 1758704211, '', 'normal', ''),
-(4, 1, 'user_13973836987_Hp2n', '烨华_驹69', '946fad2e1d4fd1c2fd600e54f38f2b84', '3noETM', '', '13973836987', '', 0, 0, NULL, '', 0.00, 0, 1, 1, 1760583715, 1760583715, '127.0.0.1', 0, NULL, '127.0.0.1', 1758704663, 1758704663, 1760583715, '', 'normal', ''),
-(5, 1, 'user_13973836977_FO2T', '烨华_驹69', 'f6a3ba6650273dfee714fd1318080b71', 'sXlDqo', '', '13973836977', '', 0, 0, NULL, '', 0.00, 0, 1, 1, NULL, NULL, '', 0, NULL, '127.0.0.1', 1758706625, 1758706625, 1758706625, '', 'normal', ''),
-(6, 1, 'user_13973836988_zcgH', '用户6988', '618250970747c7595a68cc15fea1f308', 'USZ8xu', '', '13973836988', '', 0, 0, NULL, '', 0.00, 0, 1, 1, NULL, NULL, '', 0, NULL, '0.0.0.0', 1758789576, 1758789576, 1758789576, '', 'normal', ''),
-(7, 1, 'user_13973836989_AVMB', '用户6989', '87e5a32e86a19086b5a128b2a4d8c190', 'aZ2uqd', '', '13973836989', '', 0, 0, NULL, '', 0.00, 0, 1, 1, 1758793151, 1758793151, '0.0.0.0', 0, NULL, '0.0.0.0', 1758790417, 1758790417, 1758793151, '', 'normal', ''),
-(8, 1, 'user_13973836937_xAT1', '烨华_驹69', 'cb678e7547bbbbea0eebecd209cf5ee6', 'VksJ3H', '', '13973836937', '', 0, 0, NULL, '', 0.00, 0, 1, 1, NULL, NULL, '', 0, NULL, '127.0.0.1', 1760342080, 1760342080, 1760342080, '', 'normal', '');
+INSERT INTO `party_user` (`id`, `group_id`, `username`, `nickname`, `password`, `salt`, `email`, `mobile`, `idcard`, `avatar`, `level`, `gender`, `birthday`, `bio`, `money`, `score`, `successions`, `maxsuccessions`, `prevtime`, `logintime`, `loginip`, `loginfailure`, `loginfailuretime`, `joinip`, `jointime`, `createtime`, `updatetime`, `token`, `status`, `verification`) VALUES
+(1, 1, 'admin', 'admin', '2b5791008fe4243a543befc33ced1b3b', 'b44dc1', 'admin@163.com', '13000000000', '', '/assets/img/avatar.png', 1, 0, '2017-04-08', '', 0.00, 2, 1, 1, 1491635035, 1491635035, '127.0.0.1', 0, 1491635035, '127.0.0.1', 1491635035, 0, 1758262113, '', 'normal', ''),
+(2, 0, 'pcuser', 'pcuser', '8254c8bf6e20f7b96c14017255141b35', 'I1xbyc', 'user@test.com', '13212345678', '', '', 1, 0, NULL, '', 0.00, 0, 1, 1, 1758254295, 1758260254, '0.0.0.0', 0, NULL, '0.0.0.0', 1758244923, 1758244923, 1758260254, '', 'normal', ''),
+(3, 1, 'user_13073567604_fRBt', '烨华_驹69', 'ad6fa6396d1ca86a8c8309588827e606', '0jy6lZ', '', '13073567604', '', '', 0, 0, NULL, '', 0.00, 0, 1, 1, NULL, NULL, '', 0, NULL, '127.0.0.1', 1758704211, 1758704211, 1758704211, '', 'normal', ''),
+(4, 1, 'user_13973836987_Hp2n', '烨华_驹69', '946fad2e1d4fd1c2fd600e54f38f2b84', '3noETM', '', '13973836987', '', '', 0, 0, NULL, '', 0.00, 0, 1, 1, 1760614965, 1760614965, '127.0.0.1', 0, NULL, '127.0.0.1', 1758704663, 1758704663, 1760614965, '', 'normal', ''),
+(5, 1, 'user_13973836977_FO2T', '烨华_驹69', 'f6a3ba6650273dfee714fd1318080b71', 'sXlDqo', '', '13973836977', '', '', 0, 0, NULL, '', 0.00, 0, 1, 1, NULL, NULL, '', 0, NULL, '127.0.0.1', 1758706625, 1758706625, 1758706625, '', 'normal', ''),
+(6, 1, 'user_13973836988_zcgH', '用户6988', '618250970747c7595a68cc15fea1f308', 'USZ8xu', '', '13973836988', '', '', 0, 0, NULL, '', 0.00, 0, 1, 1, NULL, NULL, '', 0, NULL, '0.0.0.0', 1758789576, 1758789576, 1758789576, '', 'normal', ''),
+(7, 1, 'user_13973836989_AVMB', '用户6989', '87e5a32e86a19086b5a128b2a4d8c190', 'aZ2uqd', '', '13973836989', '', '', 0, 0, NULL, '', 0.00, 0, 1, 1, 1758793151, 1758793151, '0.0.0.0', 0, NULL, '0.0.0.0', 1758790417, 1758790417, 1758793151, '', 'normal', ''),
+(8, 1, 'user_13973836937_xAT1', '烨华_驹69', 'cb678e7547bbbbea0eebecd209cf5ee6', 'VksJ3H', '', '13973836937', '', '', 0, 0, NULL, '', 0.00, 0, 1, 1, NULL, NULL, '', 0, NULL, '127.0.0.1', 1760342080, 1760342080, 1760342080, '', 'normal', '');
 
 -- --------------------------------------------------------
 
@@ -2497,6 +2731,7 @@ INSERT INTO `party_user_token` (`token`, `user_id`, `createtime`, `expiretime`) 
 ('5cc6afe066bf571a5b28f64bbbea4d1d2b866f5e', 7, 1758792894, 1761384894),
 ('638ed603635dd3ac981aaa70b7d6c81182799cfe', 2, 1758260254, 1760852254),
 ('6d58f345fc1fd887a35eac9564e3ce0e96f7900d', 4, 1758711489, 1761303489),
+('84827c348b08e255bb95858574291dad17544123', 4, 1760614965, 1763206965),
 ('86abbc77b9a5b7fc0601f9fa69b8f53f5359e77e', 4, 1758708342, 1761300342),
 ('93eea89691a066ecfaaa93e5af59ac3459dce05f', 4, 1758707778, 1761299778),
 ('97b01aedd491fd6036e22b118e776f6ca6e1bedf', 4, 1758708194, 1761300194),
@@ -2505,6 +2740,7 @@ INSERT INTO `party_user_token` (`token`, `user_id`, `createtime`, `expiretime`) 
 ('af67d8aefa0d5999713efebe6105ef8dd95ef473', 7, 1758793151, 1761385151),
 ('b5eca33d7dae8c47d26e1c5ce706c1b761e30ef9', 7, 1758792829, 1761384829),
 ('bb25daf8f2b86e431221a7c4a188c5e2bb533882', 5, 1758706625, 1761298625),
+('ce0ba385146583232619bef30a7a3e38c1d5d910', 4, 1760596564, 1763188564),
 ('ceba5c8ee8ff5c6a0df317afd45591d69fe8f223', 7, 1758792923, 1761384923),
 ('d42149159c71951681aa5d1f3d712a8386c3b556', 7, 1758792818, 1761384818),
 ('e63f02c8db1ca3a02051f8eb921fc7cc457db568', 4, 1758704663, 1761296663),
