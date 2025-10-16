@@ -73,6 +73,9 @@ return [
     'miniapp/suggestion/detail' => 'miniapp/suggestion/detail',
     'miniapp/suggestion/delete' => ['miniapp/suggestion/delete', 'POST'],
     
+    // 组织关系转移API路由（Organization - 组织关系转移功能）
+    'miniapp/organization/add' => ['miniapp/organization/add', 'POST'],
+    
 //        域名绑定到模块
 //        '__domain__'  => [
 //            'admin' => 'admin',
