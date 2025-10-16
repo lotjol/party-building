@@ -67,6 +67,12 @@ return [
     'miniapp/archives/study/delete' => ['miniapp/archives/study_delete', 'POST'],
     'miniapp/archives/study/clear' => ['miniapp/archives/study_clear', 'POST'],
     
+    // 建言献策API路由（Suggestion - 用户建议功能）
+    'miniapp/suggestion/add' => ['miniapp/suggestion/add', 'POST'],
+    'miniapp/suggestion/list' => 'miniapp/suggestion/myList',
+    'miniapp/suggestion/detail' => 'miniapp/suggestion/detail',
+    'miniapp/suggestion/delete' => ['miniapp/suggestion/delete', 'POST'],
+    
 //        域名绑定到模块
 //        '__domain__'  => [
 //            'admin' => 'admin',
