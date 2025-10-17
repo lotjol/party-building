@@ -58,6 +58,7 @@ class Suggestion extends Base
             
             $data = [
                 'user_id' => $this->auth->id,
+                'username' => $this->auth->username,
                 'title' => $title,
                 'content' => $content,
                 'label' => $label,

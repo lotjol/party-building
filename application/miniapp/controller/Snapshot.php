@@ -62,6 +62,7 @@ class Snapshot extends Base
             // 插入数据
             $data = [
                 'user_id' => $this->auth->id,
+                'username' => $this->auth->username,
                 'content' => $content,
                 'images' => $images,
                 'locate' => $locate,
