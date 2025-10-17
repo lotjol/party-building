@@ -76,6 +76,10 @@ return [
     // 个人档案API路由（Profile - 个人档案功能）
     'miniapp/profile/info' => 'miniapp/profile/info',
     
+    // 活动API路由（Activity - 活动报名功能）
+    'miniapp/activity/signup' => ['miniapp/activity/signup', 'POST'],
+    'miniapp/activity/cancel' => ['miniapp/activity/cancel', 'POST'],
+    
 //        域名绑定到模块
 //        '__domain__'  => [
 //            'admin' => 'admin',

@@ -56,7 +56,7 @@ class Archives extends Base
             // 查询文章数据
             $articles = CmsArchives::where($where)
                 ->order($orderBy)
-                ->field('id,channel_id,title,image,description,views,comments,likes,weigh,createtime,updatetime,publishtime')
+                ->field('id,channel_id,model_id,title,image,description,views,comments,likes,weigh,createtime,updatetime,publishtime')
                 ->page($page, $limit)
                 ->select();
             
@@ -72,10 +72,19 @@ class Archives extends Base
                     $channelName = $channel ? $channel->name : '';
                 }
                 
-                $result[] = [
+                // 获取模型信息
+                $modelName = '';
+                if ($article->model_id) {
+                    $model = \think\Db::name('cms_model')->where('id', $article->model_id)->field('name')->find();
+                    $modelName = $model ? $model['name'] : '';
+                }
+                
+                $item = [
                     'id' => $article->id,
                     'channel_id' => $article->channel_id,
                     'channel_name' => $channelName,
+                    'model_id' => $article->model_id,
+                    'model_name' => $modelName,
                     'title' => $article->title,
                     'image' => $article->image ?: '',
                     'description' => $article->description ?: '',
@@ -87,6 +96,56 @@ class Archives extends Base
                     'updatetime' => date('Y-m-d H:i:s', $article->updatetime),
                     'publishtime' => $article->publishtime ? date('Y-m-d H:i:s', $article->publishtime) : ''
                 ];
+                
+                // 如果是组织活动类型（model_id = 2），添加活动相关字段
+                if ($article->model_id == 2) {
+                    // 获取活动附加表数据
+                    $activityData = \think\Db::name('cms_addon_activity')->where('id', $article->id)->find();
+                    if ($activityData && !empty($activityData['start_date']) && !empty($activityData['end_date'])) {
+                        // 添加活动日期字段
+                        $item['start_date'] = $activityData['start_date'];
+                        $item['end_date'] = $activityData['end_date'];
+                        
+                        // 检查当前用户是否已报名（需要登录）
+                        $isSignedUp = false;
+                        if ($this->auth && $this->auth->id) {
+                            $signup = \think\Db::name('cms_diyform_activity_signup')
+                                ->where('user_id', $this->auth->id)
+                                ->where('archives_id', $article->id)
+                                ->where('status', 'normal')
+                                ->find();
+                            $isSignedUp = $signup ? true : false;
+                        }
+                        
+                        // 计算活动状态
+                        $now = time();
+                        $start = strtotime($activityData['start_date']);
+                        $end = strtotime($activityData['end_date'] . ' 23:59:59'); // 结束日期包含当天全天
+                        
+                        if ($isSignedUp) {
+                            $activityStatus = '已报名';
+                        } elseif ($now < $start) {
+                            $activityStatus = '未开始';
+                        } elseif ($now >= $start && $now <= $end) {
+                            $activityStatus = '进行中';
+                        } else {
+                            $activityStatus = '已结束';
+                        }
+                        
+                        // 统计报名人数
+                        $signupCount = \think\Db::name('cms_diyform_activity_signup')
+                            ->where('archives_id', $article->id)
+                            ->where('status', 'normal')
+                            ->count();
+                        
+                        // 添加活动相关字段
+                        $item['activity_status'] = $activityStatus;
+                        $item['is_signed_up'] = $isSignedUp;
+                        $item['signup_count'] = $signupCount;
+                    }
+                }
+                
+                $result[] = $item;
             }
             
             $response = [
@@ -144,18 +203,44 @@ class Archives extends Base
             // 查询文章详情
             $article = CmsArchives::where('id', $id)
                 ->where('status', 'normal')
-                ->field('id,channel_id,title,image,description,views,comments,likes,weigh,createtime,updatetime,publishtime')
+                ->field('id,channel_id,model_id,title,image,description,views,comments,likes,weigh,createtime,updatetime,publishtime')
                 ->find();
             
             if (!$article) {
                 throw new \Exception('文章不存在');
             }
             
-            // 获取文章内容
+            // 获取文章内容和模型特定字段
             $content = '';
-            $addonArticle = \think\Db::name('cms_addon_article')->where('id', $id)->find();
-            if ($addonArticle) {
-                $content = $addonArticle['content'] ?: '';
+            $extraFields = [];
+            
+            if ($article->model_id) {
+                // 获取模型信息
+                $model = \think\Db::name('cms_model')->where('id', $article->model_id)->find();
+                if ($model && $model['table']) {
+                    // $model['table'] 已经包含完整表名，如 'cms_addon_article'
+                    $addonTable = $model['table'];
+                    
+                    // 查询附加表数据
+                    $addonData = \think\Db::name($addonTable)->where('id', $id)->find();
+                    if ($addonData) {
+                        // 获取内容
+                        if (isset($addonData['content'])) {
+                            $content = $addonData['content'] ?: '';
+                        }
+                        
+                        // 动态获取附加字段（排除 id 和 content）
+                        foreach ($addonData as $key => $value) {
+                            // 跳过 id 和 content 字段
+                            if ($key !== 'id' && $key !== 'content') {
+                                // 只返回存在且有值的字段
+                                if (isset($addonData[$key])) {
+                                    $extraFields[$key] = $value !== null ? $value : '';
+                                }
+                            }
+                        }
+                    }
+                }
             }
             
             // 获取栏目名称
@@ -165,6 +250,13 @@ class Archives extends Base
                 $channelName = $channel ? $channel->name : '';
             }
             
+            // 获取模型名称
+            $modelName = '';
+            if ($article->model_id) {
+                $model = \think\Db::name('cms_model')->where('id', $article->model_id)->field('name')->find();
+                $modelName = $model ? $model['name'] : '';
+            }
+            
             // 增加浏览量
             CmsArchives::where('id', $id)->setInc('views');
             
@@ -172,6 +264,8 @@ class Archives extends Base
                 'id' => $article->id,
                 'channel_id' => $article->channel_id,
                 'channel_name' => $channelName,
+                'model_id' => $article->model_id,
+                'model_name' => $modelName,
                 'title' => $article->title,
                 'image' => $article->image ?: '',
                 'description' => $article->description ?: '',
@@ -184,6 +278,49 @@ class Archives extends Base
                 'updatetime' => date('Y-m-d H:i:s', $article->updatetime),
                 'publishtime' => $article->publishtime ? date('Y-m-d H:i:s', $article->publishtime) : ''
             ];
+            
+            // 合并模型特定字段
+            $result = array_merge($result, $extraFields);
+            
+            // 如果是组织活动类型（model_id = 2），添加活动状态和报名信息
+            if ($article->model_id == 2 && !empty($extraFields['start_date']) && !empty($extraFields['end_date'])) {
+                // 检查当前用户是否已报名（需要登录）
+                $isSignedUp = false;
+                if ($this->auth && $this->auth->id) {
+                    $signup = \think\Db::name('cms_diyform_activity_signup')
+                        ->where('user_id', $this->auth->id)
+                        ->where('archives_id', $id)
+                        ->where('status', 'normal')
+                        ->find();
+                    $isSignedUp = $signup ? true : false;
+                }
+                
+                // 计算活动状态
+                $now = time();
+                $start = strtotime($extraFields['start_date']);
+                $end = strtotime($extraFields['end_date'] . ' 23:59:59'); // 结束日期包含当天全天
+                
+                if ($isSignedUp) {
+                    $activityStatus = '已报名';
+                } elseif ($now < $start) {
+                    $activityStatus = '未开始';
+                } elseif ($now >= $start && $now <= $end) {
+                    $activityStatus = '进行中';
+                } else {
+                    $activityStatus = '已结束';
+                }
+                
+                // 统计报名人数
+                $signupCount = \think\Db::name('cms_diyform_activity_signup')
+                    ->where('archives_id', $id)
+                    ->where('status', 'normal')
+                    ->count();
+                
+                // 添加活动相关字段
+                $result['activity_status'] = $activityStatus;
+                $result['is_signed_up'] = $isSignedUp;
+                $result['signup_count'] = $signupCount;
+            }
             
             $response = [
                 'code' => 1,
@@ -233,7 +370,7 @@ class Archives extends Base
             // 查询热门文章（按浏览量排序）
             $articles = CmsArchives::where($where)
                 ->order('views desc, weigh desc, id desc')
-                ->field('id,channel_id,title,image,description,views,comments,likes,weigh,createtime,updatetime,publishtime')
+                ->field('id,channel_id,model_id,title,image,description,views,comments,likes,weigh,createtime,updatetime,publishtime')
                 ->limit($limit)
                 ->select();
             
@@ -246,10 +383,19 @@ class Archives extends Base
                     $channelName = $channel ? $channel->name : '';
                 }
                 
-                $result[] = [
+                // 获取模型信息
+                $modelName = '';
+                if ($article->model_id) {
+                    $model = \think\Db::name('cms_model')->where('id', $article->model_id)->field('name')->find();
+                    $modelName = $model ? $model['name'] : '';
+                }
+                
+                $item = [
                     'id' => $article->id,
                     'channel_id' => $article->channel_id,
                     'channel_name' => $channelName,
+                    'model_id' => $article->model_id,
+                    'model_name' => $modelName,
                     'title' => $article->title,
                     'image' => $article->image ?: '',
                     'description' => $article->description ?: '',
@@ -261,6 +407,56 @@ class Archives extends Base
                     'updatetime' => date('Y-m-d H:i:s', $article->updatetime),
                     'publishtime' => $article->publishtime ? date('Y-m-d H:i:s', $article->publishtime) : ''
                 ];
+                
+                // 如果是组织活动类型（model_id = 2），添加活动相关字段
+                if ($article->model_id == 2) {
+                    // 获取活动附加表数据
+                    $activityData = \think\Db::name('cms_addon_activity')->where('id', $article->id)->find();
+                    if ($activityData && !empty($activityData['start_date']) && !empty($activityData['end_date'])) {
+                        // 添加活动日期字段
+                        $item['start_date'] = $activityData['start_date'];
+                        $item['end_date'] = $activityData['end_date'];
+                        
+                        // 检查当前用户是否已报名（需要登录）
+                        $isSignedUp = false;
+                        if ($this->auth && $this->auth->id) {
+                            $signup = \think\Db::name('cms_diyform_activity_signup')
+                                ->where('user_id', $this->auth->id)
+                                ->where('archives_id', $article->id)
+                                ->where('status', 'normal')
+                                ->find();
+                            $isSignedUp = $signup ? true : false;
+                        }
+                        
+                        // 计算活动状态
+                        $now = time();
+                        $start = strtotime($activityData['start_date']);
+                        $end = strtotime($activityData['end_date'] . ' 23:59:59'); // 结束日期包含当天全天
+                        
+                        if ($isSignedUp) {
+                            $activityStatus = '已报名';
+                        } elseif ($now < $start) {
+                            $activityStatus = '未开始';
+                        } elseif ($now >= $start && $now <= $end) {
+                            $activityStatus = '进行中';
+                        } else {
+                            $activityStatus = '已结束';
+                        }
+                        
+                        // 统计报名人数
+                        $signupCount = \think\Db::name('cms_diyform_activity_signup')
+                            ->where('archives_id', $article->id)
+                            ->where('status', 'normal')
+                            ->count();
+                        
+                        // 添加活动相关字段
+                        $item['activity_status'] = $activityStatus;
+                        $item['is_signed_up'] = $isSignedUp;
+                        $item['signup_count'] = $signupCount;
+                    }
+                }
+                
+                $result[] = $item;
             }
             
             $response = [
@@ -332,7 +528,7 @@ class Archives extends Base
             
             // 查询文章数据
             $articles = $query->order('weigh desc, id desc')
-                ->field('id,channel_id,title,image,description,views,comments,likes,weigh,createtime,updatetime,publishtime')
+                ->field('id,channel_id,model_id,title,image,description,views,comments,likes,weigh,createtime,updatetime,publishtime')
                 ->page($page, $limit)
                 ->select();
             
@@ -353,10 +549,19 @@ class Archives extends Base
                     $channelName = $channel ? $channel->name : '';
                 }
                 
-                $result[] = [
+                // 获取模型信息
+                $modelName = '';
+                if ($article->model_id) {
+                    $model = \think\Db::name('cms_model')->where('id', $article->model_id)->field('name')->find();
+                    $modelName = $model ? $model['name'] : '';
+                }
+                
+                $item = [
                     'id' => $article->id,
                     'channel_id' => $article->channel_id,
                     'channel_name' => $channelName,
+                    'model_id' => $article->model_id,
+                    'model_name' => $modelName,
                     'title' => $article->title,
                     'image' => $article->image ?: '',
                     'description' => $article->description ?: '',
@@ -368,6 +573,56 @@ class Archives extends Base
                     'updatetime' => date('Y-m-d H:i:s', $article->updatetime),
                     'publishtime' => $article->publishtime ? date('Y-m-d H:i:s', $article->publishtime) : ''
                 ];
+                
+                // 如果是组织活动类型（model_id = 2），添加活动相关字段
+                if ($article->model_id == 2) {
+                    // 获取活动附加表数据
+                    $activityData = \think\Db::name('cms_addon_activity')->where('id', $article->id)->find();
+                    if ($activityData && !empty($activityData['start_date']) && !empty($activityData['end_date'])) {
+                        // 添加活动日期字段
+                        $item['start_date'] = $activityData['start_date'];
+                        $item['end_date'] = $activityData['end_date'];
+                        
+                        // 检查当前用户是否已报名（需要登录）
+                        $isSignedUp = false;
+                        if ($this->auth && $this->auth->id) {
+                            $signup = \think\Db::name('cms_diyform_activity_signup')
+                                ->where('user_id', $this->auth->id)
+                                ->where('archives_id', $article->id)
+                                ->where('status', 'normal')
+                                ->find();
+                            $isSignedUp = $signup ? true : false;
+                        }
+                        
+                        // 计算活动状态
+                        $now = time();
+                        $start = strtotime($activityData['start_date']);
+                        $end = strtotime($activityData['end_date'] . ' 23:59:59'); // 结束日期包含当天全天
+                        
+                        if ($isSignedUp) {
+                            $activityStatus = '已报名';
+                        } elseif ($now < $start) {
+                            $activityStatus = '未开始';
+                        } elseif ($now >= $start && $now <= $end) {
+                            $activityStatus = '进行中';
+                        } else {
+                            $activityStatus = '已结束';
+                        }
+                        
+                        // 统计报名人数
+                        $signupCount = \think\Db::name('cms_diyform_activity_signup')
+                            ->where('archives_id', $article->id)
+                            ->where('status', 'normal')
+                            ->count();
+                        
+                        // 添加活动相关字段
+                        $item['activity_status'] = $activityStatus;
+                        $item['is_signed_up'] = $isSignedUp;
+                        $item['signup_count'] = $signupCount;
+                    }
+                }
+                
+                $result[] = $item;
             }
             
             $response = [
