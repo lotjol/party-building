@@ -21,12 +21,12 @@ class Attachment extends Model
 
     protected static function init()
     {
-        // 如果已经上传该资源，则不再记录
-        self::beforeInsert(function ($model) {
-            if (self::where('url', '=', $model['url'])->where('storage', $model['storage'])->find()) {
-                return false;
-            }
-        });
+        // 移除重复检查，允许相同文件重复上传
+        // self::beforeInsert(function ($model) {
+        //     if (self::where('url', '=', $model['url'])->where('storage', $model['storage'])->find()) {
+        //         return false;
+        //     }
+        // });
         self::beforeWrite(function ($row) {
             if (isset($row['category']) && $row['category'] == 'unclassed') {
                 $row['category'] = '';
