@@ -66,6 +66,19 @@ class Channel extends Backend
         //设置过滤方法
         $this->request->filter(['strip_tags']);
         if ($this->request->isAjax()) {
+            // 检查是否是刷新操作，如果是则更新统计
+            $refresh = $this->request->request("refresh");
+            if ($refresh) {
+                // 获取所有栏目ID并刷新统计
+                $allChannelIds = array_column($this->channelList, 'id');
+                if (!empty($allChannelIds)) {
+                    ChannelModel::refreshItems($allChannelIds);
+                    // 重新获取更新后的栏目列表
+                    $this->tree->init(collection($this->model->order('weigh desc,id desc')->select())->toArray(), 'parent_id');
+                    $this->channelList = $this->tree->getTreeList($this->tree->getTreeArray(0), 'name');
+                }
+            }
+            
             $search = $this->request->request("search");
             $model_id = $this->request->request("model_id");
             //构造父类select列表选项数据

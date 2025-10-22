@@ -137,7 +137,14 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form', 'cms-base'], function
                 fixedRightNumber: 1,
                 columns: columns,
                 search: false,
-                commonSearch: false
+                commonSearch: false,
+                queryParams: function (params) {
+                    // 检查是否是刷新操作
+                    if (params.refresh) {
+                        params.refresh = 1;
+                    }
+                    return params;
+                }
             });
 
             // 绑定TAB事件
@@ -197,6 +204,14 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form', 'cms-base'], function
                 $(that).toggleClass("collapsed", !show);
                 $(".btn-node-sub.disabled[data-pid!=0]").closest("tr").toggle(show);
                 $(".btn-node-sub[data-pid!=0]").data("shown", show);
+            });
+
+            // 自定义刷新按钮事件
+            $(document).on("click", ".btn-refresh", function (e) {
+                e.preventDefault();
+                // 传递refresh参数进行统计更新
+                table.bootstrapTable('refresh', { refresh: 1 });
+                return false;
             });
 
             // 为表格绑定事件
