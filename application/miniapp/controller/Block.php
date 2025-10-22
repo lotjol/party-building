@@ -129,12 +129,6 @@ class Block extends Base
             }
         }
         
-        // 处理内容
-        $content = '';
-        if ($block->content) {
-            $content = $block->content;
-        }
-        
         return [
             'id' => $block->id,
             'type' => $block->type,
@@ -142,7 +136,7 @@ class Block extends Base
             'title' => $block->title,
             'image' => $image,
             'url' => $url,
-            'content' => $content,
+            'urltype' => $block->urltype ?? '',
             'weigh' => $block->weigh
         ];
     }
