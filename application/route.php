@@ -48,6 +48,14 @@ return [
     'miniapp/archives/hot' => 'miniapp/archives/hot',
     'miniapp/archives/search' => 'miniapp/archives/search',
     
+    // 精品书籍API路由（Book - 精品书籍功能）
+    'miniapp/book/list' => 'miniapp/book/list',
+    'miniapp/book/detail' => 'miniapp/book/detail',
+    
+    // 组织活动API路由（Activity - 组织活动功能）
+    'miniapp/activity/list' => 'miniapp/activity/list',
+    'miniapp/activity/detail' => 'miniapp/activity/detail',
+    
     // 区块API路由（Block - CMS区块管理）
     'miniapp/block/name' => 'miniapp/block/name',
     

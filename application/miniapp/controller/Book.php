@@ -6,23 +6,23 @@ use addons\cms\model\Archives as CmsArchives;
 use addons\cms\model\Channel as CmsChannel;
 
 /**
- * 组织活动控制器
+ * 精品书籍控制器
  */
-class Activity extends Base
+class Book extends Base
 {
     protected $noNeedLogin = ['list', 'detail'];
     protected $noNeedRight = ['*'];
 
-    /**
-     * 获取组织活动列表（Activity List）
-     *
-     * @ApiMethod (GET)
-     * @ApiParams (name="channel_id", type="int", required=false, description="栏目ID")
-     * @ApiParams (name="flag", type="string", required=false, description="标志筛选，多个用逗号分隔")
-     * @ApiParams (name="page", type="int", required=false, description="页码，默认1")
-     * @ApiParams (name="limit", type="int", required=false, description="每页数量，默认10")
-     * @ApiParams (name="order", type="string", required=false, description="排序方式：latest(最新),hot(最热),weigh(权重)")
-     */
+     /**
+      * 获取精品书籍列表（Book List）
+      *
+      * @ApiMethod (GET)
+      * @ApiParams (name="channel_id", type="int", required=false, description="栏目ID")
+      * @ApiParams (name="flag", type="string", required=false, description="标志筛选，多个用逗号分隔")
+      * @ApiParams (name="page", type="int", required=false, description="页码，默认1")
+      * @ApiParams (name="limit", type="int", required=false, description="每页数量，默认10")
+      * @ApiParams (name="order", type="string", required=false, description="排序方式：latest(最新),hot(最热),weigh(权重)")
+      */
     public function list()
     {
         $channelId = $this->request->get('channel_id');
@@ -47,10 +47,10 @@ class Activity extends Base
                 throw new \Exception('数据库表 party_cms_archives 不存在');
             }
             
-            // 构建查询条件 - 只查询组织活动模型(model_id = 2)
+            // 构建查询条件 - 只查询精品书籍模型(model_id = 3)
             $where = [
                 'status' => 'normal',
-                'model_id' => 2  // 组织活动模型ID
+                'model_id' => 3  // 精品书籍模型ID
             ];
             
             if ($channelId) {
@@ -68,8 +68,8 @@ class Activity extends Base
             // 构建排序条件
             $orderBy = $this->buildOrderBy($order);
             
-            // 查询活动数据
-            $activities = CmsArchives::where($where)
+            // 查询书籍数据
+            $books = CmsArchives::where($where)
                 ->order($orderBy)
                 ->field('id,channel_id,model_id,title,image,description,views,comments,likes,weigh,createtime,updatetime,publishtime')
                 ->page($page, $limit)
@@ -79,49 +79,30 @@ class Activity extends Base
             $total = CmsArchives::where($where)->count();
             
             $result = [];
-            foreach ($activities as $activity) {
+            foreach ($books as $book) {
                 // 获取栏目名称
                 $channelName = '';
-                if ($activity->channel_id) {
-                    $channel = CmsChannel::where('id', $activity->channel_id)->field('name')->find();
+                if ($book->channel_id) {
+                    $channel = CmsChannel::where('id', $book->channel_id)->field('name')->find();
                     $channelName = $channel ? $channel->name : '';
                 }
                 
-                // 获取活动附加表数据
-                $activityData = \think\Db::name('cms_addon_activity')->where('id', $activity->id)->find();
-                $startDate = $activityData ? ($activityData['start_date'] ?: '') : '';
-                $endDate = $activityData ? ($activityData['end_date'] ?: '') : '';
-                
-                // 计算活动状态
-                $activityStatus = '';
-                if ($startDate && $endDate) {
-                    $now = time();
-                    $start = strtotime($startDate);
-                    $end = strtotime($endDate . ' 23:59:59'); // 结束日期包含当天全天
-                    
-                    if ($now < $start) {
-                        $activityStatus = '未开始';
-                    } elseif ($now >= $start && $now <= $end) {
-                        $activityStatus = '进行中';
-                    } else {
-                        $activityStatus = '已结束';
-                    }
-                }
+                // 获取书籍附加表数据
+                $bookData = \think\Db::name('cms_addon_books')->where('id', $book->id)->find();
+                $downloadUrl = $bookData ? ($bookData['download'] ?: '') : '';
                 
                 $item = [
-                    'id' => $activity->id,
-                    'channel_id' => $activity->channel_id,
+                    'id' => $book->id,
+                    'channel_id' => $book->channel_id,
                     'channel_name' => $channelName,
-                    'title' => $activity->title,
-                    'image' => $activity->image ?: '',
-                    'description' => $activity->description ?: '',
-                    'start_date' => $startDate,
-                    'end_date' => $endDate,
-                    'activity_status' => $activityStatus,
-                    'views' => $activity->views,
-                    'createtime' => date('Y-m-d H:i:s', $activity->createtime),
-                    'updatetime' => date('Y-m-d H:i:s', $activity->updatetime),
-                    'publishtime' => $activity->publishtime ? date('Y-m-d H:i:s', $activity->publishtime) : ''
+                    'title' => $book->title,
+                    'image' => $book->image ?: '',
+                    'description' => $book->description ?: '',
+                    'download' => $downloadUrl,
+                    'views' => $book->views,
+                    'createtime' => date('Y-m-d H:i:s', $book->createtime),
+                    'updatetime' => date('Y-m-d H:i:s', $book->updatetime),
+                    'publishtime' => $book->publishtime ? date('Y-m-d H:i:s', $book->publishtime) : ''
                 ];
                 
                 $result[] = $item;
@@ -157,10 +138,10 @@ class Activity extends Base
     }
 
     /**
-     * 获取组织活动详情（Activity Detail）
+     * 获取精品书籍详情（Book Detail）
      *
      * @ApiMethod (GET)
-     * @ApiParams (name="id", type="int", required=true, description="活动ID")
+     * @ApiParams (name="id", type="int", required=true, description="书籍ID")
      */
     public function detail()
     {
@@ -179,70 +160,50 @@ class Activity extends Base
         }
         
         try {
-            // 查询活动详情 - 只查询组织活动模型(model_id = 2)
-            $activity = CmsArchives::where('id', $id)
+            // 查询书籍详情 - 只查询精品书籍模型(model_id = 3)
+            $book = CmsArchives::where('id', $id)
                 ->where('status', 'normal')
-                ->where('model_id', 2)  // 组织活动模型ID
+                ->where('model_id', 3)  // 精品书籍模型ID
                 ->field('id,channel_id,model_id,title,image,description,views,comments,likes,weigh,createtime,updatetime,publishtime')
                 ->find();
             
-            if (!$activity) {
-                throw new \Exception('活动不存在');
+            if (!$book) {
+                throw new \Exception('书籍不存在');
             }
             
-            // 获取活动内容和日期
+            // 获取书籍内容和下载地址
             $content = '';
-            $startDate = '';
-            $endDate = '';
+            $downloadUrl = '';
             
-            $activityData = \think\Db::name('cms_addon_activity')->where('id', $id)->find();
-            if ($activityData) {
-                $content = $activityData['content'] ?: '';
-                $startDate = $activityData['start_date'] ?: '';
-                $endDate = $activityData['end_date'] ?: '';
+            $bookData = \think\Db::name('cms_addon_books')->where('id', $id)->find();
+            if ($bookData) {
+                $content = $bookData['content'] ?: '';
+                $downloadUrl = $bookData['download'] ?: '';
             }
             
             // 获取栏目名称
             $channelName = '';
-            if ($activity->channel_id) {
-                $channel = CmsChannel::where('id', $activity->channel_id)->field('name')->find();
+            if ($book->channel_id) {
+                $channel = CmsChannel::where('id', $book->channel_id)->field('name')->find();
                 $channelName = $channel ? $channel->name : '';
-            }
-            
-            // 计算活动状态
-            $activityStatus = '';
-            if ($startDate && $endDate) {
-                $now = time();
-                $start = strtotime($startDate);
-                $end = strtotime($endDate . ' 23:59:59'); // 结束日期包含当天全天
-                
-                if ($now < $start) {
-                    $activityStatus = '未开始';
-                } elseif ($now >= $start && $now <= $end) {
-                    $activityStatus = '进行中';
-                } else {
-                    $activityStatus = '已结束';
-                }
             }
             
             // 增加浏览量
             CmsArchives::where('id', $id)->setInc('views');
             
             $result = [
-                'id' => $activity->id,
-                'channel_id' => $activity->channel_id,
+                'id' => $book->id,
+                'channel_id' => $book->channel_id,
                 'channel_name' => $channelName,
-                'title' => $activity->title,
-                'image' => $activity->image ?: '',
-                'description' => $activity->description ?: '',
+                'title' => $book->title,
+                'image' => $book->image ?: '',
+                'description' => $book->description ?: '',
                 'content' => $content,
-                'start_date' => $startDate,
-                'end_date' => $endDate,
-                'activity_status' => $activityStatus,
-                'views' => $activity->views + 1, // 显示增加后的浏览量
-                'createtime' => date('Y-m-d H:i:s', $activity->createtime),
-                'updatetime' => date('Y-m-d H:i:s', $activity->updatetime),
-                'publishtime' => $activity->publishtime ? date('Y-m-d H:i:s', $activity->publishtime) : ''
+                'download' => $downloadUrl,
+                'views' => $book->views + 1, // 显示增加后的浏览量
+                'createtime' => date('Y-m-d H:i:s', $book->createtime),
+                'updatetime' => date('Y-m-d H:i:s', $book->updatetime),
+                'publishtime' => $book->publishtime ? date('Y-m-d H:i:s', $book->publishtime) : ''
             ];
             
             $response = [
