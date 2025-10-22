@@ -56,6 +56,10 @@ return [
     'miniapp/activity/list' => 'miniapp/activity/list',
     'miniapp/activity/detail' => 'miniapp/activity/detail',
     
+    // 党员先锋API路由（Member - 党员先锋功能）
+    'miniapp/member/list' => 'miniapp/member/list',
+    'miniapp/member/detail' => 'miniapp/member/detail',
+    
     // 区块API路由（Block - CMS区块管理）
     'miniapp/block/name' => 'miniapp/block/name',
     

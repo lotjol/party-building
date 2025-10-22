@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- 主机： 127.0.0.1:3306
--- 生成日期： 2025-10-17 06:28:14
+-- 生成日期： 2025-10-22 14:51:26
 -- 服务器版本： 5.7.31
 -- PHP 版本： 7.4.33
 
@@ -53,7 +53,7 @@ CREATE TABLE IF NOT EXISTS `party_admin` (
 --
 
 INSERT INTO `party_admin` (`id`, `username`, `nickname`, `password`, `salt`, `avatar`, `email`, `mobile`, `loginfailure`, `logintime`, `loginip`, `createtime`, `updatetime`, `token`, `status`) VALUES
-(1, 'admin', 'Admin', '2b4a3b6ed5c54571f745ef375dd7e6ed', '55f607', '/assets/img/avatar.png', 'admin@admin.com', '', 0, 1760613508, '0.0.0.0', 1491635035, 1760613508, 'a22e612f-3cae-4f4b-9936-6aa7c1e07b46', 'normal');
+(1, 'admin', 'Admin', '2b4a3b6ed5c54571f745ef375dd7e6ed', '55f607', '/assets/img/avatar.png', 'admin@admin.com', '', 0, 1761124434, '0.0.0.0', 1491635035, 1761124434, 'd785690e-fbea-4b6b-8f38-18379902df57', 'normal');
 
 -- --------------------------------------------------------
 
@@ -74,8 +74,85 @@ CREATE TABLE IF NOT EXISTS `party_admin_log` (
   `createtime` bigint(16) DEFAULT NULL COMMENT '操作时间',
   PRIMARY KEY (`id`),
   KEY `name` (`username`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='管理员日志表';
+) ENGINE=InnoDB AUTO_INCREMENT=73 DEFAULT CHARSET=utf8mb4 COMMENT='管理员日志表';
 
+--
+-- 转存表中的数据 `party_admin_log`
+--
+
+INSERT INTO `party_admin_log` (`id`, `admin_id`, `username`, `url`, `title`, `content`, `ip`, `useragent`, `createtime`) VALUES
+(1, 1, 'admin', '/admin.php/cms/archives/get_channel_model_info', 'CMS管理 / 内容管理', '{\"ids\":\"1\"}', '0.0.0.0', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 1761140341),
+(2, 1, 'admin', '/admin.php/cms/archives/get_fields_html', 'CMS管理 / 内容管理', '{\"channel_id\":\"1\"}', '0.0.0.0', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 1761140347),
+(3, 1, 'admin', '/admin.php/cms/ajax/get_title_pinyin', 'CMS管理', '{\"title\":\"im\",\"delimiter\":\"-\"}', '0.0.0.0', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 1761140397),
+(4, 1, 'admin', '/admin.php/cms/ajax/get_title_pinyin', 'CMS管理', '{\"title\":\"测\",\"delimiter\":\"-\"}', '0.0.0.0', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 1761140398),
+(5, 1, 'admin', '/admin.php/cms/ajax/get_title_pinyin', 'CMS管理', '{\"title\":\"测试\",\"delimiter\":\"-\"}', '0.0.0.0', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 1761140398),
+(6, 1, 'admin', '/admin.php/cms/ajax/get_title_pinyin', 'CMS管理', '{\"title\":\"测试shu\",\"delimiter\":\"-\"}', '0.0.0.0', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 1761140411),
+(7, 1, 'admin', '/admin.php/cms/ajax/get_title_pinyin', 'CMS管理', '{\"title\":\"测试shuj\",\"delimiter\":\"-\"}', '0.0.0.0', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 1761140411),
+(8, 1, 'admin', '/admin.php/cms/ajax/get_title_pinyin', 'CMS管理', '{\"title\":\"测试shu\'ji\",\"delimiter\":\"-\"}', '0.0.0.0', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 1761140412),
+(9, 1, 'admin', '/admin.php/cms/ajax/get_title_pinyin', 'CMS管理', '{\"title\":\"测试书籍\",\"delimiter\":\"-\"}', '0.0.0.0', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 1761140413),
+(10, 1, 'admin', '/admin.php/ajax/upload', '', '{\"category\":\"\"}', '0.0.0.0', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 1761140418),
+(11, 1, 'admin', '/admin.php/ajax/upload', '', '{\"category\":\"\"}', '0.0.0.0', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 1761140427),
+(12, 1, 'admin', '/admin.php/cms/archives/add?channel=1&dialog=1', 'CMS管理 / 内容管理 / 添加', '{\"channel\":\"1\",\"dialog\":\"1\",\"row\":{\"style\":\"\",\"channel_id\":\"1\",\"user_id\":\"\",\"special_ids\":\"\",\"title\":\"测试书籍\",\"image\":\"\\/uploads\\/20251022\\/5cc48846311bca1fbbbd3a48ca68d279.jpg\",\"images\":\"\",\"tags\":\"\",\"diyname\":\"ce-shi-shu-ji\",\"description\":\"\",\"content\":\"哈哈哈\",\"price\":\"0\",\"outlink\":\"\",\"seotitle\":\"\",\"keywords\":\"\",\"download\":\"https:\\/\\/xxx.pdf\",\"views\":\"0\",\"comments\":\"0\",\"likes\":\"0\",\"dislikes\":\"0\",\"weigh\":\"0\",\"flag\":[\"recommend\"],\"createby\":[\"admin\"],\"status\":\"normal\",\"isguest\":\"10\",\"iscomment\":\"10\",\"publishtime\":\"2025-10-22 21:39:05\",\"channel_ids\":[\"\"]}}', '0.0.0.0', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 1761140448),
+(13, 1, 'admin', '/admin.php/cms/archives/get_fields_html', 'CMS管理 / 内容管理', '{\"channel_id\":\"1\",\"archives_id\":\"1\"}', '0.0.0.0', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 1761140951),
+(14, 1, 'admin', '/admin.php/cms/archives/get_channel_model_info', 'CMS管理 / 内容管理', '{\"ids\":\"1,10\"}', '0.0.0.0', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 1761141842),
+(15, 1, 'admin', '/admin.php/cms/archives/get_fields_html', 'CMS管理 / 内容管理', '{\"channel_id\":\"1\"}', '0.0.0.0', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 1761141844),
+(16, 1, 'admin', '/admin.php/cms/archives/get_channel_model_info', 'CMS管理 / 内容管理', '{\"ids\":\"10\"}', '0.0.0.0', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 1761141848),
+(17, 1, 'admin', '/admin.php/cms/archives/get_fields_html', 'CMS管理 / 内容管理', '{\"channel_id\":\"10\"}', '0.0.0.0', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 1761141850),
+(18, 1, 'admin', '/admin.php/cms/ajax/get_title_pinyin', 'CMS管理', '{\"title\":\"im\",\"delimiter\":\"-\"}', '0.0.0.0', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 1761141853),
+(19, 1, 'admin', '/admin.php/cms/ajax/get_title_pinyin', 'CMS管理', '{\"title\":\"imj\",\"delimiter\":\"-\"}', '0.0.0.0', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 1761141853),
+(20, 1, 'admin', '/admin.php/cms/ajax/get_title_pinyin', 'CMS管理', '{\"title\":\"i\",\"delimiter\":\"-\"}', '0.0.0.0', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 1761141854),
+(21, 1, 'admin', '/admin.php/cms/ajax/get_title_pinyin', 'CMS管理', '{\"title\":\"im\",\"delimiter\":\"-\"}', '0.0.0.0', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 1761141855),
+(22, 1, 'admin', '/admin.php/cms/ajax/get_title_pinyin', 'CMS管理', '{\"title\":\"测\",\"delimiter\":\"-\"}', '0.0.0.0', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 1761141855),
+(23, 1, 'admin', '/admin.php/cms/ajax/get_title_pinyin', 'CMS管理', '{\"title\":\"测试\",\"delimiter\":\"-\"}', '0.0.0.0', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 1761141856),
+(24, 1, 'admin', '/admin.php/cms/ajax/get_title_pinyin', 'CMS管理', '{\"title\":\"测试it\",\"delimiter\":\"-\"}', '0.0.0.0', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 1761141856),
+(25, 1, 'admin', '/admin.php/cms/ajax/get_title_pinyin', 'CMS管理', '{\"title\":\"测试活f\",\"delimiter\":\"-\"}', '0.0.0.0', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 1761141857),
+(26, 1, 'admin', '/admin.php/cms/ajax/get_title_pinyin', 'CMS管理', '{\"title\":\"测试活fc\",\"delimiter\":\"-\"}', '0.0.0.0', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 1761141857),
+(27, 1, 'admin', '/admin.php/cms/ajax/get_title_pinyin', 'CMS管理', '{\"title\":\"测试活动\",\"delimiter\":\"-\"}', '0.0.0.0', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 1761141857),
+(28, 1, 'admin', '/admin.php/cms/archives/add?channel=10&dialog=1', 'CMS管理 / 内容管理 / 添加', '{\"channel\":\"10\",\"dialog\":\"1\",\"row\":{\"style\":\"\",\"channel_id\":\"10\",\"user_id\":\"\",\"special_ids\":\"\",\"title\":\"测试活动\",\"image\":\"\",\"images\":\"\",\"tags\":\"\",\"diyname\":\"ce-shi-huo-dong\",\"description\":\"压顶载\",\"content\":\"奔西南非槈\",\"price\":\"0\",\"outlink\":\"\",\"seotitle\":\"\",\"keywords\":\"\",\"end_date\":\"2025-10-22\",\"start_date\":\"2025-10-24\",\"views\":\"0\",\"comments\":\"0\",\"likes\":\"0\",\"dislikes\":\"0\",\"weigh\":\"0\",\"createby\":[\"admin\"],\"status\":\"normal\",\"isguest\":\"10\",\"iscomment\":\"10\",\"publishtime\":\"2025-10-22 22:04:10\",\"channel_ids\":[\"\"],\"flag\":[\"\"]}}', '0.0.0.0', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 1761141870),
+(29, 1, 'admin', '/admin.php/cms/archives/get_fields_html', 'CMS管理 / 内容管理', '{\"channel_id\":\"10\",\"archives_id\":\"2\"}', '0.0.0.0', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 1761141969),
+(30, 1, 'admin', '/admin.php/cms/archives/get_channel_model_info', 'CMS管理 / 内容管理', '{\"ids\":\"11,10\"}', '0.0.0.0', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 1761143259),
+(31, 1, 'admin', '/admin.php/cms/archives/get_channel_model_info', 'CMS管理 / 内容管理', '{\"ids\":\"11\"}', '0.0.0.0', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 1761143259),
+(32, 1, 'admin', '/admin.php/cms/archives/get_channel_model_info', 'CMS管理 / 内容管理', '{\"ids\":\"\"}', '0.0.0.0', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 1761143260),
+(33, 1, 'admin', '/admin.php/cms/archives/get_channel_model_info', 'CMS管理 / 内容管理', '{\"ids\":\"9\"}', '0.0.0.0', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 1761143261),
+(34, 1, 'admin', '/admin.php/cms/archives/get_fields_html', 'CMS管理 / 内容管理', '{\"channel_id\":\"9\"}', '0.0.0.0', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 1761143263),
+(35, 1, 'admin', '/admin.php/cms/ajax/get_title_pinyin', 'CMS管理', '{\"title\":\"d\'fa\'s\'d\",\"delimiter\":\"-\"}', '0.0.0.0', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 1761143265),
+(36, 1, 'admin', '/admin.php/cms/ajax/get_title_pinyin', 'CMS管理', '{\"title\":\"的发射点\",\"delimiter\":\"-\"}', '0.0.0.0', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 1761143265),
+(37, 1, 'admin', '/admin.php/ajax/upload', '', '{\"category\":\"\"}', '0.0.0.0', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 1761143269),
+(38, 1, 'admin', '/admin.php/cms/archives/add?channel=9&dialog=1', 'CMS管理 / 内容管理 / 添加', '{\"channel\":\"9\",\"dialog\":\"1\",\"row\":{\"style\":\"\",\"channel_id\":\"9\",\"user_id\":\"\",\"special_ids\":\"\",\"title\":\"的发射点\",\"image\":\"\\/uploads\\/20251022\\/e385853b301b2abe734cfb558ada74b5.jpg\",\"images\":\"\",\"tags\":\"\",\"diyname\":\"de-fa-she-dian\",\"description\":\"啊打发撒旦\",\"content\":\"塔顶\",\"price\":\"0\",\"outlink\":\"\",\"seotitle\":\"\",\"keywords\":\"\",\"views\":\"0\",\"comments\":\"0\",\"likes\":\"0\",\"dislikes\":\"0\",\"weigh\":\"0\",\"createby\":[\"admin\"],\"status\":\"normal\",\"isguest\":\"10\",\"iscomment\":\"10\",\"publishtime\":\"2025-10-22 22:27:42\",\"channel_ids\":[\"\"],\"flag\":[\"\"]}}', '0.0.0.0', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 1761143278),
+(39, 1, 'admin', '/admin.php/cms/archives/get_fields_html', 'CMS管理 / 内容管理', '{\"channel_id\":\"9\",\"archives_id\":\"3\"}', '0.0.0.0', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 1761143380),
+(40, 1, 'admin', '/admin.php/cms/archives/edit/ids/3?dialog=1', 'CMS管理 / 内容管理 / 修改', '{\"dialog\":\"1\",\"row\":{\"style\":\"\",\"channel_id\":\"9\",\"user_id\":\"0\",\"special_ids\":\"\",\"title\":\"的发射点\",\"image\":\"\\/uploads\\/20251022\\/e385853b301b2abe734cfb558ada74b5.jpg\",\"images\":\"\",\"tags\":\"\",\"diyname\":\"de-fa-she-dian\",\"description\":\"啊打发撒旦\",\"content\":\"塔顶\",\"price\":\"0.00\",\"outlink\":\"\",\"seotitle\":\"\",\"keywords\":\"\",\"views\":\"1\",\"comments\":\"0\",\"likes\":\"0\",\"dislikes\":\"0\",\"weigh\":\"0\",\"flag\":[\"top\"],\"createby\":[\"admin\"],\"status\":\"normal\",\"memo\":\"\",\"isguest\":\"10\",\"iscomment\":\"10\",\"createtime\":\"2025-10-22 22:27:58\",\"publishtime\":\"2025-10-22 22:27:42\",\"channel_ids\":[\"\"]},\"ids\":\"3\"}', '0.0.0.0', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 1761143387),
+(41, 1, 'admin', '/admin.php/cms/archives/get_fields_html', 'CMS管理 / 内容管理', '{\"channel_id\":\"9\",\"archives_id\":\"3\"}', '0.0.0.0', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 1761143615),
+(42, 1, 'admin', '/admin.php/cms/archives/edit/ids/3?dialog=1', 'CMS管理 / 内容管理 / 修改', '{\"dialog\":\"1\",\"row\":{\"style\":\"\",\"channel_id\":\"9\",\"user_id\":\"0\",\"special_ids\":\"\",\"title\":\"的发射点\",\"image\":\"\\/uploads\\/20251022\\/e385853b301b2abe734cfb558ada74b5.jpg\",\"images\":\"\",\"tags\":\"\",\"diyname\":\"de-fa-she-dian\",\"description\":\"啊打发撒旦\",\"content\":\"塔顶\",\"price\":\"0.00\",\"outlink\":\"\",\"seotitle\":\"\",\"keywords\":\"\",\"views\":\"1\",\"comments\":\"0\",\"likes\":\"0\",\"dislikes\":\"0\",\"weigh\":\"9999\",\"flag\":[\"hot\",\"top\"],\"createby\":[\"admin\"],\"status\":\"normal\",\"memo\":\"\",\"isguest\":\"10\",\"iscomment\":\"10\",\"createtime\":\"2025-10-22 22:27:58\",\"publishtime\":\"2025-10-22 22:27:42\",\"channel_ids\":[\"\"]},\"ids\":\"3\"}', '0.0.0.0', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 1761143621),
+(43, 1, 'admin', '/admin.php/cms/archives/get_fields_html', 'CMS管理 / 内容管理', '{\"channel_id\":\"9\",\"archives_id\":\"3\"}', '0.0.0.0', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 1761143728),
+(44, 1, 'admin', '/admin.php/cms/archives/edit/ids/3?dialog=1', 'CMS管理 / 内容管理 / 修改', '{\"dialog\":\"1\",\"row\":{\"style\":\"\",\"channel_id\":\"9\",\"user_id\":\"0\",\"special_ids\":\"\",\"title\":\"的发射点\",\"image\":\"\\/uploads\\/20251022\\/e385853b301b2abe734cfb558ada74b5.jpg\",\"images\":\"\",\"tags\":\"\",\"diyname\":\"de-fa-she-dian\",\"description\":\"啊打发撒旦\",\"content\":\"塔顶\",\"price\":\"0.00\",\"outlink\":\"\",\"seotitle\":\"\",\"keywords\":\"\",\"views\":\"1\",\"comments\":\"0\",\"likes\":\"0\",\"dislikes\":\"0\",\"weigh\":\"9999\",\"flag\":[\"hot\"],\"createby\":[\"admin\"],\"status\":\"normal\",\"memo\":\"\",\"isguest\":\"10\",\"iscomment\":\"10\",\"createtime\":\"2025-10-22 22:27:58\",\"publishtime\":\"2025-10-22 22:27:42\",\"channel_ids\":[\"\"]},\"ids\":\"3\"}', '0.0.0.0', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 1761143764),
+(45, 1, 'admin', '/admin.php/cms/ajax/get_template_list', 'CMS管理', '{\"searchTable\":\"tbl\",\"searchKey\":\"name\",\"searchValue\":\"channel.html\",\"orderBy\":[[\"name\",\"ASC\"]],\"showField\":\"name\",\"keyField\":\"name\",\"keyValue\":\"channel.html\",\"searchField\":[\"name\"],\"type\":\"channel\"}', '0.0.0.0', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 1761144486),
+(46, 1, 'admin', '/admin.php/cms/ajax/get_template_list', 'CMS管理', '{\"searchTable\":\"tbl\",\"searchKey\":\"name\",\"searchValue\":\"list.html\",\"orderBy\":[[\"name\",\"ASC\"]],\"showField\":\"name\",\"keyField\":\"name\",\"keyValue\":\"list.html\",\"searchField\":[\"name\"],\"type\":\"list\"}', '0.0.0.0', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 1761144486),
+(47, 1, 'admin', '/admin.php/cms/ajax/get_template_list', 'CMS管理', '{\"searchTable\":\"tbl\",\"searchKey\":\"name\",\"searchValue\":\"show.html\",\"orderBy\":[[\"name\",\"ASC\"]],\"showField\":\"name\",\"keyField\":\"name\",\"keyValue\":\"show.html\",\"searchField\":[\"name\"],\"type\":\"show\"}', '0.0.0.0', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 1761144486),
+(48, 1, 'admin', '/admin.php/cms/ajax/get_title_pinyin', 'CMS管理', '{\"title\":\"ip\"}', '0.0.0.0', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 1761144489),
+(49, 1, 'admin', '/admin.php/cms/ajax/get_title_pinyin', 'CMS管理', '{\"title\":\"ipk\"}', '0.0.0.0', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 1761144490),
+(50, 1, 'admin', '/admin.php/cms/ajax/get_title_pinyin', 'CMS管理', '{\"title\":\"党\"}', '0.0.0.0', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 1761144490),
+(51, 1, 'admin', '/admin.php/cms/ajax/get_title_pinyin', 'CMS管理', '{\"title\":\"党k\"}', '0.0.0.0', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 1761144491),
+(52, 1, 'admin', '/admin.php/cms/ajax/get_title_pinyin', 'CMS管理', '{\"title\":\"党员\"}', '0.0.0.0', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 1761144491),
+(53, 1, 'admin', '/admin.php/cms/ajax/get_title_pinyin', 'CMS管理', '{\"title\":\"党员先锋\"}', '0.0.0.0', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 1761144493),
+(54, 1, 'admin', '/admin.php/cms/modelx/add?dialog=1', 'CMS管理 / 模型管理 / 添加', '{\"dialog\":\"1\",\"row\":{\"name\":\"党员先锋\",\"table\":\"cms_addon_member\",\"channeltpl\":\"channel.html\",\"listtpl\":\"list.html\",\"showtpl\":\"show.html\"}}', '0.0.0.0', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 1761144550),
+(55, 1, 'admin', '/admin.php/cms/fields/multi/source/model/source_id/4', 'CMS管理 / 字段管理 / 批量更新', '{\"action\":\"\",\"ids\":\"content\",\"params\":\"iscontribute=0\",\"source\":\"model\",\"source_id\":\"4\"}', '0.0.0.0', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 1761144559),
+(56, 1, 'admin', '/admin.php/cms/fields/multi/source/model/source_id/4', 'CMS管理 / 字段管理 / 批量更新', '{\"action\":\"\",\"ids\":\"channel_ids\",\"params\":\"iscontribute=0\",\"source\":\"model\",\"source_id\":\"4\"}', '0.0.0.0', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 1761144560),
+(57, 1, 'admin', '/admin.php/cms/fields/multi/source/model/source_id/4', 'CMS管理 / 字段管理 / 批量更新', '{\"action\":\"\",\"ids\":\"user_id\",\"params\":\"ispublish=0\",\"source\":\"model\",\"source_id\":\"4\"}', '0.0.0.0', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 1761144566),
+(58, 1, 'admin', '/admin.php/cms/fields/multi/source/model/source_id/4', 'CMS管理 / 字段管理 / 批量更新', '{\"action\":\"\",\"ids\":\"channel_ids\",\"params\":\"ispublish=0\",\"source\":\"model\",\"source_id\":\"4\"}', '0.0.0.0', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 1761144568),
+(59, 1, 'admin', '/admin.php/cms/fields/multi/source/model/source_id/4', 'CMS管理 / 字段管理 / 批量更新', '{\"action\":\"\",\"ids\":\"special_ids\",\"params\":\"ispublish=0\",\"source\":\"model\",\"source_id\":\"4\"}', '0.0.0.0', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 1761144572),
+(60, 1, 'admin', '/admin.php/cms/fields/multi/source/model/source_id/4', 'CMS管理 / 字段管理 / 批量更新', '{\"action\":\"\",\"ids\":\"image\",\"params\":\"iscontribute=0\",\"source\":\"model\",\"source_id\":\"4\"}', '0.0.0.0', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 1761144575),
+(61, 1, 'admin', '/admin.php/cms/fields/multi/source/model/source_id/4', 'CMS管理 / 字段管理 / 批量更新', '{\"action\":\"\",\"ids\":\"images\",\"params\":\"iscontribute=0\",\"source\":\"model\",\"source_id\":\"4\"}', '0.0.0.0', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 1761144576),
+(62, 1, 'admin', '/admin.php/cms/fields/multi/source/model/source_id/4', 'CMS管理 / 字段管理 / 批量更新', '{\"action\":\"\",\"ids\":\"keywords\",\"params\":\"iscontribute=0\",\"source\":\"model\",\"source_id\":\"4\"}', '0.0.0.0', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 1761144576),
+(63, 1, 'admin', '/admin.php/cms/fields/multi/source/model/source_id/4', 'CMS管理 / 字段管理 / 批量更新', '{\"action\":\"\",\"ids\":\"description\",\"params\":\"iscontribute=0\",\"source\":\"model\",\"source_id\":\"4\"}', '0.0.0.0', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 1761144577),
+(64, 1, 'admin', '/admin.php/cms/fields/multi/source/model/source_id/4', 'CMS管理 / 字段管理 / 批量更新', '{\"action\":\"\",\"ids\":\"tags\",\"params\":\"iscontribute=0\",\"source\":\"model\",\"source_id\":\"4\"}', '0.0.0.0', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 1761144578),
+(65, 1, 'admin', '/admin.php/cms/fields/multi/source/model/source_id/4', 'CMS管理 / 字段管理 / 批量更新', '{\"action\":\"\",\"ids\":\"price\",\"params\":\"iscontribute=0\",\"source\":\"model\",\"source_id\":\"4\"}', '0.0.0.0', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 1761144579),
+(66, 1, 'admin', '/admin.php/cms/fields/multi/source/model/source_id/4', 'CMS管理 / 字段管理 / 批量更新', '{\"action\":\"\",\"ids\":\"outlink\",\"params\":\"iscontribute=0\",\"source\":\"model\",\"source_id\":\"4\"}', '0.0.0.0', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 1761144580),
+(67, 1, 'admin', '/admin.php/cms/fields/multi/source/model/source_id/4', 'CMS管理 / 字段管理 / 批量更新', '{\"action\":\"\",\"ids\":\"diyname\",\"params\":\"ispublish=0\",\"source\":\"model\",\"source_id\":\"4\"}', '0.0.0.0', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 1761144627),
+(68, 1, 'admin', '/admin.php/cms/fields/multi/source/model/source_id/4', 'CMS管理 / 字段管理 / 批量更新', '{\"action\":\"\",\"ids\":\"outlink\",\"params\":\"ispublish=0\",\"source\":\"model\",\"source_id\":\"4\"}', '0.0.0.0', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 1761144632),
+(69, 1, 'admin', '/admin.php/cms/fields/multi/source/model/source_id/4', 'CMS管理 / 字段管理 / 批量更新', '{\"action\":\"\",\"ids\":\"price\",\"params\":\"ispublish=0\",\"source\":\"model\",\"source_id\":\"4\"}', '0.0.0.0', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 1761144634),
+(70, 1, 'admin', '/admin.php/cms/fields/multi/source/model/source_id/4', 'CMS管理 / 字段管理 / 批量更新', '{\"action\":\"\",\"ids\":\"keywords\",\"params\":\"ispublish=0\",\"source\":\"model\",\"source_id\":\"4\"}', '0.0.0.0', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 1761144640),
+(71, 1, 'admin', '/admin.php/cms/fields/multi/source/model/source_id/4', 'CMS管理 / 字段管理 / 批量更新', '{\"action\":\"\",\"ids\":\"seotitle\",\"params\":\"ispublish=0\",\"source\":\"model\",\"source_id\":\"4\"}', '0.0.0.0', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 1761144642),
+(72, 1, 'admin', '/admin.php/cms/fields/multi/source/model/source_id/4', 'CMS管理 / 字段管理 / 批量更新', '{\"action\":\"\",\"ids\":\"images\",\"params\":\"ispublish=0\",\"source\":\"model\",\"source_id\":\"4\"}', '0.0.0.0', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 1761144647);
 
 -- --------------------------------------------------------
 
@@ -128,25 +205,16 @@ CREATE TABLE IF NOT EXISTS `party_attachment` (
   `storage` varchar(100) NOT NULL DEFAULT 'local' COMMENT '存储位置',
   `sha1` varchar(40) DEFAULT '' COMMENT '文件 sha1编码',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COMMENT='附件表';
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COMMENT='附件表';
 
 --
 -- 转存表中的数据 `party_attachment`
 --
 
 INSERT INTO `party_attachment` (`id`, `category`, `admin_id`, `user_id`, `url`, `imagewidth`, `imageheight`, `imagetype`, `imageframes`, `filename`, `filesize`, `mimetype`, `extparam`, `createtime`, `updatetime`, `uploadtime`, `storage`, `sha1`) VALUES
-(1, '', 1, 0, '/assets/img/qrcode.png', 150, 150, 'png', 0, 'qrcode.png', 21859, 'image/png', '', 1491635035, 1491635035, 1491635035, 'local', '17163603d0263e4838b9387ff2cd4877e8b018f6'),
-(2, '', 1, 0, '/uploads/20250923/980a0e9d6746fb880de3396ea195436e.png', 1375, 784, 'png', 0, '2019052411133160801.png', 1322138, 'image/png', '', 1758606105, 1758606105, 1758606105, 'local', '86eb631c1963655a4a77b6ae0740a9f6d24ca1a8'),
-(3, '', 1, 0, '/uploads/20250923/c2e9beac513e1c47dd4dabab1f925c5d.webp', 1080, 720, 'webp', 0, 'd6968a4ee3b2498a93f904c5b0045897.webp', 136878, 'image/webp', '', 1758606473, 1758606473, 1758606473, 'local', 'b1681476fef9f1093f534f287f10d736cf4b3102'),
-(4, '', 1, 0, '/uploads/20250923/fff1d91f04cdfacb092de4aaac7dd04a.jpg', 1920, 1280, 'jpg', 0, '20d67ff42f2f6c3_size599_w1920_h1280.jpg', 443054, 'image/jpeg', '', 1758606591, 1758606591, 1758606591, 'local', '990005dc02ae085ec89bf1965c073edc0e3199f4'),
-(5, '', 1, 0, '/uploads/20250923/99a8530e450c600bbeab18ddf7d86962.webp', 1080, 590, 'webp', 0, 'c47ed13daa5b4b908259e5b48a8f1dc4.webp', 28782, 'image/webp', '', 1758606687, 1758606687, 1758606687, 'local', '1b27f4010cafaf3ffd1e2f06fad84f414f0dafed'),
-(6, '', 1, 0, '/uploads/20250923/41d7f0386c1f3906853f8e17bdd8cbf6.png', 1200, 800, 'png', 0, 'Flag_of_the_Chinese_Communist_Party.svg.png', 5766, 'image/png', '', 1758606743, 1758606743, 1758606743, 'local', 'edaeeb2df2dfcba5610ea43b6a0e23716c60f596'),
-(7, '', 1, 0, '/uploads/20250923/3e6467230f5cafac6012a7847d9950b7.jpeg', 1080, 506, 'jpeg', 0, '20211214082730_2066.jpeg', 58725, 'image/jpeg', '', 1758606907, 1758606907, 1758606907, 'local', '709472b981374b2a57d918a970521063a4693985'),
-(8, '', 1, 0, '/uploads/20250923/42ff1e405465dc433d49119dbb7b7919.jpg', 1199, 674, 'jpg', 0, 's3fce62899c6347fe805bcdcb56c39f1d.jpg', 811026, 'image/jpeg', '', 1758606981, 1758606981, 1758606981, 'local', '93e1eb7d50eb011314e4fad5af7e1826243b53c1'),
-(9, '', 1, 0, '/uploads/20250923/25d2551637be95bbc9953317b291ac38.png', 1268, 952, 'png', 0, '51637BE95BBC9953317B291AC38_235A6E0B_1A8704.png', 1738500, 'image/png', '', 1758607021, 1758607021, 1758607021, 'local', '1be1fedd839730c30c0946eb2726747df9fdc2bb'),
-(10, '', 1, 0, '/uploads/20250923/c6c80e045b0cfb04e9f872b9a0b6c74e.png', 864, 576, 'png', 0, 'E045B0CFB04E9F872B9A0B6C74E_E3C6335F_F6BCF.png', 1010639, 'image/png', '', 1758607060, 1758607060, 1758607060, 'local', '31d91a60fdd07ad169d29426bfbc42738b2a8f4d'),
-(11, '', 1, 0, '/uploads/20250923/24e31ff84a5ef79842d75331eeee3253.webp', 684, 385, 'webp', 0, 'ffe9fa0e1d304e9fb588ac06b2e158b4.webp', 8120, 'image/webp', '', 1758607120, 1758607120, 1758607120, 'local', 'ad284d52a33454dcf56c28d074808c3d7139457b'),
-(12, '', 0, 4, '/uploads/20251016/31930510e9bb44f3252d7d7b30cd4bda.png', 200, 200, 'png', 0, 'app-icon.png', 18252, 'image/png', '', 1760590606, 1760590606, 1760590606, 'local', '9fb9c4c387b1c422d405aae5700d8fc844977f14');
+(1, '', 1, 0, '/uploads/20251022/88afeba33aeb2089108cf46b6a082426.jpg', 1279, 1706, 'jpg', 0, '微信图片_20240915141350.jpg', 664676, 'image/jpeg', '', 1761140418, 1761140418, 1761140418, 'local', 'd2b887f9bce035a8a4efb12a95dc6575b1deeecb'),
+(2, '', 1, 0, '/uploads/20251022/5cc48846311bca1fbbbd3a48ca68d279.jpg', 370, 194, 'jpg', 0, 'areas-6.jpg', 70556, 'image/jpeg', '', 1761140427, 1761140427, 1761140427, 'local', '8b72627f10963893129614410f15ad24842c0241'),
+(3, '', 1, 0, '/uploads/20251022/e385853b301b2abe734cfb558ada74b5.jpg', 370, 194, 'jpg', 0, 'areas-2.jpg', 56090, 'image/jpeg', '', 1761143269, 1761143269, 1761143269, 'local', 'd50c4a8b228dfba209d2b4d5164838795b1a7d8b');
 
 -- --------------------------------------------------------
 
@@ -319,7 +387,7 @@ INSERT INTO `party_auth_rule` (`id`, `type`, `pid`, `name`, `title`, `icon`, `ur
 (83, 'file', 79, 'user/rule/edit', 'Edit', 'fa fa-circle-o', '', '', '', 0, NULL, '', '', '', 1491635035, 1491635035, 0, 'normal'),
 (84, 'file', 79, 'user/rule/multi', 'Multi', 'fa fa-circle-o', '', '', '', 0, NULL, '', '', '', 1491635035, 1491635035, 0, 'normal'),
 (85, 'file', 0, 'cms', 'CMS管理', 'fa fa-file-text', '', '', '', 1, NULL, '', 'Cgl', 'CMSguanli', 1758155809, 1758155809, 137, 'normal'),
-(86, 'file', 85, 'cms/config', '站点配置', 'fa fa-gears', '', '', '', 0, NULL, '', 'zdpz', 'zhandianpeizhi', 1758155809, 1758712030, 22, 'normal'),
+(86, 'file', 85, 'cms/config', '站点配置', 'fa fa-gears', '', '', '', 0, NULL, '', 'zdpz', 'zhandianpeizhi', 1758155809, 1761129435, 22, 'normal'),
 (87, 'file', 86, 'cms/config/index', '修改', 'fa fa-circle-o', '', '', '', 0, NULL, '', 'xg', 'xiugai', 1758155809, 1758155809, 0, 'normal'),
 (88, 'file', 85, 'cms/statistics', '统计控制台', 'fa fa-bar-chart', '', '', '', 0, NULL, '', 'tjkzt', 'tongjikongzhitai', 1758155809, 1758182738, 21, 'normal'),
 (89, 'file', 88, 'cms/statistics/index', '查看', 'fa fa-circle-o', '', '', '', 0, NULL, '', 'zk', 'zhakan', 1758155809, 1758155809, 0, 'normal'),
@@ -353,19 +421,19 @@ INSERT INTO `party_auth_rule` (`id`, `type`, `pid`, `name`, `title`, `icon`, `ur
 (117, 'file', 113, 'cms/fields/del', '删除', 'fa fa-circle-o', '', '', '', 0, NULL, '', 'sc', 'shanchu', 1758155809, 1758155809, 0, 'normal'),
 (118, 'file', 113, 'cms/fields/duplicate', '复制', 'fa fa-circle-o', '', '', '', 0, NULL, '', 'fz', 'fuzhi', 1758155809, 1758155809, 0, 'normal'),
 (119, 'file', 113, 'cms/fields/multi', '批量更新', 'fa fa-circle-o', '', '', '', 0, NULL, '', 'plgx', 'pilianggengxin', 1758155809, 1758155809, 0, 'normal'),
-(120, 'file', 85, 'cms/tag', '标签管理', 'fa fa-tags', '', '', '用于管理文章关联的标签,标签的添加在添加文章时自动维护,无需手动添加标签', 1, NULL, '', 'bqgl', 'biaoqianguanli', 1758155809, 1758155809, 17, 'normal'),
+(120, 'file', 85, 'cms/tag', '标签管理', 'fa fa-tags', '', '', '用于管理文章关联的标签,标签的添加在添加文章时自动维护,无需手动添加标签', 0, NULL, '', 'bqgl', 'biaoqianguanli', 1758155809, 1761129464, 17, 'normal'),
 (121, 'file', 120, 'cms/tag/index', '查看', 'fa fa-circle-o', '', '', '', 0, NULL, '', 'zk', 'zhakan', 1758155809, 1758155809, 0, 'normal'),
 (122, 'file', 120, 'cms/tag/add', '添加', 'fa fa-circle-o', '', '', '', 0, NULL, '', 'tj', 'tianjia', 1758155809, 1758155809, 0, 'normal'),
 (123, 'file', 120, 'cms/tag/edit', '修改', 'fa fa-circle-o', '', '', '', 0, NULL, '', 'xg', 'xiugai', 1758155809, 1758155809, 0, 'normal'),
 (124, 'file', 120, 'cms/tag/del', '删除', 'fa fa-circle-o', '', '', '', 0, NULL, '', 'sc', 'shanchu', 1758155809, 1758155809, 0, 'normal'),
 (125, 'file', 120, 'cms/tag/multi', '批量更新', 'fa fa-circle-o', '', '', '', 0, NULL, '', 'plgx', 'pilianggengxin', 1758155809, 1758155809, 0, 'normal'),
-(126, 'file', 85, 'cms/block', '区块管理', 'fa fa-th-large', '', '', '用于管理站点的自定义区块内容，常用于广告、JS脚本、焦点图、片段代码等', 1, NULL, '', 'qkgl', 'qukuaiguanli', 1758155809, 1758155809, 16, 'normal'),
+(126, 'file', 85, 'cms/block', '焦点图管理', 'fa fa-th-large', '', '', '用于管理站点的自定义区块内容，常用于广告、JS脚本、焦点图、片段代码等', 1, 'addtabs', '', 'jdtgl', 'jiaodiantuguanli', 1758155809, 1761129568, 16, 'normal'),
 (127, 'file', 126, 'cms/block/index', '查看', 'fa fa-circle-o', '', '', '', 0, NULL, '', 'zk', 'zhakan', 1758155809, 1758155809, 0, 'normal'),
 (128, 'file', 126, 'cms/block/add', '添加', 'fa fa-circle-o', '', '', '', 0, NULL, '', 'tj', 'tianjia', 1758155809, 1758155809, 0, 'normal'),
 (129, 'file', 126, 'cms/block/edit', '修改', 'fa fa-circle-o', '', '', '', 0, NULL, '', 'xg', 'xiugai', 1758155809, 1758155809, 0, 'normal'),
 (130, 'file', 126, 'cms/block/del', '删除', 'fa fa-circle-o', '', '', '', 0, NULL, '', 'sc', 'shanchu', 1758155809, 1758155809, 0, 'normal'),
 (131, 'file', 126, 'cms/block/multi', '批量更新', 'fa fa-circle-o', '', '', '', 0, NULL, '', 'plgx', 'pilianggengxin', 1758155809, 1758155809, 0, 'normal'),
-(132, 'file', 85, 'cms/page', '单页管理', 'fa fa-file', '', '', '用于管理网站的单页面', 1, NULL, '', 'dygl', 'danyeguanli', 1758155809, 1758155809, 15, 'normal'),
+(132, 'file', 85, 'cms/page', '单页管理', 'fa fa-file', '', '', '用于管理网站的单页面', 0, NULL, '', 'dygl', 'danyeguanli', 1758155809, 1761127287, 15, 'normal'),
 (133, 'file', 132, 'cms/page/index', '查看', 'fa fa-circle-o', '', '', '', 0, NULL, '', 'zk', 'zhakan', 1758155809, 1758155809, 0, 'normal'),
 (134, 'file', 132, 'cms/page/add', '添加', 'fa fa-circle-o', '', '', '', 0, NULL, '', 'tj', 'tianjia', 1758155809, 1758155809, 0, 'normal'),
 (135, 'file', 132, 'cms/page/edit', '修改', 'fa fa-circle-o', '', '', '', 0, NULL, '', 'xg', 'xiugai', 1758155809, 1758155809, 0, 'normal'),
@@ -408,7 +476,7 @@ INSERT INTO `party_auth_rule` (`id`, `type`, `pid`, `name`, `title`, `icon`, `ur
 (172, 'file', 169, 'cms/order/edit', '修改', 'fa fa-circle-o', '', '', '', 0, NULL, '', 'xg', 'xiugai', 1758155809, 1758155809, 0, 'normal'),
 (173, 'file', 169, 'cms/order/del', '删除', 'fa fa-circle-o', '', '', '', 0, NULL, '', 'sc', 'shanchu', 1758155809, 1758155809, 0, 'normal'),
 (174, 'file', 169, 'cms/order/multi', '批量更新', 'fa fa-circle-o', '', '', '', 0, NULL, '', 'plgx', 'pilianggengxin', 1758155809, 1758155809, 0, 'normal'),
-(175, 'file', 85, 'cms/special', '专题管理', 'fa fa-newspaper-o', '', '', '可在线管理专题列表', 1, NULL, '', 'ztgl', 'zhuantiguanli', 1758155809, 1758155809, 10, 'normal'),
+(175, 'file', 85, 'cms/special', '专题管理', 'fa fa-newspaper-o', '', '', '可在线管理专题列表', 0, NULL, '', 'ztgl', 'zhuantiguanli', 1758155809, 1761127280, 10, 'normal'),
 (176, 'file', 175, 'cms/special/index', '查看', 'fa fa-circle-o', '', '', '', 0, NULL, '', 'zk', 'zhakan', 1758155809, 1758155809, 0, 'normal'),
 (177, 'file', 175, 'cms/special/add', '添加', 'fa fa-circle-o', '', '', '', 0, NULL, '', 'tj', 'tianjia', 1758155809, 1758155809, 0, 'normal'),
 (178, 'file', 175, 'cms/special/edit', '修改', 'fa fa-circle-o', '', '', '', 0, NULL, '', 'xg', 'xiugai', 1758155809, 1758155809, 0, 'normal'),
@@ -542,6 +610,13 @@ CREATE TABLE IF NOT EXISTS `party_cms_addon_activity` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='组织活动';
 
+--
+-- 转存表中的数据 `party_cms_addon_activity`
+--
+
+INSERT INTO `party_cms_addon_activity` (`id`, `content`, `start_date`, `end_date`) VALUES
+(2, '<p>奔西南非槈</p>', '2025-10-22', '2025-10-24');
+
 -- --------------------------------------------------------
 
 --
@@ -554,6 +629,47 @@ CREATE TABLE IF NOT EXISTS `party_cms_addon_article` (
   `content` longtext NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='文章';
+
+--
+-- 转存表中的数据 `party_cms_addon_article`
+--
+
+INSERT INTO `party_cms_addon_article` (`id`, `content`) VALUES
+(3, '<p>塔顶</p>');
+
+-- --------------------------------------------------------
+
+--
+-- 表的结构 `party_cms_addon_books`
+--
+
+DROP TABLE IF EXISTS `party_cms_addon_books`;
+CREATE TABLE IF NOT EXISTS `party_cms_addon_books` (
+  `id` int(10) NOT NULL,
+  `content` longtext NOT NULL,
+  `download` varchar(255) DEFAULT '' COMMENT '下载地址',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='精选书籍';
+
+--
+-- 转存表中的数据 `party_cms_addon_books`
+--
+
+INSERT INTO `party_cms_addon_books` (`id`, `content`, `download`) VALUES
+(1, '<p>哈哈哈</p>', 'https://xxx.pdf');
+
+-- --------------------------------------------------------
+
+--
+-- 表的结构 `party_cms_addon_member`
+--
+
+DROP TABLE IF EXISTS `party_cms_addon_member`;
+CREATE TABLE IF NOT EXISTS `party_cms_addon_member` (
+  `id` int(10) NOT NULL,
+  `content` longtext NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='党员先锋';
 
 -- --------------------------------------------------------
 
@@ -604,7 +720,16 @@ CREATE TABLE IF NOT EXISTS `party_cms_archives` (
   KEY `channel_id_2` (`channel_id`),
   KEY `channel_ids_2` (`channel_ids`),
   KEY `diyname_2` (`diyname`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='内容表';
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COMMENT='内容表';
+
+--
+-- 转存表中的数据 `party_cms_archives`
+--
+
+INSERT INTO `party_cms_archives` (`id`, `user_id`, `channel_id`, `channel_ids`, `model_id`, `special_ids`, `admin_id`, `title`, `flag`, `style`, `image`, `images`, `seotitle`, `keywords`, `description`, `tags`, `price`, `outlink`, `weigh`, `views`, `comments`, `likes`, `dislikes`, `diyname`, `isguest`, `iscomment`, `createtime`, `updatetime`, `publishtime`, `deletetime`, `createby`, `memo`, `status`) VALUES
+(1, 0, 1, '', 3, '', 1, '测试书籍', 'recommend', '', '/uploads/20251022/5cc48846311bca1fbbbd3a48ca68d279.jpg', '', '', '', '', '', 0.00, '', 0, 5, 0, 0, 0, 'ce-shi-shu-ji', 10, 10, 1761140447, 1761140447, 1761140345, NULL, 'admin', '', 'normal'),
+(2, 0, 10, '', 2, '', 1, '测试活动', '', '', '', '', '', '', '压顶载', '', 0.00, '', 0, 2, 0, 0, 0, 'ce-shi-huo-dong', 10, 10, 1761141870, 1761141870, 1761141850, NULL, 'admin', '', 'normal'),
+(3, 0, 9, '', 1, '', 1, '的发射点', 'hot', '', '/uploads/20251022/e385853b301b2abe734cfb558ada74b5.jpg', '', '', '', '啊打发撒旦', '', 0.00, '', 0, 1, 0, 0, 0, 'de-fa-she-dian', 10, 10, 1761143278, 1761143764, 1761143262, NULL, 'admin', '', 'normal');
 
 -- --------------------------------------------------------
 
@@ -648,17 +773,10 @@ CREATE TABLE IF NOT EXISTS `party_cms_block` (
   `begintime` bigint(16) DEFAULT NULL COMMENT '开始时间',
   `endtime` bigint(16) DEFAULT NULL COMMENT '结束时间',
   `status` enum('normal','hidden') NOT NULL DEFAULT 'normal' COMMENT '状态',
+  `urltype` varchar(255) DEFAULT 'link' COMMENT '链接类型',
   PRIMARY KEY (`id`),
   KEY `name` (`name`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COMMENT='区块表';
-
---
--- 转存表中的数据 `party_cms_block`
---
-
-INSERT INTO `party_cms_block` (`id`, `type`, `name`, `title`, `image`, `url`, `content`, `parsetpl`, `weigh`, `createtime`, `updatetime`, `begintime`, `endtime`, `status`) VALUES
-(1, 'carousel', 'carousel-index', '焦点图-首页', '', '', '', 0, 1, 1758785079, 1758785079, NULL, NULL, 'normal'),
-(2, 'carousel', 'carousel-index', '焦点图-首页', '', '', '', 0, 2, 1758786887, 1758786887, NULL, NULL, 'normal');
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='区块表';
 
 -- --------------------------------------------------------
 
@@ -708,19 +826,19 @@ CREATE TABLE IF NOT EXISTS `party_cms_channel` (
 --
 
 INSERT INTO `party_cms_channel` (`id`, `type`, `model_id`, `parent_id`, `name`, `image`, `flag`, `seotitle`, `keywords`, `description`, `diyname`, `outlink`, `linktype`, `linkid`, `items`, `weigh`, `channeltpl`, `listtpl`, `showtpl`, `pagesize`, `vip`, `listtype`, `iscontribute`, `isnav`, `createtime`, `updatetime`, `status`) VALUES
-(1, 'list', 1, 7, '经济', '', '', '', '', '', 'economy', '', '', 0, 1, 12, 'channel_news.html', 'list_news.html', 'show_news.html', 10, 0, 0, 0, 0, 1758184411, 1760537738, 'normal'),
+(1, 'list', 3, 7, '经济', '', '', '', '', '', 'economy', '', '', 0, 1, 12, 'channel.html', 'list.html', 'show.html', 10, 0, 0, 0, 0, 1758184411, 1761140448, 'normal'),
 (2, 'channel', 1, 0, '党员学习', '', '', '', '', '', 'study', '', '', 0, 0, 4, 'channel_news.html', 'list_news.html', 'show_news.html', 10, 0, 0, 0, 0, 1758184553, 1760538446, 'normal'),
 (3, 'channel', 1, 0, '党建动态', '', '', '', '', '', 'activities', '', '', 0, 0, 2, 'channel_news.html', 'list_news.html', 'show_news.html', 10, 0, 0, 0, 0, 1758184990, 1760538448, 'normal'),
 (4, 'channel', 1, 0, '党建服务', '', '', '', '', '', 'services', '', '', 0, 0, 1, 'channel_news.html', 'list_news.html', 'show_news.html', 10, 0, 0, 0, 0, 1758185067, 1760538449, 'normal'),
-(5, 'list', 1, 4, '组织关系转换', '', '', '', '', '', 'relationship', '/', '', 0, 0, 13, 'channel_news.html', 'list_news.html', 'show_news.html', 10, 0, 0, 0, 0, 1758185628, 1760538348, 'normal'),
+(5, 'list', 1, 4, '组织关系转移', '', '', '', '', '', 'zuzhiguanxizhuanyi', '/', '', 0, 0, 13, 'channel_news.html', 'list_news.html', 'show_news.html', 10, 0, 0, 0, 0, 1758185628, 1761124466, 'normal'),
 (6, 'list', 1, 2, '三会一课', '', '', '', '', '', 'meeting', '', '', 0, 0, 6, 'channel_news.html', 'list_news.html', 'show_news.html', 10, 0, 0, 0, 0, 1758599363, 1758599363, 'normal'),
-(7, 'list', 1, 2, '精选书籍', '', '', '', '', '', 'books', '', '', 0, 0, 7, 'channel_news.html', 'list_news.html', 'show_news.html', 10, 0, 0, 0, 0, 1758599399, 1758599399, 'normal'),
-(8, 'list', 1, 7, '时政', '', '', '', '', '', 'political', '', '', 0, 0, 8, 'channel_news.html', 'list_news.html', 'show_news.html', 10, 0, 0, 0, 0, 1758599458, 1760537679, 'normal'),
-(9, 'list', 1, 3, '基层动态', '', '', '', '', '', 'primary', '', '', 0, 0, 9, 'channel_news.html', 'list_news.html', 'show_news.html', 10, 0, 0, 0, 0, 1758599636, 1758599636, 'normal'),
-(10, 'list', 2, 3, '组织活动', '', '', '', '', '', 'party', '', '', 0, 1, 10, 'channel.html', 'list.html', 'show.html', 10, 0, 0, 0, 0, 1758599831, 1760669952, 'normal'),
+(7, 'list', 3, 2, '精选书籍', '', '', '', '', '', 'books', '', '', 0, 0, 7, 'channel.html', 'list.html', 'show.html', 10, 0, 0, 0, 0, 1758599399, 1761132549, 'normal'),
+(8, 'list', 3, 7, '时政', '', '', '', '', '', 'political', '', '', 0, 0, 8, 'channel.html', 'list.html', 'show.html', 10, 0, 0, 0, 0, 1758599458, 1761132642, 'normal'),
+(9, 'list', 1, 3, '基层动态', '', '', '', '', '', 'primary', '', '', 0, 1, 9, 'channel_news.html', 'list_news.html', 'show_news.html', 10, 0, 0, 0, 0, 1758599636, 1761143278, 'normal'),
+(10, 'list', 2, 3, '组织活动', '', '', '', '', '', 'party', '', '', 0, 1, 10, 'channel.html', 'list.html', 'show.html', 10, 0, 0, 0, 0, 1758599831, 1761141870, 'normal'),
 (11, 'list', 1, 3, '党员风采', '', '', '', '', '', 'record', '', '', 0, 0, 10, 'channel_news.html', 'list_news.html', 'show_news.html', 10, 0, 0, 0, 0, 1758600910, 1760538014, 'normal'),
 (12, 'list', 1, 3, '党员先锋', '', '', '', '', '', 'pioneer', '', '', 0, 0, 9, 'channel_news.html', 'list_news.html', 'show_news.html', 10, 0, 0, 0, 0, 1758603844, 1760537819, 'normal'),
-(13, 'list', 1, 4, '入党流程', '', '', '', '', '', 'process', '', '', 0, 9, 11, 'channel_news.html', 'list_news.html', 'show_news.html', 10, 0, 0, 0, 0, 1758604047, 1760538053, 'normal');
+(13, 'list', 1, 4, '入党流程', '', '', '', '', '', 'process', '', '', 0, 0, 11, 'channel_news.html', 'list_news.html', 'show_news.html', 10, 0, 0, 0, 0, 1758604047, 1761128086, 'normal');
 
 -- --------------------------------------------------------
 
@@ -987,7 +1105,7 @@ CREATE TABLE IF NOT EXISTS `party_cms_fields` (
   PRIMARY KEY (`id`),
   KEY `source` (`source`) USING BTREE,
   KEY `source_id` (`source_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=35 DEFAULT CHARSET=utf8mb4 COMMENT='模型字段表';
+) ENGINE=InnoDB AUTO_INCREMENT=37 DEFAULT CHARSET=utf8mb4 COMMENT='模型字段表';
 
 --
 -- 转存表中的数据 `party_cms_fields`
@@ -1015,7 +1133,9 @@ INSERT INTO `party_cms_fields` (`id`, `source`, `source_id`, `name`, `type`, `ti
 (31, 'diyform', 5, 'username', 'string', '用户名称', 'value1|title1\r\nvalue2|title2', 'value1|title1\r\nvalue2|title2', '', '', '', '', '', 0, 255, 0, 0, '', '{\"table\":\"\",\"conditions\":\"\",\"key\":\"\",\"value\":\"\"}', '', 31, 1760676261, 1760676261, 0, 0, 0, 'normal'),
 (32, 'diyform', 1, 'username', 'string', '用户名称', 'value1|title1\r\nvalue2|title2', 'value1|title1\r\nvalue2|title2', '', '', '', '', '', 0, 255, 0, 0, '', '{\"table\":\"\",\"conditions\":\"\",\"key\":\"\",\"value\":\"\"}', '', 32, 1760681760, 1760681760, 0, 0, 0, 'normal'),
 (33, 'diyform', 2, 'username', 'string', '用户名称', 'value1|title1\r\nvalue2|title2', 'value1|title1\r\nvalue2|title2', '', '', '', '', '', 0, 255, 0, 0, '', '{\"table\":\"\",\"conditions\":\"\",\"key\":\"\",\"value\":\"\"}', '', 33, 1760681791, 1760681791, 0, 0, 0, 'normal'),
-(34, 'diyform', 4, 'username', 'string', '用户名称', 'value1|title1\r\nvalue2|title2', 'value1|title1\r\nvalue2|title2', '', '', '', '', '', 0, 255, 0, 0, '', '{\"table\":\"\",\"conditions\":\"\",\"key\":\"\",\"value\":\"\"}', '', 34, 1760681831, 1760681831, 0, 0, 0, 'normal');
+(34, 'diyform', 4, 'username', 'string', '用户名称', 'value1|title1\r\nvalue2|title2', 'value1|title1\r\nvalue2|title2', '', '', '', '', '', 0, 255, 0, 0, '', '{\"table\":\"\",\"conditions\":\"\",\"key\":\"\",\"value\":\"\"}', '', 34, 1760681831, 1760681831, 0, 0, 0, 'normal'),
+(35, 'block', 0, 'urltype', 'select', '链接类型', 'video|视频\r\nlink|链接', NULL, 'link', '', '', '', '', 0, 255, 0, 0, '', '{\"table\":\"\",\"conditions\":\"\",\"key\":\"\",\"value\":\"\"}', '', 35, 1761130131, 1761130332, 0, 0, 0, 'normal'),
+(36, 'model', 3, 'download', 'string', '下载地址', 'value1|title1\r\nvalue2|title2', 'value1|title1\r\nvalue2|title2', '', '', '', '', '', 0, 255, 0, 0, '', '{\"table\":\"\",\"conditions\":\"\",\"key\":\"\",\"value\":\"\"}', '', 36, 1761132366, 1761132366, 0, 0, 0, 'normal');
 
 -- --------------------------------------------------------
 
@@ -1087,15 +1207,17 @@ CREATE TABLE IF NOT EXISTS `party_cms_model` (
   `updatetime` bigint(16) DEFAULT NULL COMMENT '更新时间',
   `setting` text COMMENT '模型配置',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COMMENT='内容模型表';
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COMMENT='内容模型表';
 
 --
 -- 转存表中的数据 `party_cms_model`
 --
 
 INSERT INTO `party_cms_model` (`id`, `name`, `table`, `fields`, `channeltpl`, `listtpl`, `showtpl`, `createtime`, `updatetime`, `setting`) VALUES
-(1, '文章', 'cms_addon_article', NULL, 'channel_news.html', 'list_news.html', 'show_news.html', 1758184280, 1760670950, '{\"contributefields\":[],\"publishfields\":[\"image\",\"tags\",\"content\",\"description\"]}'),
-(2, '组织活动', 'cms_addon_activity', 'start_date,end_date', 'channel.html', 'list.html', 'show.html', 1760666664, 1760670964, '{\"contributefields\":[],\"publishfields\":[\"image\",\"tags\",\"content\",\"description\"]}');
+(1, '通用文章', 'cms_addon_article', NULL, 'channel.html', 'list.html', 'show.html', 1758184280, 1761132242, '{\"contributefields\":[],\"publishfields\":[\"image\",\"tags\",\"content\",\"description\"]}'),
+(2, '组织活动', 'cms_addon_activity', 'start_date,end_date', 'channel.html', 'list.html', 'show.html', 1760666664, 1760670964, '{\"contributefields\":[],\"publishfields\":[\"image\",\"tags\",\"content\",\"description\"]}'),
+(3, '精选书籍', 'cms_addon_books', 'download', 'channel.html', 'list.html', 'show.html', 1761132206, 1761132695, '{\"contributefields\":[],\"publishfields\":[\"image\",\"tags\",\"content\"]}'),
+(4, '党员先锋', 'cms_addon_member', NULL, 'channel.html', 'list.html', 'show.html', 1761144550, 1761144647, '{\"contributefields\":[],\"publishfields\":[\"image\",\"tags\",\"content\",\"description\"]}');
 
 -- --------------------------------------------------------
 
@@ -1187,16 +1309,7 @@ CREATE TABLE IF NOT EXISTS `party_cms_page` (
   KEY `diyname` (`diyname`),
   KEY `type` (`type`),
   KEY `diyname_2` (`diyname`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COMMENT='单页表';
-
---
--- 转存表中的数据 `party_cms_page`
---
-
-INSERT INTO `party_cms_page` (`id`, `category_id`, `admin_id`, `type`, `title`, `seotitle`, `keywords`, `description`, `flag`, `image`, `content`, `icon`, `views`, `likes`, `dislikes`, `comments`, `diyname`, `showtpl`, `iscomment`, `parsetpl`, `createtime`, `updatetime`, `deletetime`, `weigh`, `status`) VALUES
-(1, 0, 1, '党的基本符号', '中国共产党党旗', '', '', '', '', '', '', '', 4, 0, 0, 0, 'flag', 'page.html', 0, 0, 1758600638, 1758600638, NULL, 1, 'normal'),
-(2, 0, 1, '党的基本符号', '中国共产党党章', '', '', '', '', '', '', '', 0, 0, 0, 0, 'charter', '', 0, 0, 1758600729, 1758600729, NULL, 2, 'normal'),
-(3, 0, 1, '党的基本符号', '中国共产党党徽', '', '', '', '', '', '', '', 2, 0, 0, 0, 'symbols', '', 0, 0, 1758600771, 1758600771, NULL, 3, 'normal');
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='单页表';
 
 -- --------------------------------------------------------
 
@@ -1353,6 +1466,8 @@ CREATE TABLE IF NOT EXISTS `party_cms_user_like` (
   KEY `type_aid` (`type`,`aid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='用户点赞记录表';
 
+-- --------------------------------------------------------
+
 --
 -- 表的结构 `party_config`
 --
@@ -1433,7 +1548,7 @@ CREATE TABLE IF NOT EXISTS `party_sms` (
   `ip` varchar(30) DEFAULT '' COMMENT 'IP',
   `createtime` bigint(16) UNSIGNED DEFAULT '0' COMMENT '创建时间',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='短信验证码表';
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COMMENT='短信验证码表';
 
 -- --------------------------------------------------------
 
@@ -1532,7 +1647,14 @@ CREATE TABLE IF NOT EXISTS `party_user` (
   KEY `email` (`email`),
   KEY `mobile` (`mobile`),
   KEY `idcard` (`idcard`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='会员表';
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COMMENT='会员表';
+
+--
+-- 转存表中的数据 `party_user`
+--
+
+INSERT INTO `party_user` (`id`, `group_id`, `username`, `nickname`, `password`, `salt`, `email`, `mobile`, `idcard`, `avatar`, `level`, `gender`, `birthday`, `bio`, `money`, `score`, `successions`, `maxsuccessions`, `prevtime`, `logintime`, `loginip`, `loginfailure`, `loginfailuretime`, `joinip`, `jointime`, `createtime`, `updatetime`, `token`, `status`, `verification`) VALUES
+(1, 1, 'user_13973836967_b6Lg', '张三', 'd79d759db3f6a8951d51aae562ed4721', '716wrn', '', '13973836967', '121319960407914502', '', 0, 0, '1996-04-07', '', 0.00, 0, 1, 1, NULL, NULL, '', 0, NULL, '127.0.0.1', 1761124748, 1761124748, 1761124748, '', 'normal', '');
 
 -- --------------------------------------------------------
 
@@ -1647,6 +1769,13 @@ CREATE TABLE IF NOT EXISTS `party_user_token` (
   `expiretime` bigint(16) DEFAULT NULL COMMENT '过期时间',
   PRIMARY KEY (`token`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='会员Token表';
+
+--
+-- 转存表中的数据 `party_user_token`
+--
+
+INSERT INTO `party_user_token` (`token`, `user_id`, `createtime`, `expiretime`) VALUES
+('67064809aef8e476ef20dcabae922dcf5899eb30', 1, 1761124748, 1763716748);
 
 -- --------------------------------------------------------
 
