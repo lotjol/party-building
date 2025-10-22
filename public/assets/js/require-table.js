@@ -229,8 +229,8 @@ define(['jquery', 'bootstrap', 'moment', 'moment/locale/zh-cn', 'bootstrap-table
                                 var top = Math.min(e.pageY, posy);
                                 var width = Math.abs(posx - e.pageX);
                                 var height = Math.abs(posy - e.pageY);
-                                dragdiv.css({left: left + "px", top: top + "px", width: width + "px", height: height + "px"});
-                                var dragrect = {x: left, y: top, width: width, height: height};
+                                dragdiv.css({ left: left + "px", top: top + "px", width: width + "px", height: height + "px" });
+                                var dragrect = { x: left, y: top, width: width, height: height };
                                 $(Table.config.checkboxtd, table).each(function () {
                                     var checkbox = $("input:checkbox", this);
                                     var tdrect = this.getBoundingClientRect();
@@ -272,7 +272,7 @@ define(['jquery', 'bootstrap', 'moment', 'moment/locale/zh-cn', 'bootstrap-table
                             }
                             drag = false;
                             prepare = false;
-                            $(document.body).css({'MozUserSelect': '', 'webkitUserSelect': ''}).attr('unselectable', 'off');
+                            $(document.body).css({ 'MozUserSelect': '', 'webkitUserSelect': '' }).attr('unselectable', 'off');
                         };
 
                         $(Table.config.checkboxtd, table).on("mousedown", function (e) {
@@ -287,9 +287,9 @@ define(['jquery', 'bootstrap', 'moment', 'moment/locale/zh-cn', 'bootstrap-table
                             if (prepare && !drag) {
                                 drag = true;
                                 dragdiv = $("<div />");
-                                dragdiv.css({position: 'absolute', width: 0, height: 0, border: "1px dashed blue", background: "#0029ff", left: e.pageX + "px", top: e.pageY + "px", opacity: .1});
+                                dragdiv.css({ position: 'absolute', width: 0, height: 0, border: "1px dashed blue", background: "#0029ff", left: e.pageX + "px", top: e.pageY + "px", opacity: .1 });
                                 dragdiv.appendTo(document.body);
-                                $(document.body).css({'MozUserSelect': 'none', 'webkitUserSelect': 'none'}).attr('unselectable', 'on');
+                                $(document.body).css({ 'MozUserSelect': 'none', 'webkitUserSelect': 'none' }).attr('unselectable', 'on');
                                 $(document).on("mousemove", mousemove).on("mouseup", mouseup).on("selectstart", selectstart);
                                 if (options.dragCheckboxMultiselect) {
                                     $(Table.config.checkboxtd, table).removeClass("overlaped");
@@ -360,7 +360,7 @@ define(['jquery', 'bootstrap', 'moment', 'moment/locale/zh-cn', 'bootstrap-table
                     }
                     table.trigger("uncheckbox");
                     table.bootstrapTable('getOptions').totalRows = 0;
-                    table.bootstrapTable('refresh', {pageNumber: 1});
+                    table.bootstrapTable('refresh', { pageNumber: 1 });
                     return false;
                 });
                 // 修复重置事件
@@ -380,7 +380,7 @@ define(['jquery', 'bootstrap', 'moment', 'moment/locale/zh-cn', 'bootstrap-table
                     var ids = Table.api.selectedids(table);
                     var url = options.extend.add_url;
                     if (url.indexOf("{ids}") !== -1) {
-                        url = Table.api.replaceurl(url, {ids: ids.length > 0 ? ids.join(",") : 0}, table);
+                        url = Table.api.replaceurl(url, { ids: ids.length > 0 ? ids.join(",") : 0 }, table);
                     }
                     Fast.api.open(url, $(this).data("original-title") || $(this).attr("title") || __('Add'), $(this).data() || {});
                 });
@@ -390,7 +390,7 @@ define(['jquery', 'bootstrap', 'moment', 'moment/locale/zh-cn', 'bootstrap-table
                         Upload.api.upload($(Table.config.importbtn, toolbar), function (data, ret) {
                             Fast.api.ajax({
                                 url: options.extend.import_url,
-                                data: {file: data.url},
+                                data: { file: data.url },
                             }, function (data, ret) {
                                 table.trigger("uncheckbox");
                                 table.bootstrapTable('refresh');
@@ -411,7 +411,7 @@ define(['jquery', 'bootstrap', 'moment', 'moment/locale/zh-cn', 'bootstrap-table
                     //循环弹出多个编辑框
                     $.each(Table.api.selecteddata(table), function (index, row) {
                         var url = options.extend.edit_url;
-                        row = $.extend({}, row ? row : {}, {ids: row[options.pk]});
+                        row = $.extend({}, row ? row : {}, { ids: row[options.pk] });
                         url = Table.api.replaceurl(url, row, table);
                         Fast.api.open(url, typeof title === 'function' ? title.call(table, row) : title, data);
                     });
@@ -451,7 +451,7 @@ define(['jquery', 'bootstrap', 'moment', 'moment/locale/zh-cn', 'bootstrap-table
                     var row = Table.api.getrowbyindex(table, $(that).data("row-index"));
                     Fast.api.ajax({
                         url: url,
-                        data: {ids: row[options.pk]}
+                        data: { ids: row[options.pk] }
                     }, function () {
                         table.trigger("uncheckbox");
                         table.bootstrapTable('refresh');
@@ -469,7 +469,7 @@ define(['jquery', 'bootstrap', 'moment', 'moment/locale/zh-cn', 'bootstrap-table
                     var ids = Table.api.selectedids(table);
                     Layer.confirm(
                         __('Are you sure you want to delete the %s selected item?', ids.length),
-                        {icon: 3, title: __('Warning'), offset: 0, shadeClose: true, btn: [__('OK'), __('Cancel')]},
+                        { icon: 3, title: __('Warning'), offset: 0, shadeClose: true, btn: [__('OK'), __('Cancel')] },
                         function (index) {
                             Table.api.multi("del", ids, table, that);
                             Layer.close(index);
@@ -528,7 +528,7 @@ define(['jquery', 'bootstrap', 'moment', 'moment/locale/zh-cn', 'bootstrap-table
                 });
                 table.on("click", "input[data-id][name='checkbox']", function (e) {
                     var ids = $(this).data("id");
-                    table.bootstrapTable($(this).prop("checked") ? 'checkBy' : 'uncheckBy', {field: options.pk, values: [ids]});
+                    table.bootstrapTable($(this).prop("checked") ? 'checkBy' : 'uncheckBy', { field: options.pk, values: [ids] });
                 });
                 table.on("click", "[data-id].btn-change", function (e) {
                     e.preventDefault();
@@ -558,7 +558,7 @@ define(['jquery', 'bootstrap', 'moment', 'moment/locale/zh-cn', 'bootstrap-table
                     var that = this;
                     Layer.confirm(
                         __('Are you sure you want to delete this item?'),
-                        {icon: 3, title: __('Warning'), shadeClose: true, btn: [__('OK'), __('Cancel')]},
+                        { icon: 3, title: __('Warning'), shadeClose: true, btn: [__('OK'), __('Cancel')] },
                         function (index) {
                             Table.api.multi("del", id, table, that);
                             Layer.close(index);
@@ -583,7 +583,7 @@ define(['jquery', 'bootstrap', 'moment', 'moment/locale/zh-cn', 'bootstrap-table
                     }
                     var text = $(this).prev().text();
                     var tdrect = $(this).parent().get(0).getBoundingClientRect();
-                    var index = Layer.open({id: 'autocontent', skin: 'layui-layer-fast layui-layer-autocontent', title: false, content: text, btn: false, anim: false, shade: 0, isOutAnim: false, area: 'auto', maxWidth: 450, maxHeight: 350, offset: [tdrect.y, tdrect.x]});
+                    var index = Layer.open({ id: 'autocontent', skin: 'layui-layer-fast layui-layer-autocontent', title: false, content: text, btn: false, anim: false, shade: 0, isOutAnim: false, area: 'auto', maxWidth: 450, maxHeight: 350, offset: [tdrect.y, tdrect.x] });
 
                     if (hover) {
                         $(document).one("mouseleave", "#layui-layer" + index, function () {
@@ -645,7 +645,7 @@ define(['jquery', 'bootstrap', 'moment', 'moment/locale/zh-cn', 'bootstrap-table
                 ids = ($.isArray(ids) ? ids.join(",") : ids);
                 var url = typeof data.url !== "undefined" ? data.url : (action == "del" ? options.extend.del_url : options.extend.multi_url);
                 var params = typeof data.params !== "undefined" ? (typeof data.params == 'object' ? $.param(data.params) : data.params) : '';
-                options = {url: url, data: {action: action, ids: ids, params: params}};
+                options = { url: url, data: { action: action, ids: ids, params: params } };
                 Fast.api.ajax(options, function (data, ret) {
                     table.trigger("uncheckbox");
                     var success = $(element).data("success") || $.noop;
@@ -673,7 +673,7 @@ define(['jquery', 'bootstrap', 'moment', 'moment/locale/zh-cn', 'bootstrap-table
                         var table = $(this).closest('table');
                         var options = table.bootstrapTable('getOptions');
                         var ids = row[options.pk];
-                        row = $.extend({}, row ? row : {}, {ids: ids});
+                        row = $.extend({}, row ? row : {}, { ids: ids });
                         var url = options.extend.edit_url;
                         Fast.api.open(Table.api.replaceurl(url, row, table), $(this).data("original-title") || $(this).attr("title") || __('Edit'), $(this).data() || {});
                     },
@@ -691,7 +691,7 @@ define(['jquery', 'bootstrap', 'moment', 'moment/locale/zh-cn', 'bootstrap-table
                         }
                         Layer.confirm(
                             __('Are you sure you want to delete this item?'),
-                            {icon: 3, title: __('Warning'), offset: [top, left], shadeClose: true, btn: [__('OK'), __('Cancel')]},
+                            { icon: 3, title: __('Warning'), offset: [top, left], shadeClose: true, btn: [__('OK'), __('Cancel')] },
                             function (index) {
                                 var table = $(that).closest('table');
                                 var options = table.bootstrapTable('getOptions');
@@ -774,7 +774,7 @@ define(['jquery', 'bootstrap', 'moment', 'moment/locale/zh-cn', 'bootstrap-table
                     return "<div class='autocontent-item " + hover + "' style='white-space: nowrap; text-overflow:ellipsis; overflow: hidden; max-width:" + width + ";'>" + value + "</div>";
                 },
                 status: function (value, row, index) {
-                    var custom = {normal: 'success', hidden: 'gray', deleted: 'danger', locked: 'info'};
+                    var custom = { normal: 'success', hidden: 'gray', deleted: 'danger', locked: 'info' };
                     if (typeof this.custom !== 'undefined') {
                         custom = $.extend(custom, this.custom);
                     }
@@ -856,7 +856,7 @@ define(['jquery', 'bootstrap', 'moment', 'moment/locale/zh-cn', 'bootstrap-table
                 flag: function (value, row, index) {
                     var that = this;
                     value = value == null || value.length === 0 ? '' : value.toString();
-                    var colorArr = {index: 'success', hot: 'warning', recommend: 'danger', 'new': 'info'};
+                    var colorArr = { index: 'success', hot: 'warning', recommend: 'danger', 'new': 'info' };
                     //如果字段列有定义custom
                     if (typeof this.custom !== 'undefined') {
                         colorArr = $.extend(colorArr, this.custom);

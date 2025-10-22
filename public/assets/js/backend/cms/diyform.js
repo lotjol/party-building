@@ -26,10 +26,10 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form', 'cms-base'], function
                 sortName: 'id',
                 columns: [
                     [
-                        {checkbox: true},
-                        {field: 'id', title: __('Id')},
-                        {field: 'name', title: __('Name'), operate: 'like'},
-                        {field: 'table', title: __('Table')},
+                        { checkbox: true },
+                        { field: 'id', title: __('Id') },
+                        { field: 'name', title: __('Name'), operate: 'like' },
+                        { field: 'table', title: __('Table') },
                         {
                             field: 'createtime',
                             sortable: true,
@@ -49,7 +49,7 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form', 'cms-base'], function
                             formatter: Table.api.formatter.datetime
                         },
                         {
-                            field: 'url', title: __('Url'), operate: false, formatter: function (value, row, index) {
+                            field: 'url', title: __('Url'), operate: false, visible: false, formatter: function (value, row, index) {
                                 return '<a href="' + value + '" target="_blank" class="btn btn-default btn-xs"><i class="fa fa-link"></i></a>';
                             }
                         },
@@ -93,7 +93,7 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form', 'cms-base'], function
                             ],
                             formatter: Table.api.formatter.buttons
                         },
-                        {field: 'status', title: __('Status'), searchList: {"normal": __('Normal'), "hidden": __('Hidden')}, formatter: Table.api.formatter.status},
+                        { field: 'status', title: __('Status'), searchList: { "normal": __('Normal'), "hidden": __('Hidden') }, formatter: Table.api.formatter.status },
                         {
                             field: 'operate',
                             title: __('Operate'),
@@ -120,7 +120,7 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form', 'cms-base'], function
                         Fast.api.ajax({
                             loading: false,
                             url: "cms/ajax/get_title_pinyin",
-                            data: {title: value}
+                            data: { title: value }
                         }, function (data, ret) {
                             $("#c-table").val("cms_diyform_" + data.pinyin);
                             $("#c-diyname").val(data.pinyin.substr(0, 100));
@@ -151,7 +151,7 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form', 'cms-base'], function
                             return $.ajax({
                                 url: 'cms/diyform/check_element_available',
                                 type: 'POST',
-                                data: {id: $("#diyform-id").val(), name: element.name, value: element.value},
+                                data: { id: $("#diyform-id").val(), name: element.name, value: element.value },
                                 dataType: 'json'
                             });
                         }

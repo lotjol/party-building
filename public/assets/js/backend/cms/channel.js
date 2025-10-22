@@ -21,27 +21,27 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form', 'cms-base'], function
             var table = $("#table");
 
             var columns = [
-                {checkbox: true},
-                {field: 'id', title: __('Id')},
+                { checkbox: true },
+                { field: 'id', title: __('Id') },
                 {
                     field: 'type',
                     title: __('Type'),
-                    custom: {channel: 'info', list: 'success', link: 'primary'},
+                    custom: { channel: 'info', list: 'success', link: 'primary' },
                     formatter: Table.api.formatter.flag,
-                    cellStyle: {css: {"font-size": "16px"}}
+                    cellStyle: { css: { "font-size": "16px" } }
                 },
-                {field: 'model_name', title: __('Model_name'), operate: false},
+                { field: 'model_name', title: __('Model_name'), operate: false },
                 {
                     field: 'name', title: __('Name'), align: 'left', formatter: function (value, row, index) {
                         return value.replace(/&amp;nbsp;/g, '&nbsp;');
                     }
                 },
                 {
-                    field: 'url', title: __('Url'), operate: false, formatter: function (value, row, index) {
+                    field: 'url', title: __('Url'), operate: false, visible: false, formatter: function (value, row, index) {
                         return '<a href="' + value + '" target="_blank" class="btn btn-default btn-xs"><i class="fa fa-link"></i></a>';
                     }
                 },
-                {field: 'flag', title: __('Flag'), operate: 'find_in_set', searchList: Config.flagList, formatter: Table.api.formatter.flag},
+                { field: 'flag', title: __('Flag'), operate: 'find_in_set', visible: false, searchList: Config.flagList, formatter: Table.api.formatter.flag },
                 {
                     field: 'spiders', title: __('Spiders'), visible: Config.spiderRecord || false, operate: false, formatter: function (value, row, index) {
                         if (!$.isArray(value) || value.length === 0) {
@@ -62,11 +62,12 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form', 'cms-base'], function
                         return html.join(" ");
                     }
                 },
-                {field: 'items', title: __('Items')},
-                {field: 'vip', title: __('Vip')},
+                { field: 'items', title: __('Items') },
+                { field: 'vip', title: __('Vip'), visible: false },
                 {
                     field: 'weigh',
                     title: __('Weigh'),
+                    visible: true,
                     formatter: function (value, row, index) {
                         return '<input type="text" class="form-control text-center text-weigh" data-id="' + row.id + '" value="' + value + '" style="width:50px;margin:0 auto;" />';
                     },
@@ -94,9 +95,9 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form', 'cms-base'], function
                     addclass: 'datetimerange',
                     formatter: Table.api.formatter.datetime
                 },
-                {field: 'iscontribute', title: __('Iscontribute'), searchList: {"1": __('Yes'), "0": __('No')}, formatter: Table.api.formatter.toggle},
-                {field: 'isnav', title: __('Isnav'), searchList: {"1": __('Yes'), "0": __('No')}, formatter: Table.api.formatter.toggle},
-                {field: 'status', title: __('Status'), formatter: Table.api.formatter.status},
+                { field: 'iscontribute', title: __('Iscontribute'), visible: false, searchList: { "1": __('Yes'), "0": __('No') }, formatter: Table.api.formatter.toggle },
+                { field: 'isnav', title: __('Isnav'), visible: false, searchList: { "1": __('Yes'), "0": __('No') }, formatter: Table.api.formatter.toggle },
+                { field: 'status', title: __('Status'), formatter: Table.api.formatter.status },
                 {
                     field: 'id',
                     title: '#',
@@ -154,7 +155,7 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form', 'cms-base'], function
             });
 
             $(document).on("change", ".text-weigh", function () {
-                $(this).data("params", {weigh: $(this).val()});
+                $(this).data("params", { weigh: $(this).val() });
                 Table.api.multi('', [$(this).data("id")], table, this);
                 return false;
             });
@@ -241,9 +242,9 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form', 'cms-base'], function
                                 return row.superadmin ? "<span class='label label-danger'>超级管理员</span>" : "<span class='label label-success'>普通管理员</span>";
                             }
                         },
-                        {field: 'username', title: __('Username')},
-                        {field: 'nickname', title: __('Nickname')},
-                        {field: 'channels', title: __('Channels')},
+                        { field: 'username', title: __('Username') },
+                        { field: 'nickname', title: __('Nickname') },
+                        { field: 'channels', title: __('Channels') },
                         {
                             field: 'operate',
                             title: __('Operate'),
@@ -338,11 +339,11 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form', 'cms-base'], function
                             yes: function (index, o) {
                                 var selected = $("#channeltree", o).jstree("get_selected");
                                 if (selected.length <= 0) {
-                                    Layer.msg(__('You must choose at least one channel'), {id: "aaafd"});
+                                    Layer.msg(__('You must choose at least one channel'), { id: "aaafd" });
                                 } else {
                                     Fast.api.ajax({
                                         url: "cms/channel/admin/act/save/ids/" + row.id,
-                                        data: {"ids": selected.join(",")}
+                                        data: { "ids": selected.join(",") }
                                     }, function (data, ret) {
                                         $(".btn-refresh").trigger("click");
                                         Layer.close(index);
@@ -381,7 +382,7 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form', 'cms-base'], function
                     Fast.api.ajax({
                         loading: false,
                         url: "cms/channel/get_page_content",
-                        data: {type: data.type, source_id: data.source_id}
+                        data: { type: data.type, source_id: data.source_id }
                     }, function (data, ret) {
                         $("#pagecontent").val(data.html);
                         Form.events.bindevent($("#outlink-extend"));
@@ -402,7 +403,7 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form', 'cms-base'], function
                             return $.ajax({
                                 url: 'cms/channel/check_element_available',
                                 type: 'POST',
-                                data: {id: $("#c-name").val(), name: element.name, value: element.value},
+                                data: { id: $("#c-name").val(), name: element.name, value: element.value },
                                 dataType: 'json'
                             });
                         },
@@ -416,14 +417,14 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form', 'cms-base'], function
                             return $.ajax({
                                 url: 'cms/channel/check_element_available',
                                 type: 'POST',
-                                data: {id: $("#channel-id").val(), name: element.name, value: element.value},
+                                data: { id: $("#channel-id").val(), name: element.name, value: element.value },
                                 dataType: 'json'
                             });
                         }
                     }
                 });
                 //不可见的元素不验证
-                $("form[role=form]").data("validator-options", {ignore: ':hidden'});
+                $("form[role=form]").data("validator-options", { ignore: ':hidden' });
                 //获取栏目拼音
                 var si;
                 $(document).on("keyup", "#c-name", function () {
@@ -434,7 +435,7 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form', 'cms-base'], function
                             Fast.api.ajax({
                                 loading: false,
                                 url: "cms/ajax/get_title_pinyin",
-                                data: {title: value}
+                                data: { title: value }
                             }, function (data, ret) {
                                 $("#c-diyname").val(data.pinyin.substr(0, 100));
                                 return false;
