@@ -698,9 +698,10 @@ class Archives extends Base
         }
 
         try {
-            // 检查文章是否存在
+            // 检查文章是否存在 - 只查询通用文章模型(model_id = 1)
             $archives = CmsArchives::where('id', $archivesId)
                 ->where('status', 'normal')
+                ->where('model_id', 1)  // 通用文章模型ID
                 ->find();
 
             if (!$archives) {
@@ -793,13 +794,14 @@ class Archives extends Base
         $limit = min(50, max(1, intval($limit))); // 限制最大50条
 
         try {
-            // 查询学习记录，关联文章表获取标题和封面
+            // 查询学习记录，关联文章表获取标题和封面 - 只查询通用文章模型(model_id = 1)
             $records = \think\Db::name('cms_study_record')
                 ->alias('sr')
                 ->join('cms_archives a', 'sr.archives_id = a.id')
                 ->where('sr.user_id', $this->auth->id)
                 ->where('sr.status', 'normal')
                 ->where('a.status', 'normal')
+                ->where('a.model_id', 1)  // 通用文章模型ID
                 ->field('sr.id, sr.archives_id, sr.createtime, sr.updatetime, a.title, a.image, a.description, a.views, a.likes')
                 ->order('sr.updatetime desc, sr.createtime desc')
                 ->page($page, $limit)
@@ -812,6 +814,7 @@ class Archives extends Base
                 ->where('sr.user_id', $this->auth->id)
                 ->where('sr.status', 'normal')
                 ->where('a.status', 'normal')
+                ->where('a.model_id', 1)  // 通用文章模型ID
                 ->count();
 
             $result = [];

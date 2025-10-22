@@ -42,11 +42,11 @@ return [
     'miniapp/channel/list' => 'miniapp/channel/list',
     'miniapp/channel/detail' => 'miniapp/channel/detail',
     
-    // 文章API路由（Archives - CMS标准术语）
-    'miniapp/archives/list' => 'miniapp/archives/list',
-    'miniapp/archives/detail' => 'miniapp/archives/detail',
-    'miniapp/archives/hot' => 'miniapp/archives/hot',
-    'miniapp/archives/search' => 'miniapp/archives/search',
+    // 文章API路由（Article - 通用文章功能）
+    'miniapp/article/list' => 'miniapp/article/list',
+    'miniapp/article/detail' => 'miniapp/article/detail',
+    'miniapp/article/hot' => 'miniapp/article/hot',
+    'miniapp/article/search' => 'miniapp/article/search',
     
     // 精品书籍API路由（Book - 精品书籍功能）
     'miniapp/book/list' => 'miniapp/book/list',
@@ -60,20 +60,20 @@ return [
     'miniapp/block/name' => 'miniapp/block/name',
     
     // 点赞API路由（Like - 文章点赞功能）
-    'miniapp/archives/like' => ['miniapp/like/archives', 'POST'],
-    'miniapp/archives/like/status' => 'miniapp/like/status',
+    'miniapp/article/like' => ['miniapp/like/archives', 'POST'],
+    'miniapp/article/like/status' => 'miniapp/like/status',
     
     // 收藏API路由（Collection - 文章收藏功能）
-    'miniapp/archives/collection' => ['miniapp/collection/archives', 'POST'],
+    'miniapp/article/collection' => ['miniapp/collection/archives', 'POST'],
     'miniapp/user/collections' => 'miniapp/collection/list',
-    'miniapp/archives/collection/status' => 'miniapp/collection/status',
+    'miniapp/article/collection/status' => 'miniapp/collection/status',
     
     // 学习记录API路由（Study - 文章学习记录功能）
-    'miniapp/archives/study' => ['miniapp/archives/study', 'POST'],
-    'miniapp/archives/study/list' => 'miniapp/archives/study_list',
-    'miniapp/archives/study/status' => 'miniapp/archives/study_status',
-    'miniapp/archives/study/delete' => ['miniapp/archives/study_delete', 'POST'],
-    'miniapp/archives/study/clear' => ['miniapp/archives/study_clear', 'POST'],
+    'miniapp/article/study' => ['miniapp/archives/study', 'POST'],
+    'miniapp/article/study/list' => 'miniapp/archives/study_list',
+    'miniapp/article/study/status' => 'miniapp/archives/study_status',
+    'miniapp/article/study/delete' => ['miniapp/archives/study_delete', 'POST'],
+    'miniapp/article/study/clear' => ['miniapp/archives/study_clear', 'POST'],
     
     // 建言献策API路由（Suggestion - 用户建议功能）
     'miniapp/suggestion/add' => ['miniapp/suggestion/add', 'POST'],

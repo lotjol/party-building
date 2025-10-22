@@ -38,8 +38,11 @@ class Collection extends Base
         }
 
         try {
-            // 检查文章是否存在
-            $archives = CmsArchives::where('id', $id)->where('status', 'normal')->find();
+            // 检查文章是否存在 - 只查询通用文章模型(model_id = 1)
+            $archives = CmsArchives::where('id', $id)
+                ->where('status', 'normal')
+                ->where('model_id', 1)  // 通用文章模型ID
+                ->find();
             if (!$archives) {
                 throw new \Exception(__('文章不存在'));
             }
@@ -245,8 +248,11 @@ class Collection extends Base
         }
 
         try {
-            // 检查文章是否存在
-            $archives = CmsArchives::where('id', $id)->where('status', 'normal')->find();
+            // 检查文章是否存在 - 只查询通用文章模型(model_id = 1)
+            $archives = CmsArchives::where('id', $id)
+                ->where('status', 'normal')
+                ->where('model_id', 1)  // 通用文章模型ID
+                ->find();
             if (!$archives) {
                 throw new \Exception(__('文章不存在'));
             }
