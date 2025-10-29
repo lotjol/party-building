@@ -41,7 +41,7 @@ class Diydata extends Backend
      */
     public function index()
     {
-        $fieldsList = \app\admin\model\cms\Fields::where('source', 'diyform')->where('source_id', $this->diyform['id'])->where('type', '<>', 'text')->select();
+        $fieldsList = \app\admin\model\cms\Fields::where('source', 'diyform')->where('source_id', $this->diyform['id'])->where('type', '<>', 'text')->order('weigh desc,id desc')->select();
         $fields = [];
         foreach ($fieldsList as $index => $item) {
             $fields[] = ['field' => $item['name'], 'title' => $item['title'], 'type' => $item['type'], 'content' => $item['content_list']];
